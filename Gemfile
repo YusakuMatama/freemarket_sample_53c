@@ -51,13 +51,6 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'letter_opener'
-  gem 'mail_view'
-  gem 'pry-rails'
-  gem 'quiet_assets'
-  gem 'sextant'
 end
 
 group :development do
