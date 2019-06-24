@@ -1,0 +1,66 @@
+.user {
+  position: relative;
+  height: 155px;
+  padding: 20px;
+  background-image: url("background.jpg");
+  background-size: cover;
+  text-align: center;
+  figure.icon {
+    vertical-align: center;
+    .person {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto;
+      border-radius: 50%;
+    }
+  }
+  .bold {
+    margin: 8px 0 0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  &__number {
+    margin: 8px 0 0;
+    div {
+      display: inline-block;
+      font-size: 14px;
+      margin: 0 0 0 16px;
+    }
+  }
+}
+.content {
+  background: #ffff;
+  &__tabs {
+    display: inline-block;
+  }
+  &__message {
+    display: block;
+    .list {
+    display: block;
+    min-height: 80px;
+    padding: 16px;
+    color: #333333;
+    &__body {
+      margin: 0 40px 0 68px;
+      display: flex;
+      figure.mercari {
+        position: relative;
+        .picture {
+          width: 48px;
+          height: 48px;
+        }
+      }
+      &__text {
+        max-height: 4.4em;
+        line-height: 1.5;
+        display: -webkit-box;
+      }
+      time {
+        display: inline-block;
+        color: #888888;
+      }
+    }
+    }
+  }
+}

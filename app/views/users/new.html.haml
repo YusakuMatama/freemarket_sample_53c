@@ -1,0 +1,77 @@
+.container
+  .mypage
+    %section.user
+      %a{href: 'http://google.co.jp'}
+        %figure.icon
+          = link_to image_tag("profile-icon.png", class: "person")
+        %h2.bold
+          Balus
+        .user__number
+          %div
+            評価
+          %span.bold
+            0
+          %div
+            出品数
+          %span.bold
+            0
+    %section.content
+      .content__tabs
+        = link_to("お知らせ", class: "tab")
+        = link_to("やることリスト", class:"tab")
+      %ul.content__message
+        %li.list
+          .list__body
+            %figure.mercari
+              = image_tag("mercari.png", class: "picture")
+              .list__text
+                aaaaaa
+              %time
+                %i.icon-time
+                  ３時間前
+            %i.icon-arrow
+
+        %li.list
+          .list__body
+            %figure.mercari
+              = image_tag("mercari.png", class: "picture")
+              .list__text
+                bbbbbb
+              %time
+                %i.icon-time
+                  15時間前
+            %i.icon-arrow
+
+        %li.list
+          .list__body
+            %figure.mercari
+              = image_tag("mercari.png", class: "picture")
+              .list__text
+                cccccc
+              %time
+                %i.far.fa-clock
+                  21時間前
+            %i.icon-arrow
+
+        %li.watch-list
+          = link_to("一覧を見る")
+
+      %ul.content__message
+        %li
+          現在、やることリストはありません
+
+    %section.items
+      %h2.items__head
+        購入した商品
+        %ul.items__tabs
+        %li.tab
+          = link_to("取引中")
+        %li.tab
+          = link_to("過去の取引")
+
+      %ul.content__btn
+        %li
+          取引中の商品がありません
+      %ul.content__btn
+        %li
+          過去に取引した商品がありません
