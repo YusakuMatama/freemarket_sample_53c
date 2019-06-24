@@ -1,0 +1,24 @@
+.header__inner
+  %h1.header__inner__top
+    = link_to image_tag('mercari-logo.jpg', class: 'header__inner__top__home-button'), root_path, class: 'header__inner__top__link'
+    = form_for(@top, html: {class: "header__inner__top__form"}) do |f|            
+      = f.text_area :content, placeholder:"何かお探しですか？", class: "header__inner__top__form__input"
+      %label.header__inner__top__form__icon
+        = fa_icon'search'
+        = f.submit "send", class: "header__inner__top__form__icon__search"
+
+  .header__nav.clearfix
+    .header__nav__left
+      %ul.header__nav__left__category
+        %li.header__nav__left__category__cate
+          = fa_icon'list-ul'
+          = link_to 'カテゴリーから探す', root_path, class: 'header__nav__left__category__cate__cate-link'
+        %li.header__nav__left__category__brand
+          = fa_icon'tag'
+          = link_to 'ブランドから探す', root_path, class: 'header__nav__left__category__brand__brand-link'
+    .header__nav__right
+      %ul.header__nav__right__login-signup
+        %li.header__nav__right__login-signup__signup
+          = link_to '新規会員登録', root_path, class: 'header__nav__right__login-signup__signup__sign-link'
+        %li.header__nav__right__login-signup__login
+          = link_to 'ログイン', root_path, class: 'header__nav__right__login-signup__login__login-link'

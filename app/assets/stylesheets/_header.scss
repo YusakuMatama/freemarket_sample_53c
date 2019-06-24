@@ -1,0 +1,210 @@
+.header {
+  height: 100px;
+  
+  &__inner{
+    width: 1020px;
+    height: 100px;
+    padding: 8px 0 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+  
+    &__top {
+      display: flex;
+      height: 40px;
+      align-items: center;
+      justify-content: space-between;
+
+      &__link {
+        width: 134px;
+        height: 36px;
+        line-height: 36px;
+      }
+
+      &__home-button {
+        width: 134px;
+        height: 36px;
+      }
+    
+      &__form{
+        width: 100%;
+        margin-left: 45px; 
+        display: flex;
+
+        textarea:focus{
+          outline: 0;
+          border: 1px solid $blue;
+        }
+        
+        &__input{
+          width: 100%;
+          height: 40px;
+          padding: 0 42px 0 10px;
+          resize: none;
+          font-size: 16px;
+          border-radius: 4px;
+          transition: all ease-out .3s;
+          border: 1px solid $border-white;
+          line-height: 40px;
+          border-radius: 4px;
+          background: $background-white;
+          box-sizing: border-box;
+          position: relative;
+          font-family: $font-family;
+        }
+        &__icon{
+          width: 40px;
+          height: 40px;
+          line-height: 40px;
+          border-top-right-radius: 4px;
+          border-bottom-right-radius: 4px;
+          text-align: center;
+          cursor: pointer;
+
+          color: $white;
+          background: $light_gray;
+          position: absolute;
+          right: 210px;
+          
+          &__search{
+            display: none;
+          }
+        }
+      }
+    }
+
+    .header__nav{
+      margin: 8px 0 0;
+      height: 44px;
+      display: flex;
+      justify-content: space-between;
+
+      &__left{
+        width: 305.64px;
+        font-family: $font-family;
+        cursor: pointer;
+        
+        &__category{
+          height: 44px;
+          display: flex;
+          list-style: none;
+  
+
+          .fa-list-ul{
+            color: $red;
+            font-size: 15px;
+            margin-right: 4px;
+            width: 15.03px;
+            height: 12px;
+          }
+
+          .fa-tag{
+            color: $red;
+            font-size: 15px;
+            margin-right: 4px;
+            width: 15.03px;
+            height: 12px;
+          }
+
+          a {
+            color: $black;
+            text-decoration: none;
+          }
+          &__cate{
+            line-height: 34px;
+            padding: 0 11px 0 0;
+
+
+            &__cate-link{
+              font: 85% sans-serif;
+              font-weight: bold;
+            }
+
+            &__cate-link:hover{
+              color: $light_blue;
+            }
+
+          }
+          &__brand{
+            line-height: 34px;
+            padding: 0 0 0 11px;
+
+            &__brand-link{
+              font: 85% sans-serif;
+              font-weight: bold;
+            }
+
+            &__brand-link:hover{
+              color: $light_blue;
+            }
+
+          }
+        }
+      }
+      &__right{
+        width: 216px;
+        height: 34px;
+        cursor: pointer;
+
+        &__login-signup{
+          display: flex;
+          list-style: none;
+
+          &__signup{
+            width: 112px;
+            height: 32px;
+            margin: 0 0 0 8px;
+
+            a {
+              color:$white;
+              text-decoration: none;
+            }
+            &__sign-link{
+              margin: 0 0 0 6px;
+              width: 106px;
+              line-height: 32px;
+              background-color: $red;
+              display: block;
+              border-radius: 4px;
+              font-family: $font-family;
+              font-size: 14px;
+              text-align: center;
+            }
+
+          }
+
+          &__login{
+            width: 84px;
+            height: 32px;
+            margin: 0 0 0 12px;
+
+            a {
+              border: 1px solid $light_blue;
+              color: $light_blue;
+              text-decoration: none;
+            }
+
+            &__login-link{
+              width: 76px;
+              height: 30px;
+              margin: 0 0 0 6px;
+              background: $white;
+              display: block;
+              transition: all ease-out .3s;
+              border-radius: 4px;
+              display: block;                
+              text-align: center;
+              line-height: 30px; 
+              font-family: $font-family;
+              font-size: 14px;
+            }
+            
+            &__login-link:hover{
+              background-color: $light_blue;
+              color: $white;
+            }
+          }              
+        }
+      }
+    }
+  }
+}
