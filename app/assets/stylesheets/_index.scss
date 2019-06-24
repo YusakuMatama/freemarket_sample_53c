@@ -1,8 +1,12 @@
+li{
+  margin-top: 14px;
+}
+
+
 .default-container {
   width: 100%;
   
   .footer{
-
     .lower-banner{
       width: 100%;
       height: 260px;
@@ -32,17 +36,252 @@
             font-size: 35px;
             color: $white;
             font-family: $font-family;
-            line-height: 35px;
-            
+            line-height: 35px;            
           }
+
+          &__icon{
+            display: flex;
+            margin-top: 20px;
+            height: 68px;
+            align-items: center;
+            
+
+            &__mercari{
+
+              &__logo{
+              width: 68px;
+              height: 68px;
+              }
+            }
+            &__app{
+              margin-left: 24px;
+
+              &__logo{
+                width: 133px;
+                height: 40px;
+                border-radius: 4px;
+              }
+            }
+            &__google{
+              margin-left: 16px;
+
+              &__logo{
+                width: 133px;
+                height: 40px;
+                border-radius: 4px;
+              }
+            }
+          }
+        }
+
+        &__right{
+          width: 300px;
+          height: 260px;
+          margin-left: 30px;
+
+          &__image{
+            width: 100%;
+            vertical-align: middle;            
+          }
+        }
+      }
+    }
+    .global-footer{
+      height: 391px;
+      padding: 0 20px 10px 20px;
+      background: #212121;
+      color: #fff;
+      box-sizing: border-box;
+
+      .footer-clearfix{
+        width: 1020px;
+        height: 298px;
+        margin: 0 auto;
+        display: flex;
+
+        .about-mercari{
+          width: 20%;
+          padding-right: 20px;
+          margin-top: 18px;
+          box-sizing: border-box;
+
+          &__title{
+            width: 184px;
+            height: 22px;
+            font-size: 16px;
+            font-weight: 100;
+            font-family: $font-family;
+  
+          }
+          &__detail{
+            font-size: 12px;
+            line-height: 1.5em;
+            width: 184px;
+            height: 18px;
+            
+            a {
+              text-decoration: none;
+              color: $white;
+              opacity: .7;
+            }
+          }
+          &__logo{
+            display: flex;
+            margin-top: 14px; 
+            align-items: center;
+
+            &__twitter{
+              width: 47.53px;
+              height: 42px;
+              margin-bottom: 10px;
+
+              .fa-twitter{
+                margin: 16px 18px 0 0;
+                font-size: 32px;
+              }
+
+            }
+            &__facebook{
+              margin: 10px 0 0 5px;;
+
+              .fa-facebook-square{
+                font-size: 32px;
+              }
+            }
+          }
+        }
+        .help-and-guide{
+          width: 23%;
+          padding-right: 50px;
+          margin-top: 18px;
+          box-sizing: border-box;
+
+          &__title{
+            width: 184px;
+            height: 22px;
+            font-size: 16px;
+            font-weight: 100;
+            font-family: $font-family;
+          }
+          
+          &__detail{
+            font-size: 12px;
+            line-height: 1.5em;
+            width: 184px;
+            height: 18px; 
+
+            &--wide{
+              width: 200px;
+            }           
+
+            a {
+              text-decoration: none;
+              color: $white;
+              opacity: .7;
+            }
+          }
+        }
+
+        .privacy-and-rule{
+          width: 42%;
+          padding-right: 40px;
+          margin-top: 18px;
+          box-sizing: border-box;
+
+          &__title{
+            height: 22px;
+            font-size: 16px;
+            font-weight: 100;
+            font-family: $font-family;
+          }
+          &__contents{
+            display: flex;
+            justify-content: space-between;
+
+            &__detail{
+              font-size: 12px;
+              line-height: 1.5em;
+              width: 184px;
+              height: 18px;            
+              padding-right: 10px; 
+
+              a {
+                text-decoration: none;
+                color: $white;
+                opacity: .7;
+              }
+            
+              &--padding{
+                font-size: 12px;
+                line-height: 1.5em;
+                width: 184px;
+                height: 18px; 
+                padding-left: 10px; 
+
+                a {
+                text-decoration: none;
+                color: $white;
+                opacity: .7;
+                }
+              }
+            }
+          }
+        }
+        
+        .language{
+          margin-top: 18px;
+
+          &__title{
+            height: 22px;
+            font-size: 16px;
+            font-weight: 100;
+            font-family: $font-family;
+          }
+
+          &__detail{
+            font-size: 12px;
+            line-height: 1.5em;
+            width: 184px;
+            height: 18px; 
+
+            a {
+              text-decoration: none;
+              color: $white;
+              opacity: .7;
+            }
+          }
+        }
+      }
+
+      .footer-bottom{
+        margin: 30px auto 20px;
+        width: 1020px;
+        display: flex;
+        
+        &__mercari{
+          width: 124px;
+          height: 33px;
+          margin-right: 10px;
+          background-image: url('https://www-mercari-jp.akamaized.net/assets/img/common/common/logo-white.svg?2334484240');
+          background-repeat: no-repeat;
+
+          a{
+            display: block;
+            width: 124px;
+            height: 33px;
+          }
+        }
+        &__copy-light{
+          width: 745px;
+          text-align: center;
+          margin-top: 8px;
+          font-size: 11px;
+          line-height: 20px;
+          font-family: $font-family;
 
         }
       }
     }
-
   }
-
- 
 }
-
 

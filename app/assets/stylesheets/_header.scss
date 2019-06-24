@@ -73,7 +73,6 @@
     }
 
     .header__nav{
-      margin: 8px 0 0;
       height: 44px;
       display: flex;
       justify-content: space-between;
@@ -110,7 +109,6 @@
             text-decoration: none;
           }
           &__cate{
-            line-height: 34px;
             padding: 0 11px 0 0;
 
 
@@ -125,7 +123,6 @@
 
           }
           &__brand{
-            line-height: 34px;
             padding: 0 0 0 11px;
 
             &__brand-link{
@@ -141,6 +138,7 @@
         }
       }
       &__right{
+        margin-top: 8px;
         width: 216px;
         height: 34px;
         cursor: pointer;
