@@ -23,7 +23,6 @@ Things you may want to cover:
 
 ### Association
 - has_one :user_profile, dependent: :destroy
-- has_many :order_status
 - has_many :items
 - has_many :comments
 - has_many :favorite_items, dependent: :destroy
