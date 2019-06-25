@@ -1,0 +1,99 @@
+.lower-banner
+  .lower-banner__contents
+    .lower-banner__contents__left        
+      %h2.lower-banner__contents__left__upper-text
+        スマホでかんたんフリマアプリ
+      %p.lower-banner__contents__left__lower-text
+        今すぐ無料ダウンロード！          
+      %ul.lower-banner__contents__left__icon
+        %li.lower-banner__contents__left__icon__mercari
+          = image_tag('mercari-icon.png', class: 'lower-banner__contents__left__icon__mercari__logo')
+        %li.lower-banner__contents__left__icon__app
+          = link_to image_tag('app-store.jpg', class: 'lower-banner__contents__left__icon__app__logo'), root_path
+        %li.lower-banner__contents__left__icon__google
+          = link_to image_tag('google-play.jpg', class: 'lower-banner__contents__left__icon__google__logo'), root_path
+    .lower-banner__contents__right
+      = image_tag('footer.png', class: 'lower-banner__contents__right__image')
+
+.global-footer
+  .footer-clearfix
+    .about-mercari
+      %h2.about-mercari__title
+        メルカリについて
+      %ul.about-mercari__detail
+        %li
+          = link_to '会社概要（運営会社）', root_path
+        %li
+          = link_to '採用情報', root_path
+        %li
+          = link_to 'プレスリリース', root_path
+        %li
+          = link_to '公式ブログ', root_path
+        %li
+          = link_to 'メリカリロゴ利用ガイドライン', root_path
+        .about-mercari__logo
+          .about-mercari__logo__twitter
+            = link_to root_path do
+              = fa_icon 'twitter'
+          .about-mercari__logo__facebook
+            = link_to root_path do
+              = fa_icon 'facebook-square'
+
+    .help-and-guide
+      %h2.help-and-guide__title
+        ヘルプ＆ガイド
+      %ul.help-and-guide__detail
+        %li
+          = link_to 'メルカリガイド', root_path
+        %li
+          = link_to 'らくらくメルカリ便', root_path
+        %li
+          = link_to 'ゆうゆうメルカリ便', root_path
+        %li
+          = link_to '大型メルカリ便', root_path
+        %li
+          = link_to '車体取引ガイド', root_path
+        %li.help-and-guide__detail--wide
+          = link_to 'メルカリあんしん・あんぜん宣言！', root_path
+        %li
+          = link_to '偽ブランド品撲滅への取り組み', root_path
+        %li
+          = link_to 'メルカリボックス', root_path
+    .privacy-and-rule
+      %h2.privacy-and-rule__title
+        プライバシーと利用規約
+        .privacy-and-rule__contents
+          %ul.privacy-and-rule__contents__detail
+            %li
+              = link_to 'プライバシーポリシー', root_path
+            %li
+              = link_to 'メルカリ利用規約', root_path
+            %li
+              = link_to 'あんしんスマホサポート制度に関する利用特約', root_path
+            %li          
+              = link_to 'コンプライアンスポリシー', root_path
+          %ul.privacy-and-rule__contents__detail--padding
+            %li
+              = link_to '個人データの安全管理に係る基本方針', root_path
+            %li
+              = link_to '特定商取引に関する表記', root_path
+            %li
+              = link_to '資金決済法に基づく表示', root_path
+            %li          
+              = link_to '法令遵守と犯罪抑止のために', root_path
+            %li          
+              = link_to '返品・返金ポリシー', root_path
+
+    .language
+      %h2.language__title
+        国
+      %ul.language__detail
+        %li
+          = link_to '日本', root_path
+        %li
+          = link_to 'United States', root_path
+  .footer-bottom
+    %h2.footer-bottom__mercari
+      = link_to "", root_path
+    %h2.footer-bottom__copy-light
+      © 2019 Mercari

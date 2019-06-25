@@ -17,7 +17,6 @@
       font-size: 28px;
       text-align: center;
       font-weight: bold;
-      font-family: $font-family;
     }
     &__container{
       width: 940px;
@@ -29,12 +28,10 @@
         height: 22px;
         a {
           color: #0099e8;
-          text-decoration: none;            
         }
 
         &__lady-link{
         font-size: 22px;
-        font-family: $font-family;
         font-weight: bold;
         line-height: 1.1;
         }
@@ -88,17 +85,13 @@
               display: flex;
               justify-content: space-between;
               margin-top: 8px; 
-              font-family: $font-family;
               
-
               &__price{
                 font-size: 16px;
                 font-weight: bold;
-
               }
 
               &__iine{
-
               }
               .fa-heart{
                 color: $light_gray;
@@ -106,7 +99,6 @@
             }
             &__tax{
               font-size: 10px;
-
             }
           }
         }
@@ -119,10 +111,10 @@
         box-sizing: border-box;
         text-align: right;
         line-height: 12px;
+        font-size: 16px;
 
         a{
           color: #0099e8;
-          text-decoration: none;
           font-size: 85%;
         }
       }
