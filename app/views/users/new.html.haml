@@ -16,49 +16,56 @@
           %span.bold
             0
     %section.content
-      .content__tabs
-        = link_to("お知らせ", class: "tab")
-        = link_to("やることリスト", class:"tab")
-      %ul.content__message
-        %li.list
-          .list__body
-            %figure.mercari
-              = image_tag("mercari.png", class: "picture")
+      %ul.tab
+        %li.active
+          = link_to("お知らせ")
+        %li
+          = link_to("やることリスト")
+      .area
+        %ul.show
+          %li.list
+            .list__body
+              %figure.mercari
+                = image_tag("mercari.png", class: "picture")
               .list__text
                 aaaaaa
               %time
-                %i.icon-time
+                = fa_icon 'history', class: 'clock'
+                %span
                   ３時間前
-            %i.icon-arrow
+              = fa_icon 'chevron-right', class: 'arrow'
 
-        %li.list
-          .list__body
-            %figure.mercari
-              = image_tag("mercari.png", class: "picture")
+          %li.list
+            .list__body
+              %figure.mercari
+                = image_tag("mercari.png", class: "picture")
               .list__text
                 bbbbbb
               %time
-                %i.icon-time
+                = fa_icon 'history', class: 'clock'
+                %span
                   15時間前
-            %i.icon-arrow
-
-        %li.list
-          .list__body
-            %figure.mercari
-              = image_tag("mercari.png", class: "picture")
+              = fa_icon 'chevron-right', class: 'arrow'
+            
+          %li.list
+            .list__body
+              %figure.mercari
+                = image_tag("mercari.png", class: "picture")
               .list__text
                 cccccc
               %time
-                %i.far.fa-clock
+                = fa_icon 'history', class: 'clock'
+                %span
                   21時間前
-            %i.icon-arrow
+              = fa_icon 'chevron-right', class: 'arrow'
+        %ul
+          %li
+            現在、やることリストはありません
 
-        %li.watch-list
-          = link_to("一覧を見る")
+      .watch-list
+        = link_to("一覧を見る")
 
-      %ul.content__message
-        %li
-          現在、やることリストはありません
+      
 
     %section.items
       %h2.items__head
@@ -75,3 +82,4 @@
       %ul.content__btn
         %li
           過去に取引した商品がありません
+      

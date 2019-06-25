@@ -31,36 +31,98 @@
 }
 .content {
   background: #ffff;
-  &__tabs {
-    display: inline-block;
+  .tab {
+    .tab li {
+      color: #333;
+      float: left;
+      margin: 0 10px -1px 0;
+      padding: 10px 20px;
+      border: 1px solid #fb4343;
+      cursor: pointer;
+      list-style: none;
+      transition: .3s;
+    }
+    .tab li.active {
+      color: #fff;
+      background-color: #fb4343;
+      cursor: auto;
+    }
   }
-  &__message {
+  ul {
     display: block;
+    width: 70%;
     .list {
-    display: block;
     min-height: 80px;
     padding: 16px;
     color: #333333;
-    &__body {
-      margin: 0 40px 0 68px;
-      display: flex;
+    display: flex;
       figure.mercari {
         position: relative;
+        margin: 0;
         .picture {
           width: 48px;
           height: 48px;
         }
       }
-      &__text {
-        max-height: 4.4em;
-        line-height: 1.5;
-        display: -webkit-box;
+      &__body {
+        margin: 0 40px 0 68px;
+        display: flex;
+        &__text {
+          max-height: 4.4em;
+          line-height: 1.5;
+        }
+        time {
+          display: inline-flex;
+          color: #888888;
+          .clock {
+            margin: 0 8px 0 0;
+            font-weight: 400;
+            height: 16px;
+            width: 16px;
+          }
+          span {
+            font-size: 14px;
+            vertical-align: middle;
+          }
+        }
       }
-      time {
-        display: inline-block;
-        color: #888888;
+      .arrow {
+        top: 50%;
+        transform: translate(0, -50%);
+        font-weight: 400;
+        position: relative;
       }
     }
+  }
+  .watch-list {
+    padding: 16px;
+    height: 56px;
+    margin: 0 auto;
+    background-color: #eeeeee;
+    color: #333333;
+    line-height: 56px;
+    text-align: center;
+    font-size: 14px;
+  }
+}
+
+.items {
+  margin: 40px 0 0;
+  background-color: #ffff;
+  &__head {
+    padding: 0 4%;
+    background-color: #fafafa;
+    font-size: 16px;
+    line-height: 72px;
+  }
+  &__tabs {
+    list-style: none;
+    display: flex;
+    .tab {
+      width: 50%;
+      text-align: center;
+      vertical-align: top;
+      font-size: 22px;
     }
   }
 }
