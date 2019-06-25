@@ -106,6 +106,7 @@ Things you may want to cover:
 |name|string|null: false|
 |detail|text|null: false|
 |category_id|integer|null: false, foregin_key: true|
+|brand_id|integer|null: false, foregin_key: true|
 |condition|integer|null: false|
 |delivery_cost|integer|null: false|
 |delivery_prefecture|integer|null: false|
@@ -117,6 +118,7 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - belongs_to :category
+- belongs_to :brand
 - has_one :order_status, dependent: :destroy
 - has_many :item_images, dependent: :destroy
 - has_many :comments
@@ -132,6 +134,15 @@ Things you may want to cover:
 - belongs_to :item
 
 ## categorys table
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+
+### Association
+- has_many :items
+
+## brands table
 
 |Column|Type|Options|
 |------|----|-------|
