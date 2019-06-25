@@ -1,0 +1,268 @@
+.header {
+  background-color: #FFFFFF;
+  &__container {
+    box-sizing: border-box;
+    height: $header-height;
+    width: 1020px;
+    margin: 0 auto;
+    padding-top: 8px;
+    position: relative;
+
+    &__search {
+      height: 40px;
+      display: flex;
+
+      &__logo {
+        width: 134px;
+        box-sizing: border-box;
+        display: block;
+        flex-shrink: 0;
+
+        img {
+          height: 100%;
+        }
+      }
+      &__form {
+        width: 100%;
+        padding-left: 50px;
+        position: relative;
+
+        &__input {
+          height: 100%;
+          padding: 8px 38px 8px 16px;
+          background: $background-white;
+        }
+
+        &__button {
+          font-size: 13px;
+          width: 40px;
+          height: 40px;
+          color: $white;
+          background: $light_gray;
+          line-height: 40px;
+          padding: 0;
+          position: absolute;
+          cursor: pointer;
+          top: 50%;
+          right: 0px;
+          transform: translate(0, -50%);
+          border: 0;
+        }
+      }
+    }
+
+    &__navigation {
+      height: 38px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
+
+.navigation {
+
+  &__left {
+    float: left;
+    display: flex;
+    justify-content: left;
+
+    a {
+      padding-right: 16px;
+      line-height: 38px;
+      box-sizing: border-box;
+      border: 0 solid white;
+      display: block;
+      &:hover {
+        color: $blue;
+      }
+    }
+
+    &__category {
+      display: flex;
+      position: relative;
+      font-weight: bold;
+      .fa-list-ul{
+        width: 15.03px;
+        height: 12px;
+        color: $red;
+        font-size: 15px;
+        margin-top: 10px;
+        margin-right: 4px;
+      }
+
+      &:hover {
+        ul {
+          display: block;
+          font-weight: 100;
+          ul {
+            display: none;
+          }
+        }
+      }
+
+      &__menu {
+        position: absolute;
+        top: 38px;
+        z-index: 2000;
+      }
+    }
+
+    &__brand {
+      position: relative;
+      display: flex;
+      font-weight: bold;
+      .fa-tag{
+        width: 15.03px;
+        height: 12px;
+        color: $red;
+        font-size: 15px;
+        margin-top: 10px;
+        margin-right: 4px;
+      }
+
+      &:hover {
+        ul {
+          display: block;
+          font-weight: 100;
+        }
+      }
+
+      &__menu {
+        position: absolute;
+        top: 38px;
+        z-index: 2000;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__right {
+    float: right;
+    display: flex;
+    justify-content: right;
+
+    &__mypage,&__todo, &__note {
+      height: 38px;
+      padding-left: 35px;
+      display: block;
+      line-height: 38px;
+      border: 0;
+      a {
+        &:hover {
+          color: $blue;
+        }
+      }
+
+    }
+
+    &__mypage {
+      display: flex;
+      img {
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+      }
+
+      &__link {
+        box-sizing: border-box;
+        line-height: 38px;
+        display: block;
+        margin-left: 8px;
+      }
+    }
+
+    &__todo {
+      position: relative;
+
+      a{
+        display: block;
+
+        &:before {
+          font-family: 'Font Awesome 5 Free';
+          font-size: 20px;
+          margin-right: 8px;
+          font-weight: 600;
+          content: '\f00c';
+          color: $border-white;
+        }
+      }
+
+      &:hover {
+        ul {
+          display: block;
+        }
+      }
+
+      &__list {
+        position: absolute;
+        top: 38px;
+        right: 0;
+        z-index: 2000;
+      }
+    }
+
+    &__note {
+      position: relative;
+
+      a{
+        display: block;
+
+        &:before {
+          font-family: 'Font Awesome 5 Free';
+          font-size: 20px;
+          margin-right: 8px;
+          font-weight: 400;
+          content: '\f0f3';
+          color: $border-white;
+        }
+      }
+
+      &:hover {
+        ul {
+          display: block;
+        }
+      }
+
+      &__list {
+        position: absolute;
+        top: 38px;
+        right: -131px;
+        z-index: 2000;
+      }
+    }
+  }
+}
+
+.single-header {
+  height: 128px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    box-sizing: border-box;
+    height: 49px;
+  }
+}
+
+.btn {
+
+  &-nav {
+    height: 32px;
+    margin-left: 8px;
+    border-radius: 4px;
+    padding: 0 10px;
+    line-height: 32px;
+    font-size: 14px;
+  }
+
+  &-reg {
+    background-color: white;
+    color: $blue;
+    border: 1px solid $blue;
+
+    &:visited {
+      color: $blue;
+    }
+  }
+}
