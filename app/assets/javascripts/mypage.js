@@ -9,10 +9,13 @@ $(function(){
 });
 
 $(function(){
-  $('.tab li').click(function(){
-    var index = $('.tab li').index(this);
-    $('.tab li').remove('active');
-    $(this).addClass('active');
-    $('.area ul').removeClass('show').eq(index).addClass('show');
-  });
+  $('.tab').click(function(){
+		$('.active').removeClass('active');
+		$(this).addClass('active');
+		$('.show').removeClass('show');
+        // クリックしたタブからインデックス番号を取得
+		const index = $(this).index();
+        // クリックしたタブと同じインデックス番号をもつコンテンツを表示
+		$('.panel').eq(index).addClass('show');
+	});
 });

@@ -1,69 +1,61 @@
 .container
+  = render 'side_bar'
+
   .mypage
-    %section.user
-      %a{href: 'http://google.co.jp'}
-        %figure.icon
-          = link_to image_tag("profile-icon.png", class: "person")
-        %h2.bold
-          Balus
-        .user__number
-          %div
-            評価
-          %span.bold
-            0
-          %div
-            出品数
-          %span.bold
-            0
-    %section.content
-      %ul.tab
-        %li.active
-          = link_to("お知らせ")
-        %li
-          = link_to("やることリスト")
-      .area
-        %ul.show
-          %li.list
-            .list__body
-              %figure.mercari
-                = image_tag("mercari.png", class: "picture")
-              .list__text
-                aaaaaa
-              %time
-                = fa_icon 'history', class: 'clock'
-                %span
-                  ３時間前
-              = fa_icon 'chevron-right', class: 'arrow'
+    %section.messages
+      .user
+        %a{href: 'http://google.co.jp'}
+          %figure.icon
+            = link_to image_tag("profile-icon.png", class: "person")
+          %h2.bold
+            Balus
+          .user__number
+            %div
+              評価
+            %span.bold
+              0
+            %div
+              出品数
+            %span.bold
+              0
+      .tab-wrap
+        %ul.tab-group
+          %li{class: "tab active"}
+            お知らせ
+          %li{class: "tab"}
+            やることリスト
+        .list-wrap
+          %ul{class: "panel show"}
+            %li
+              .list-body
+                %figure.mercari
+                  = image_tag("mercari.png", class: "picture")
+                .list-text
+                  aaaaaa
+                %time
+                  = fa_icon 'history', class: 'clock'
+                  %span
+                    ３時間前
+                = fa_icon 'chevron-right', class: 'arrow'
 
-          %li.list
-            .list__body
-              %figure.mercari
-                = image_tag("mercari.png", class: "picture")
-              .list__text
-                bbbbbb
-              %time
-                = fa_icon 'history', class: 'clock'
-                %span
-                  15時間前
-              = fa_icon 'chevron-right', class: 'arrow'
-            
-          %li.list
-            .list__body
-              %figure.mercari
-                = image_tag("mercari.png", class: "picture")
-              .list__text
-                cccccc
-              %time
-                = fa_icon 'history', class: 'clock'
-                %span
-                  21時間前
-              = fa_icon 'chevron-right', class: 'arrow'
-        %ul
-          %li
-            現在、やることリストはありません
+            %li
+              .list-body
+                %figure.mercari
+                  = image_tag("mercari.png", class: "picture")
+                .list-text
+                  bbbbbb
+                %time
+                  = fa_icon 'history', class: 'clock'
+                  %span
+                    15時間前
+                = fa_icon 'chevron-right', class: 'arrow'
+              
+          %ul{class: "panel"}
+            %li
+              現在、やることリストはありません
 
-      .watch-list
-        = link_to("一覧を見る")
+        .watch-list
+          = link_to("一覧を見る")
 
       
 
@@ -71,10 +63,10 @@
       %h2.items__head
         購入した商品
         %ul.items__tabs
-        %li.tab
-          = link_to("取引中")
-        %li.tab
-          = link_to("過去の取引")
+          %li.tab
+            取引中
+          %li.tab
+            過去の取引
 
       %ul.content__btn
         %li
