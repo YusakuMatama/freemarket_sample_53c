@@ -6,8 +6,8 @@
   font-size: 22px;
   position: fixed;
   border-radius: 50%;
-  background: #ea352d;
-  color: #fff;
+  background: $red;
+  color: $white;
   text-align: center;
 
   a{
@@ -26,7 +26,7 @@
     font-size: 22px;
     position: fixed;
     border-radius: 50%;
-    color: #fff;
+    color: $white;
     text-align: center;
     pointer-events: none;
   }
@@ -37,7 +37,7 @@
     width: 160px;
     height: 98px;
     position: fixed;
-    color: #fff;
+    color: $white;
     text-align: center;
     pointer-events: none;
 

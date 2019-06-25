@@ -1,24 +1,37 @@
 .header-inner
-  %h1.header__inner__top
-    = link_to image_tag('mercari-logo.jpg', class: 'header__inner__top__home-button'), root_path, class: 'header__inner__top__link'
-    = form_for(@top, html: {class: "header__inner__top__form"}) do |f|            
-      = f.text_area :content, placeholder:"何かお探しですか？", class: "header__inner__top__form__input"
-      %label.header__inner__top__form__icon
+  %h1.top-contents
+    = link_to image_tag('mercari-logo.jpg', class: 'top-contents__home-btn-size'), root_path, class: 'top-contents__home-btn-block-size'
+    = form_for(@top, html: {class: "top-contents__form"}) do |f|            
+      = f.text_area :content, placeholder:"何かお探しですか？", class: "top-contents__form__input"
+      %label.top-contents__form__icon
         = fa_icon'search'
-        = f.submit "send", class: "header__inner__top__form__icon__search"
+        = f.submit "send", class: "top-contents__form__icon__search"
 
-  .header__nav
-    .header__nav__left
-      %ul.header__nav__left__category
-        %li.header__nav__left__category__cate
+  .lower-contents
+    .left-category
+      %ul.left-category__list
+        %li.left-category__list__cate
           = fa_icon'list-ul'
-          = link_to 'カテゴリーから探す', root_path, class: 'header__nav__left__category__cate__cate-link'
-        %li.header__nav__left__category__brand
+          = link_to 'カテゴリーから探す', root_path, class: 'left-category__list__cate__link-btn'
+        %li.left-category__list__brand
           = fa_icon'tag'
-          = link_to 'ブランドから探す', root_path, class: 'header__nav__left__category__brand__brand-link'
-    .header__nav__right
-      %ul.header__nav__right__login-signup
-        %li.header__nav__right__login-signup__signup
-          = link_to '新規会員登録', root_path, class: 'header__nav__right__login-signup__signup__sign-link'
-        %li.header__nav__right__login-signup__login
-          = link_to 'ログイン', root_path, class: 'header__nav__right__login-signup__login__login-link'
+          = link_to 'ブランドから探す', root_path, class: 'left-category__list__brand__link-btn'
+    .right-category
+      %ul.right-category__list
+        %li.right-category__list__sign-up
+          = link_to '新規会員登録', root_path, class: 'right-category__list__sign-up__link-btn'
+        %li.right-category__list__login
+          = link_to 'ログイン', root_path, class: 'right-category__list__login__link-btn'
+
+        -# %li.right-category__list__after-login
+        -#   = fa_icon'heart'
+        -#   = link_to 'いいね！一覧', root_path, class: 'right-category__list__after-login__link-btn'
+        -# %li.right-category__list__after-login
+        -#   = fa_icon'bell'
+        -#   = link_to 'お知らせ', root_path, class: 'right-category__list__after-login__link-btn'
+        -# %li.right-category__list__after-login
+        -#   = fa_icon'check'
+        -#   = link_to 'やることリスト', root_path, class: 'right-category__list__after-login__link-btn'
+        -# %li.right-category__list__after-login
+        -#   = image_tag('user.png', class:'ight-category__list__after-login__image-size')
+        -#   = link_to 'マイページ', root_path, class: 'right-category__list__after-login__link-btn'
