@@ -103,11 +103,16 @@
   margin-top:  17px;
   box-sizing: border-box;
 
+  li{
+    margin-top: 14px;
+  }
+
   &__title{
     width: 184px;
     height: 22px;
     font-size: 16px;
     font-weight: 100;
+    text-align: left;
 
   }
   &__detail{
@@ -119,6 +124,17 @@
     a {
       color: $white;
       opacity: .7;
+      font-size: 12px;
+
+      &:visited {
+        color: $white;
+        opacity: .7;
+        font-size: 12px;
+      }
+      
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -139,8 +155,12 @@
       
       a{
         opacity: 10;
-      }
 
+        &:visited {
+          color: $white;
+          opacity: 10;
+        }
+      }
     }
     &__facebook{
       margin: 10px 0 0 2px;;
@@ -151,6 +171,12 @@
       
       a{
         opacity: 10;
+
+        &:visited {
+          color: $white;
+          opacity: 10;
+        }
+
       }
     }
   }
@@ -162,11 +188,16 @@
   margin-top: 17px;
   box-sizing: border-box;
 
+  li{
+    margin-top: 14px;
+  }
+
   &__title{
     width: 184px;
     height: 22px;
     font-size: 16px;
     font-weight: 100;
+    text-align: left;
   }
   
   &__detail{
@@ -182,6 +213,17 @@
     a {
       color: $white;
       opacity: .7;
+      font-size: 12px;
+
+      &:visited {
+        color: $white;
+        opacity: .7;
+        font-size: 12px;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }
@@ -192,10 +234,15 @@
   margin-top: 17px;
   box-sizing: border-box;
 
+  li{
+    margin-top: 14px;
+  }
+
   &__title{
     height: 22px;
     font-size: 16px;
     font-weight: 100;
+    text-align: left;
   }
   &__contents{
     display: flex;
@@ -211,6 +258,17 @@
       a {
         color: $white;
         opacity: .7;
+        font-size: 12px;
+
+        &:visited {
+          color: $white;
+          opacity: .7;
+          font-size: 12px;
+        }
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     
       &--padding{
@@ -223,6 +281,16 @@
         a {
         color: $white;
         opacity: .7;
+        font-size: 12px;
+
+          &:visited {
+            color: $white;
+            opacity: .7;
+            font-size: 12px;
+          }
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
     }
@@ -232,10 +300,15 @@
 .language{
   margin-top: 17px;
 
+  li{
+    margin-top: 14px;
+  }
+
   &__title{
     height: 22px;
     font-size: 16px;
     font-weight: 100;
+    text-align: left;
   }
 
   &__detail{
@@ -247,6 +320,16 @@
     a {
       color: $white;
       opacity: .7;
+      font-size: 12px;
+
+      &:visited {
+        color: $white;
+        opacity: .7;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }
