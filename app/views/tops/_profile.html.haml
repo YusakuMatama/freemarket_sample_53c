@@ -1,12 +1,10 @@
-.profile
-  %h2.profile__head
+.profile-container
+  %h2.profile-container__title
     プロフィール
-  %form{action: "/", method: "post"}
-    .profile__namebar
-      %figure.icon
-        = image_tag("profile-icon.png", class: "person")
-      %input.input-default{type: "text", name: "nickname", placeholder: "例）AYA☆セール中"}
-    .profile__content
-      %textarea.textarea-default{name: "introduction", placeholder:"例）こんにちは。ご覧いただきありがとうございます！可愛いものやきれいめオフィスカジュアル中心に出品しています。"}
-      %button.btn-red{type: "submit"}
-        変更する
+  .profile-container__detail
+    .profile-container__detail__banner
+      = image_tag("https://static.mercdn.net/images/member_photo_noimage_thumb.png", class: "person")
+      = form_for(@top, html: {class: "profile-container__detail__form"}) do |f|
+        = f.text_area :name, class: 'profile-container__detail__form__input', placeholder: "ユーザー名"
+        = f.text_field :profile, class: 'profile-container__detail__form__edit', placeholder: "例）こんにちは。ご覧いただきありがとうございます！可愛いものやきれいめオフィス&#13;&#10;カジュアル中心に出品しています。".html_safe 
+        = f.submit "変更する", class: 'profile-container__detail__form__submit-btn'
