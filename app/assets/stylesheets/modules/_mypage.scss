@@ -1,0 +1,179 @@
+.container {
+  display: flex;
+  width: 100%;
+  background-color: #f5f5f5;
+  margin: 0 auto 0;
+  .sidebar {
+    margin: 0 40px 0 0;
+    &__mypage {
+      display: block;
+      width: 280px;
+      margin: 0 0 0 34px;
+      li {
+        position: relative;
+        min-height: 16px;
+        padding: 16px;
+        background-color: #ffff;
+        border: 1px solid #eeeeee;
+        text-align: left;
+        line-height: 14px;
+        cursor: pointer;
+        &:hover {
+          background-color: #f5f5f5;
+        }
+        a {
+          text-decoration: none;
+          color: #333333;
+          font-size: 14px;
+        }
+        .arrow {
+          position: absolute;
+          
+          right: 16px;
+          color: #cccccc;
+          transition: all ease-out 0.2s;
+        }
+      }
+    }
+    h3 {
+      margin: 40px 4% 8px 10%;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+
+  .mypage {
+    width: 100%;
+    
+    .messages {
+      background-color: #ffff;
+      .user {
+        position: relative;
+        height: 160px;
+        width: 660px;
+        padding: 20px;
+        background-image: url("background.jpg");
+        background-size: cover;
+        text-align: center;
+        figure.icon {
+          vertical-align: center;
+          .person {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            border-radius: 50%;
+          }
+        }
+        .bold {
+          margin: 8px 0 0;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 1.4;
+        }
+        &__number {
+          margin: 8px 0 0;
+          div {
+            display: inline-block;
+            font-size: 14px;
+            margin: 0 0 0 16px;
+          }
+        }
+      }
+      .tab-wrap {
+        background: #ffff;
+        .tab-group {
+          width: 700px;
+          display: flex;
+          .tab {
+            color: #333;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 72px;
+            width: 350px;
+            height: 72px;
+            background-color: yellow;
+            text-align: center;
+          }
+        }
+        ul {
+          display: block;
+          width: 70%;
+          .list-body {
+          min-height: 80px;
+          padding: 16px;
+          color: #333333;
+          display: flex;
+            figure.mercari {
+              position: relative;
+              margin: 0;
+              .picture {
+                width: 48px;
+                height: 48px;
+              }
+            }
+            &__body {
+              margin: 0 40px 0 68px;
+              display: flex;
+              &__text {
+                max-height: 4.4em;
+                line-height: 1.5;
+              }
+              time {
+                display: inline-flex;
+                color: #888888;
+                .clock {
+                  margin: 0 8px 0 0;
+                  font-weight: 400;
+                  height: 16px;
+                  width: 16px;
+                }
+                span {
+                  font-size: 14px;
+                  vertical-align: middle;
+                }
+              }
+            }
+            .arrow {
+              top: 50%;
+              transform: translate(0, -50%);
+              font-weight: 400; 
+            }
+          }
+        }
+        .watch-list {
+          padding: 16px;
+          height: 56px;
+          margin: 0 auto;
+          background-color: #eeeeee;
+          color: #333333;
+          line-height: 56px;
+          text-align: center;
+          font-size: 14px;
+          a {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  .items {
+    margin: 40px 0 0;
+    background-color: #ffff;
+    &__head {
+      padding: 0 4%;
+      background-color: #fafafa;
+      font-size: 16px;
+      line-height: 72px;
+    }
+    &__tabs {
+      list-style: none;
+      display: flex;
+      .tab {
+        width: 50%;
+        text-align: center;
+        vertical-align: top;
+        font-size: 22px;
+      }
+    }
+  }
+}
