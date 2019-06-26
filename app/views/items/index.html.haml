@@ -1,0 +1,137 @@
+.all-container
+  .head-container
+  .item-main-container
+    .item-name
+      VIS LEE コラボホワイトデニム M
+    .top-item-photo
+      = image_tag("pants.jpg", class:"top-item-photo") 
+      -# .swiper-container
+      -#   .swiper-wrapper
+      -#     .swiper-slide
+      -#       %img.img{alt: "", src: "https://haniwaman.com/wp-content/uploads/2018/05/swiper01.png"}/
+      -#     .swiper-slide
+      -#       %img.img{alt: "", src: "https://haniwaman.com/wp-content/uploads/2018/05/swiper02.png"}/
+      -#     .swiper-slide
+      -#       %img.img{alt: "", src: "https://haniwaman.com/wp-content/uploads/2018/05/swiper03.png"}/
+      -#   .swiper-my-pagination
+
+    %table.item-detail-table{border:"1"}
+      %tbody
+        %tr
+          %th.th{style: "background:#f9f9f9"} 
+            出品者
+          %td.tp
+            .p sachiko
+            .face-mark 
+              %li.list1
+                = link_to root_path do
+                  %i.far.fa-grin
+                  3
+              %li.list2
+                = link_to root_path do
+                  %i.far.fa-meh
+                  5
+              %li.list3
+                = link_to root_path do
+                  %i.far.fa-frown-open
+                  1
+        %tr
+          %th.th{style: "background:#f9f9f9"}
+            カテゴリー
+          %td.tp 
+            .p レデイース
+        %tr
+          %th.th{style: "background:#f9f9f9"}
+            ブランド
+          %td.tp
+            .p ヴィス
+        %tr
+          %th.th{style: "background:#f9f9f9"}
+            商品のサイズ
+          %td.td M
+        %tr
+          %th.th{style: "background:#f9f9f9"}
+            商品の状態
+          %td.td
+            新品、未使用
+        %tr
+          %th.th{style: "background:#f9f9f9"}
+            配送料の負担
+          %td.td
+            送料込み(出品者負担)
+        %tr
+          %th.th{style: "background:#f9f9f9"}
+            配送の方法
+          %td.td
+            未定
+        %tr
+          %th.th{style: "background:#f9f9f9"}
+            配送元地域
+          %td.tp
+            .p 熊本県
+        %tr
+          %th.th{style: "background:#f9f9f9"}
+            配送日の目安
+          %td.td
+            2~3日で発送
+  .item-price-container
+    .item-price
+      ¥6,200
+    .item-tax
+      (税込)
+      .item-shipping-cost
+        送料込み
+  .buy-button-container
+    .buy-button
+      = link_to new_item_path do
+        購入画面に進む
+
+  .item-description-container
+    .item-description
+      .p
+      2回だけ着ました。
+      %br
+      シミ汚れ等なく美品です。
+  .for-item-button-zone
+    .left-iine-button
+      .heart
+        ♡
+      .iine
+        いいね!
+      .count
+    .middle-report-button
+      .middle-report
+        不適切な商品の報告
+    .right-report-button
+      .right-report
+        .p あんしん・あんぜんへの取り組み
+        
+  .coment-form-container
+    %div
+    %form.form{:action => "/test", method: "post"}
+      .precautionary-note
+        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      %div
+        %textarea.textarea#message{placeholder: ""}
+      %div
+        %input.input{:type => "submit", :value => "コメントする"}/
+  .left-and-right-link-tag-container
+    .left-link-tag
+      .p < ZARA シャツ 新品
+    .right-link-tag
+      .p 親も年とってまいりましたコミックエッセイ >
+  .icon-line-facebook-container
+    .icon-line-facebook
+      %ul.header__lists
+        %li.list
+          = link_to root_path do
+            %i.fab.fa-twitter-square
+        %li.list
+          = link_to root_path do
+            %i.fab.fa-facebook-square
+        %li.list
+          = link_to root_path do
+            %i.fab.fa-line
+        %li.list
+          = link_to root_path do
+            %i.fab.fa-paypal

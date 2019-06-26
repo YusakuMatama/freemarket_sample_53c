@@ -1,0 +1,351 @@
+.all-container{
+  background-color: #EEEEEE;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  height: 2000px;
+  .head-container{
+    background-color: #EEEEEE;
+    width: 100%;
+    height: 50px;
+  }
+  .item-main-container{
+    background-color: #fff;
+    color: rgb(51, 51, 51);
+    font-size: 1.5ex;
+    height: 450px;
+    width: 700px;
+    text-align:center;
+    margin: 0 auto;
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  }
+
+  .item-name{
+    text-align: center;
+    font-size: 3ex;
+    font-weight: 600;
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    padding-top: 10px;
+  }
+
+  .top-item-photo{
+    float: left;
+    padding-top: 20px;
+    padding-left: 25px;
+    height: 300px;
+  }
+ 
+  .item-detail-table{
+    font-size: 14px;
+    border-collapse: collapse;
+    border: #f3f3f3;
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    float: right;
+    margin-right: 50px;
+    margin-top: 40px;
+    text-align: left; 
+  }
+  .face-mark{
+    display: flex;
+    .list1{
+      list-style: none;
+      font-size: 13px;
+      .fa-grin{
+        color: #ef5185;
+      }
+      a{
+        text-decoration: none;
+        color: rgb(51, 51, 51);
+      }
+    }
+    .list2{
+      list-style: none;
+      font-size: 13px;
+      margin-left: 15px;
+      .fa-meh{
+        color: #fba933;
+      }
+      a{
+        text-decoration: none;
+        color: rgb(51, 51, 51);
+      }
+    }
+    .list3{
+      list-style: none;
+      font-size: 13px;
+      margin-left: 15px;
+      .fa-frown-open{
+        color: #6ab5d8;
+      }
+      a{
+        text-decoration: none;
+        color: rgb(51, 51, 51);
+      }
+    }
+  }
+  .th{
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    text-align:center;
+    width:125px;
+    height:35px;
+    padding-left: 10px;
+  }
+
+  .td{
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    width:170px;
+    padding-left: 10px;
+  }
+
+  .tp{
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    color:#0099e8;
+    padding-left: 10px;
+    .p:hover{
+      color: #5BB7E5;
+      text-decoration: underline;
+    }
+  }
+
+  .item-price-container{
+    background-color: #fff;
+    height: 50px;
+    width: 700px;
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    .item-price{
+    color: rgb(51, 51, 51);
+    font-size: 5ex;
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    line-height: 0;
+    padding-left: 260px;
+    padding-right: 20px;
+    }
+    .item-tax{
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+      font-size: 1ex;
+      display: flex;
+    }
+    .item-shipping-cost{
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+      font-size: 2ex;
+      }
+    
+  }
+
+  .buy-button-container{
+    background-color: #fff;
+    height: 100px;
+    width: 700px;
+    text-align:center;
+    margin: 0 auto;
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    .a{
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+
+    .buy-button{
+      display: block;
+      margin: 0 auto;
+      background-color: #ea352d;
+      text-align: center;
+      font-weight: 600;
+      transition: all ease-out .3s;
+      font-size: 24px;
+      padding-top: 10px;
+      border-style: solid;
+      border-width: 0;
+      height: 50px;
+      width: 600px;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+      a{
+        text-decoration: none;
+        color: #fff;
+        font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+      }
+    }
+  }
+  .item-description-container{
+    background-color: #fff;
+    height: 70px;
+    width: 700px;
+    margin: 0 auto;
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    padding-bottom: 2px;
+    display: flex;
+    .item-description{
+      margin-left: 50px;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+  }
+  .for-item-button-zone{
+    background-color: #fff;
+    height: 70px;
+    width: 700px;
+    margin: 0 auto;
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    padding-bottom: 2px;
+    display: flex;
+  
+    .left-iine-button{
+      background-color: #EEEEEE;
+      border-radius: 20px;
+      font-size: 13px;
+      height: 30px;
+      width: 120px;
+      border:1px solid #EEEEEE;
+      margin-left: 50px;
+      display: flex;
+      margin-top: 5px;
+      
+      .left-iine-button:hover{
+        color: #aaa;
+      }
+      .heart{
+        color: #aaa;
+        margin-top: 5px;
+        margin-left: 25px;
+        display: flex;
+      }
+      .iine{
+        color: #000;
+        margin-top: 5px;
+        margin-left: 10px
+      }
+    }
+    .middle-report-button{
+      background-color: #EEEEEE;
+      border-radius: 20px;
+      font-size: 13px;
+      height: 30px;
+      width: 150px;
+      border:1px solid #EEEEEE;
+      margin-left: 10px;
+      display: flex;
+      margin-top: 5px;
+      .middle-report{
+        color: #000;
+        margin-top: 5px;
+        margin-left: 20px
+      }
+    }
+    .right-report{
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+      color:#0099e8;
+      font-size: 13px;
+      margin-top: 10px;
+      margin-left: 100px;
+      .p:hover{
+        color: #5BB7E5;
+      }
+    }
+  }
+  .coment-form-container{
+    background-color: #fff;
+    height: 200px;
+    width: 700px;
+    margin-top: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    .form{
+      background-color: #fff;
+      height: 100px;
+      width: 700px;
+      margin: 0 auto;
+      padding-top: 10px;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+      .precautionary-note{
+        width: 600px;
+        height: 40px;
+        background-color: #FDF5E6;
+        margin: 0 auto;
+        font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+        font-size: 13px;
+        margin-bottom: 4px;
+      }
+      .textarea{
+        height: 100px;
+        width: 598px;
+        margin-left: 50px;
+        border-color:#BBBBBB;
+      }
+      .input{
+        margin-top: 2px;
+        margin-bottom: 2px;
+        padding-bottom: 20px;
+        margin-left: 50px;
+        text-align: center;
+        background: #aaa;
+        border: 1px solid #aaa;
+        color: #fff;
+        display: block;
+        line-height: 30px;
+        transition: all ease-out .3s;
+        height: 30px;
+        width: 600px;
+        font-size: 1.5ex; 
+      }
+    }
+  }
+  .left-and-right-link-tag-container{
+    background-color: #EEEEEE;
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    padding-top: 20px;
+    height: 40px;
+    width: 700px;
+    margin: 0 auto;
+    .left-link-tag{
+      font-size: 13px;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+      color:#0099e8;
+      float: left;
+      .p:hover{
+        color: #5BB7E5;
+        text-decoration: underline;
+      }
+    }
+    .right-link-tag{
+      font-size: 13px;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+      color:#0099e8;
+      float: right;
+      .p:hover{
+        color: #5BB7E5;
+        text-decoration: underline;
+      }
+    }
+  }
+  .icon-line-facebook-container{
+    background-color: #fff;
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    padding-top: 20px;
+    height: 70px;
+    width: 700px;
+    margin: 0 auto;
+    .header__lists{
+      display: flex;
+      margin-left: 260px;
+    }
+    .list{
+      margin-right: 8px;
+    }
+    .fa-twitter-square{
+      color: #0099e8;
+      font-size: 45px;
+    }
+    .fa-facebook-square {
+      color: #385185;
+      font-size: 45px;
+    }
+    .fa-line {
+      color: #00c137;
+      font-size: 45px;
+    }
+    .fa-paypal{
+      color: #aa262a;
+      font-size: 45px;
+    }
+  }
+}

@@ -1,0 +1,210 @@
+.buy-all-container{
+  background-color: #EEEEEE;
+  .head-container{
+    background-color: #EEEEEE;
+    width: 100%;
+    height: 100px;
+    .mercari_logo{
+      width: 150px;
+      margin: 0 auto;
+      padding-top: 25px;
+    }
+  }
+  .head-bar-container{
+    background-color: #fff;
+    color: rgb(51, 51, 51);
+    font-size: 2.5ex;
+    height: 50px;
+    width: 600px;
+    font-weight: 600;
+    // text-align:center;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 10px;
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    .head-bar{
+      height:50px;
+      width: 160px;
+      padding-top: 17px;
+      margin: 0 auto;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+  }
+  .buy-item-container{
+    background-color: #fff;
+    color: rgb(51, 51, 51);
+    height: 150px;
+    width: 600px;
+    margin-top: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+  }
+    .item-photo{
+      height: 80px;
+      padding-left: 130px;
+    }
+    .item-name{
+      height:20px;
+      width:190px;
+      font-weight: 900;
+      font-size: 1.7ex;
+      margin: 0 auto;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+      padding-top: 10px;
+    }
+  
+  .buy-item-price-container{
+    display: flex;
+    background-color: #fff;
+    color: rgb(51, 51, 51);
+    height: 100px;
+    width: 600px;
+    margin: 0 auto;
+    vertical-align: bottom;
+    line-height: 0;
+    .buy-item-price{
+      font-size: 23px;
+      padding-top:20px;
+      padding-right: 15px;
+      font-weight: 600;
+      margin-left: 225px;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+    .buy-item-tax{
+      padding-top:23px;
+      font-size: 13px;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+  }
+  .pay-price-container{
+    display: flex;
+    background-color: #fff;
+    color: rgb(51, 51, 51);
+    height: 50px;
+    width: 600px;
+    margin: 0 auto;
+    line-height: 0;
+    .pay-price-title{
+      font-size: 2ex;
+      margin-left:160px;
+      font-weight: 900;
+      padding-right: 100px; 
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+    .pay-price{
+      font-size: 25px;
+      font-weight: 900;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+  }
+  .buy-button-container{
+    background-color: #fff;
+    height: 50px;
+    width: 600px;
+    margin: 0 auto;
+  }
+  .buy-button{
+    display: block;
+    margin: 0 auto;
+    background-color: #ea352d;
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    transition: all ease-out .3s;
+    font-size: 15px;
+    text-decoration: none;
+    padding-top: 10px;
+    border-style: solid;
+    border-width: 0;
+    height: 35px;
+    width: 300px;
+    font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  }
+  .buy-button-container{
+    background-color: #fff;
+    height: 100px;
+    width: 600px;
+    margin: 0 auto;
+  }
+  .shipping-address-container{
+    background-color: #fff;
+    height: 150px;
+    width: 600px;
+    margin-top: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    .shipping-address-head{
+      font-size: 15px;
+      padding-top: 20px;
+      padding-left: 150px;
+      font-weight: 500;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+    .shipping-address{
+      font-size: 13px;
+      padding-left: 150px;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+    .shipping-name{
+      font-size: 13px;
+      padding-left: 150px;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+    .change-button{
+      float: right;
+      color:#0099e8;
+      font-size: 13px;
+      padding-right: 150px;
+      .p:hover{
+        color: #5BB7E5;
+        text-decoration: underline;
+      }
+    }
+  }
+  .method-of-payment-container{
+    background-color: #fff;
+    height: 150px;
+    width: 600px;
+    margin-top: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    .method-of-payment-head{
+      font-size: 15px;
+      padding-top: 10px;
+      padding-left: 150px;
+      padding-bottom: 50px;
+      font-weight: 500;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+    .method-of-payment{
+      font-size: 15px;
+      padding-top: 20px;
+      padding-left: 150px;
+      font-weight: 500;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+    .change-button{
+      float: right;
+      color:#0099e8;
+      font-size: 13px;
+      padding-right: 150px;
+      .p:hover{
+        color: #5BB7E5;
+        text-decoration: underline;
+      }
+    }
+  }
+  .footer-container{
+    background-color: #EEEEEE;
+    width: 100%;
+    height: 150px;
+    .mercari_gray_logo{
+      width: 70px;
+      margin: 0 auto;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+  }
+}
