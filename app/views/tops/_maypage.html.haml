@@ -1,73 +1,79 @@
-.mypage
-  %section.messages
-    .user
-      %a{href: 'http://google.co.jp'}
-        %figure.icon
-          = link_to image_tag("profile-icon.png", class: "person")
-        %h2.bold
-          Balus
-        .user__number
-          %div
-            評価
-          %span.bold
-            0
-          %div
-            出品数
-          %span.bold
-            0
-    .tab-wrap
-      %ul.tab-group
-        %li{class: "tab active"}
-          お知らせ
-        %li{class: "tab"}
-          やることリスト
-      .list-wrap
-        %ul{class: "panel show"}
-          %li
-            .list-body
-              %figure.mercari
-                = image_tag("mercari.png", class: "picture")
-              .list-text
-                aaaaaa
-              %time
-                = fa_icon 'history', class: 'clock'
-                %span
-                  ３時間前
-              = fa_icon 'chevron-right', class: 'arrow'
+%section.my-page
+  .my-page__top
+    .my-page__top__image
+      = link_to image_tag("https://static.mercdn.net/images/member_photo_noimage_thumb.png", class: "person")
+      %h2.my-page__top__name
+        真玉勇作
+      .my-page__top__detail
+        .my-page__top__detail__evaluation
+          評価
+        .my-page__top__detail__evaluation__qty
+          0
+        .my-page__top__detail__display
+          出品数
+        .my-page__top__detail__display__qty
+          0
 
-          %li
-            .list-body
-              %figure.mercari
-                = image_tag("mercari.png", class: "picture")
-              .list-text
-                bbbbbb
-              %time
-                = fa_icon 'history', class: 'clock'
-                %span
-                  15時間前
-              = fa_icon 'chevron-right', class: 'arrow'
-            
-        %ul{class: "panel"}
-          %li
-            現在、やることリストはありません
+  .my-page__main
+    %ul.my-page__main__tab-group
+      %li.my-page__main__tab-group__known
+        お知らせ
+      %li.my-page__main__tab-group__todo
+        やることリスト
+    .my-page__main__container
+      %ul.my-page-list
+        %li.my-page-list__wrap
+          =link_to '', root_path 
+          .my-page-list__wrap__image
+            =image_tag('https://static.mercdn.net/images/mercari_profile.png', class: 'picture')
+          .my-page-list__wrap__detail
+            .my-page-list__wrap__detail__text
+              <お買い物応援キャンペーン>千円の商品を実質1円で購入できます！
+              .my-page-list__wrap__detail__text__time
+                =fa_icon'clock'
+                .my-page-list__wrap__detail__text__time__display
+                  ３時間前
+
+        %li.my-page-list__wrap
+          =link_to '', root_path 
+          .my-page-list__wrap__image
+            =image_tag('https://static.mercdn.net/images/mercari_profile.png', class: 'picture')
+          .my-page-list__wrap__detail
+            .my-page-list__wrap__detail__text
+              <お買い物応援キャンペーン>千円の商品を実質1円で購入できます！
+              .my-page-list__wrap__detail__text__time
+                =fa_icon'clock'
+                .my-page-list__wrap__detail__text__time__display
+                  ３時間前
+
+        %li.my-page-list__wrap
+          =link_to '', root_path 
+          .my-page-list__wrap__image
+            =image_tag('https://static.mercdn.net/images/mercari_profile.png', class: 'picture')
+          .my-page-list__wrap__detail
+            .my-page-list__wrap__detail__text
+              <お買い物応援キャンペーン>千円の商品を実質1円で購入できます！
+              .my-page-list__wrap__detail__text__time
+                =fa_icon'clock'
+                .my-page-list__wrap__detail__text__time__display
+                  ３時間前
 
       .watch-list
-        = link_to("一覧を見る")
+        = link_to("一覧を見る") 
 
-    
-
-  %section.items
-    %h2.items__head
+  %section.purchase-items
+    %h2.purchase-items__head
       購入した商品
-      %ul.items__tabs
-        %li.tab
-          取引中
-        %li.tab
-          過去の取引
-
-    %ul.content__btn
-      %li
-        取引中の商品がありません
-    %ul.content__btn
-      %li
-        過去に取引した商品がありません
+    %ul.purchase-items__tabs
+      %li.purchase-items__tabs__text
+        =link_to '取引中', root_path
+      %li.purchase-items__tabs__text
+        =link_to '過去の取引', root_path
+        
+    .purchase-items__container
+      %ul.purchase-items__container__list
+        %li.purchase-items__container__list__text
+          取引中の商品がありません
+      -# %ul.purchase-items__container__list
+      -#   %li.purchase-items__container__list__text
+      -#     過去に取引した商品がありません

@@ -1,0 +1,209 @@
+
+  .my-page {
+    width: 700px;
+    
+    &__top {
+      height: 200px;
+      width: 700px;
+      background-image: url("https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?69765993");
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+      text-align: center;
+
+      &__image {
+        .person {
+          width: 60px;
+          height: 60px;
+          margin: 45px auto 0;
+          border-radius: 50%;
+        }
+        a {
+          width: 700px;
+          height: 200px;
+          display: block;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;   
+        }
+      }
+      &__name{
+        margin-top: 92px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+      &__detail{
+        margin-top: 5px;
+        display: flex;
+        line-height: 21px;
+
+        &__evaluation{
+          margin-left: 268px;
+
+          &__qty{
+            margin-left: 10px;
+            font-weight: bold;
+          }
+        }
+        &__display{
+          margin-left: 18px;
+
+          &__qty{
+            margin-left: 10px;
+            font-weight: bold;
+          }
+        }
+      }
+      &__number {
+          margin: 8px 0 0;
+      }
+    }
+    &__main {
+      background-color: white;
+
+      &__tab-group {
+        height: 74px;
+        background-color: #eee;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 74px;
+        display: flex;
+
+        &__known{
+          width: 350px;
+          border-top: 2px solid #ea352d;          
+        }
+
+        &__todo{
+          width: 350px;
+          border-top: 2px solid #ea352d;          
+        }
+      }
+      &__container{
+        width: 700px;
+        height: 331px;
+
+        .my-page-list{
+          
+          &__wrap{
+            height: 80px;
+            border-bottom: 1px solid #eee;
+            padding: 16px;
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+
+            a{
+              display: block;
+              width: 700px;
+              height: 80px;
+              position: absolute;
+              top: 0;
+              left: 0;
+            }
+
+            &__image{
+              .picture{
+                width: 48px;
+                height: 48px;
+              }
+            }
+            &__detail{
+              width: 560px;
+              margin: 0 40px 0 23px;
+
+              &__text{
+              &__time{
+                display: flex;
+
+                .fa-clock{
+                  margin-top: 3px;
+                  width: 16px;
+                  height: 16px;
+                  font-size: 16px;
+                }
+              &__display{
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+        .watch-list {
+          padding: 16px;
+          height: 56px;
+          margin: 0 auto;
+          color: #333333;
+          line-height: 56px;
+          text-align: center;
+          font-size: 14px;
+          a {
+            width: 668px;
+            height: 56px;
+            background: #eee;
+            display: block;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  
+  .purchase-items {
+    width: 700px;
+    height: 382px;
+    margin: 40px 0 0;
+    background-color: white;
+
+    &__head {
+      height: 72px;
+      padding: 0 16px;
+      background-color: #fafafa;
+      font-size: 16px;
+      line-height: 72px;
+      text-align: left;
+      font-weight: bold;
+      box-sizing: border-box;
+    }
+    &__tabs {
+      height: 74px;
+      list-style: none;
+      background-color: #eee;
+      display: flex;
+
+      &__text{
+        width: 350px;
+        border-top: 2px solid #ea352d;
+        box-sizing: border-box;
+
+        a{
+          font-size: 16px;
+          font-weight: bold;
+          display: block;
+          width: 350px;
+          height: 74px;
+          line-height: 74px;
+        }
+      }
+    }
+    &__container{
+      height: 236px;
+
+      &__list{
+        &__text{
+          padding: 160px 0 60px;
+          background-image: url('https://www.mercari.com/jp/assets/img/common/common/logo-gray-icon.svg?69765993');
+          background-repeat: no-repeat;
+          background-position: center 40px;
+          background-size: 78px 85px;
+          text-align: center;
+          font-size: 16px;
+          color: #ccc;
+        }
+      }
+    }
+  }
+
