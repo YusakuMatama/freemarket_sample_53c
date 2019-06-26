@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
-  def show
+  def identification
+  end
+  def card
   end
 end
