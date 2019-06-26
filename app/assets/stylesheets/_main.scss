@@ -1,127 +1,127 @@
 .main-container{
   background: $background-white;
-}
 
-.main-banner{
-  height: 390px;
-
-  &__image{
+  .main-banner{
     height: 390px;
-  }
+
+    &__image{
+      height: 390px;
+    }
 }
 
-.items-box{
-  padding: 40px 0;
-}
+  .items-box{
+    padding: 40px 0;
 
-.product-name{
-  height: 39px;
-  line-height: 1.4;
-  font-size: 28px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.product-container{
-  width: 940px;
-  margin: 0 auto;
-
-  &__title{
-    margin: 26px 11px;
-    text-align: center;
-    height: 22px;
-
-    a {
-      color: #0099e8;
+    .product-name{
+      height: 39px;
+      line-height: 1.4;
+      font-size: 28px;
+      text-align: center;
+      font-weight: bold;
     }
 
-    &__link-btn{
-    font-size: 22px;
-    font-weight: bold;
-    line-height: 1.1;
-    }
-  }
+    .product-container{
+      width: 940px;
+      margin: 0 auto;
 
-  &__contents{
-    height: 330px;
-    display: flex;
-    justify-content: space-between;
+      &__title{
+        margin: 26px 11px;
+        text-align: center;
+        height: 22px;
 
-    &__child{
-      margin-left: 20px;
-      width: 213px;
-      background: $white;
-      position: relative;
+        a {
+          color: #0099e8;
+        }
 
-      &__image-size{
-        width: 213px;
-        height: 213px;
+        &__link-btn{
+        font-size: 22px;
+        font-weight: bold;
+        line-height: 1.1;
+        }
       }
 
-      &__image-block-size{
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height:100%; 
-        width: 100%; 
-        z-index: 1;
-      }
+      &__contents{
+        height: 330px;
+        display: flex;
+        justify-content: space-between;
 
-      &__body{
-        padding: 16px;
-        height: 110px;
-        box-sizing: border-box;
-        position: absolute;
-        top: 220px;
-
-        &__name{
-          font-size: 16px;
-          overflow: hidden;
+        &__child{
+          margin-left: 20px;
+          width: 213px;
+          background: $white;
           position: relative;
-          font-weight: 400;
-          height: 3em;
-          line-height: 1.5;
-          word-break: break-word;
-          white-space: normal;
-        }
 
-        &__info{
-          height: 17px;
-          display: flex;
-          justify-content: space-between;
-          margin-top: 8px; 
-          
-          &__price{
-            font-size: 16px;
-            font-weight: bold;
+          &__image-size{
+            width: 213px;
+            height: 213px;
           }
 
-          &__iine{
+          &__image-block-size{
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height:100%; 
+            width: 100%; 
+            z-index: 1;
           }
-          .fa-heart{
-            color: $light_gray;
+
+          &__body{
+            padding: 16px;
+            height: 110px;
+            box-sizing: border-box;
+            position: absolute;
+            top: 220px;
+
+            &__name{
+              font-size: 16px;
+              overflow: hidden;
+              position: relative;
+              font-weight: 400;
+              height: 3em;
+              line-height: 1.5;
+              word-break: break-word;
+              white-space: normal;
+            }
+
+            &__info{
+              height: 17px;
+              display: flex;
+              justify-content: space-between;
+              margin-top: 8px; 
+              
+              &__price{
+                font-size: 16px;
+                font-weight: bold;
+              }
+
+              &__iine{
+              }
+              .fa-heart{
+                color: $light_gray;
+              }
+            }
+            &__tax{
+              font-size: 10px;
+            }
           }
-        }
-        &__tax{
-          font-size: 10px;
         }
       }
-    }
-  }
        
-  &__all{
-    width: 99.5%;
-    height: 64px;
-    padding: 20px 0 30px;
-    box-sizing: border-box;
-    text-align: right;
-    line-height: 12px;
-    font-size: 16px;
+      &__all{
+        width: 99.5%;
+        height: 64px;
+        padding: 20px 0 30px;
+        box-sizing: border-box;
+        text-align: right;
+        line-height: 12px;
+        font-size: 16px;
 
-    a{
-      color: #0099e8;
-      font-size: 85%;
+        a{
+          color: #0099e8;
+          font-size: 85%;
+        }
+      }
     }
   }
 }
