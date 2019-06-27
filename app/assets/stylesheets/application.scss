@@ -2,12 +2,19 @@
 @import "config/colors";
 @import "config/size";
 @import "config/reset";
+@import "config/general.scss";
+@import "config/index.scss";
 @import "mixins/mixin";
 @import "mixins/vendor_prefix";
-@import "index.scss";
-@import "footer.scss";
-@import "header.scss";
+@import "modules/header.scss";
+@import "modules/footer.scss";
+@import "modules/footer-sell-btn.scss";
+@import "modules/menu.scss";
+@import "modules/mypage-side-navi.scss";
+@import "modules/mypage.scss";
+@import "modules/bread-crumbs.scss";
 @import "main.scss";
+@import "logout.scss";
 @import "login.scss";
 
 

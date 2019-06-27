@@ -22,7 +22,7 @@
             = link_to 'Googleでログイン'
       .login-nav
         .form-container
-          = form_for(@login, html: {class: "form-container__form"}) do |f|      
+          = form_for(@top, html: {class: "form-container__form"}) do |f|      
             .form-container__email
               = f.text_area :email, placeholder:"メールアドレス", class: "form-container__email__input"
             .form-container__password

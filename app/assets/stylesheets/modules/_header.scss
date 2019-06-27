@@ -120,6 +120,7 @@
             &__link-btn:hover{
               color: $light_blue;
             }
+            
           }
 
           &__brand{
@@ -138,7 +139,7 @@
           }
         }
       }
-    
+      
       .right-category{
         margin-top: 8px;
         width: 216px;
@@ -199,6 +200,211 @@
           }     
         }
       }
+      .navigation {
+        &__left {
+          float: left;
+          display: flex;
+          justify-content: left;
+
+          a {
+            padding-right: 16px;
+            line-height: 38px;
+            box-sizing: border-box;
+            border: 0 solid white;
+            display: block;
+            &:hover {
+              color: $blue;
+            }
+          }
+
+          &__category {
+            display: flex;
+            position: relative;
+            font-weight: bold;
+            .fa-list-ul{
+              width: 15.03px;
+              height: 12px;
+              color: $red;
+              font-size: 15px;
+              margin-top: 10px;
+              margin-right: 4px;
+            }
+
+            &:hover {
+              ul {
+                display: block;
+                font-weight: 100;
+                ul {
+                  display: none;
+                }
+              }
+            }
+
+            &__menu {
+              position: absolute;
+              top: 38px;
+              z-index: 2000;
+            }
+          }
+
+          &__brand {
+            position: relative;
+            display: flex;
+            font-weight: bold;
+            .fa-tag{
+              width: 15.03px;
+              height: 12px;
+              color: $red;
+              font-size: 15px;
+              margin-top: 10px;
+              margin-right: 4px;
+            }
+
+            &:hover {
+              ul {
+                display: block;
+                font-weight: 100;
+              }
+            }
+
+            &__menu {
+              position: absolute;
+              top: 38px;
+              z-index: 2000;
+              font-weight: bold;
+            }
+          }
+        }
+
+        &__right {
+          float: right;
+          display: flex;
+          justify-content: right;
+
+          &__mypage,&__todo, &__note {
+            height: 38px;
+            padding-left: 28px;
+            display: block;
+            line-height: 45px;
+            border: 0;
+            a {
+              &:hover {
+                color: $blue;
+              }
+            }
+
+          }
+
+          &__mypage {
+            display: flex;
+            img {
+              border-radius: 50%;
+              width: 32px;
+              height: 32px;
+              margin-top: 8px;
+            }
+
+            &__link {
+              box-sizing: border-box;
+              line-height: 50px;
+              display: block;
+              margin-left: 8px;
+            }
+          }
+          &__todo {
+            position: relative;
+
+            a{
+              display: block;
+
+              &:before {
+                font-family: 'Font Awesome 5 Free';
+                font-size: 20px;
+                margin-right: 8px;
+                font-weight: 600;
+                content: '\f00c';
+                color: $border-white;
+              }
+            }
+
+            &:hover {
+              ul {
+                display: block;
+              }
+            }
+
+            &__list {
+              position: absolute;
+              top: 38px;
+              right: 0;
+              z-index: 2000;
+            }
+          }
+
+          &__note {
+            position: relative;
+
+            a{
+              display: block;
+
+              &:before {
+                font-family: 'Font Awesome 5 Free';
+                font-size: 20px;
+                margin-right: 8px;
+                font-weight: 400;
+                content: '\f0f3';
+                color: $border-white;
+              }
+            }
+
+            &:hover {
+              ul {
+                display: block;
+              }
+            }
+
+            &__list {
+              position: absolute;
+              top: 38px;
+              right: -131px;
+              z-index: 2000;
+            }
+          }
+        }
+      }
     }
   }
 }
+
+.single-header {
+  height: 128px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    box-sizing: border-box;
+    height: 49px;
+  }
+}
+
+.btn {
+  &-nav {
+    height: 32px;
+    margin-left: 8px;
+    border-radius: 4px;
+    padding: 0 10px;
+    line-height: 32px;
+    font-size: 14px;
+  }
+
+  &-reg {
+    background-color: white;
+    color: $blue;
+    border: 1px solid $blue;
+
+    &:visited {
+      color: $blue;
+    }
+  }
+}
+  
