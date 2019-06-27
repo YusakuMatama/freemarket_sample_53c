@@ -5,6 +5,7 @@ class TopsController < ApplicationController
   end
 
   def show
+    @login = "hoge"
   end
   
 end
