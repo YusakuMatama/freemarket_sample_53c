@@ -22,13 +22,13 @@ Things you may want to cover:
 |password|string|null: false|
 
 ### Association
-- has_one :user_profile, dependent: :destroy
-- has_many :items
-- has_many :comments
-- has_many :favorite_items, dependent: :destroy
-- has_many :user-evaluations
+_ has_one :profile, dependent: :destroy
+_ has_many :items
+_ has_many :comments
+_ has_many :favorite_items, dependent: :destroy
+_ has_many :user-evaluations
 
-## user_profiles table
+## profiles table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -51,20 +51,20 @@ Things you may want to cover:
 |user_id|integer|null: false, add_index/add_foreign_key|
 
 ### Association
-- belongs_to :user
+_ belongs_to :user
 
 ## user_evaluations table
 
 |Column|Type|Options|
 |------|----|-------|
-|high_count|integer||
-|medium_count|integer||
-|low_count|integer||
+|high_count|enum||
+|medium_count|enum||
+|low_count|enum||
 |user_id(FK)|integer|null: false, add_index/add_foreign_key|
 |comment|text||
 
 ### Association
-- belongs_to :user
+_ belongs_to :user
 
 ## favorite_items table
 
@@ -74,8 +74,8 @@ Things you may want to cover:
 |item_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :item
-- belongs_to :user
+_ belongs_to :item
+_ belongs_to :user
 
 ## order_status table
 
@@ -85,7 +85,7 @@ Things you may want to cover:
 |item_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :item
+_ belongs_to :item
 
 ## comments table
 
@@ -96,8 +96,8 @@ Things you may want to cover:
 |item_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :item
-- belongs_to :user
+_ belongs_to :item
+_ belongs_to :user
 
 ## items table
 
@@ -116,12 +116,12 @@ Things you may want to cover:
 |user_id|integer|null: false, foregin_key: true|
 
 ### Association
-- belongs_to :user
-- belongs_to :category
-- belongs_to :brand
-- has_one :order_status, dependent: :destroy
-- has_many :item_images, dependent: :destroy
-- has_many :comments
+_ belongs_to :user
+_ belongs_to :category
+_ belongs_to :brand
+_ has_one :order_status, dependent: :destroy
+_ has_many :item_images, dependent: :destroy
+_ has_many :comments
 
 ## item_images table
 
@@ -131,7 +131,7 @@ Things you may want to cover:
 |item_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :item
+_ belongs_to :item
 
 ## categorys table
 
@@ -140,7 +140,7 @@ Things you may want to cover:
 |name|string|null: false|
 
 ### Association
-- has_many :items
+_ has_many :items
 
 ## brands table
 
@@ -149,4 +149,4 @@ Things you may want to cover:
 |name|string|null: false|
 
 ### Association
-- has_many :items
+_ has_many :items
