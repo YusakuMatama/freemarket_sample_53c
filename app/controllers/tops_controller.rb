@@ -7,5 +7,10 @@ class TopsController < ApplicationController
   def show
     @top = "hoge"
   end
+
+  def new
+    @top = "hoge"
+  end
+
   
 end
