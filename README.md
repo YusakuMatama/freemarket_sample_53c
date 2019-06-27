@@ -39,16 +39,25 @@ _ has_many :user-evaluations
 |last_name_kana|string|null: false|
 |birthday|date|null: false|
 |tel|string||
-|zip|string|null: false|
-|prefectures|integer|null: false|
-|city|string|null: false|
-|block|string|null: false|
-|building|string||
 |card_id|string|null: false|
 |money|integer|null: false, default :0|
 |point|integer|null: false, default :0|
 |comment|text||
 |user_id|integer|null: false, add_index/add_foreign_key|
+
+### Association
+_ belongs_to :user
+
+## addresses
+
+|Column|Type|Options|
+|------|----|-------|
+|zip|string|null: false|
+|prefectures|integer|null: false|
+|city|string|null: false|
+|block|string|null: false|
+|building|string||
+|user_id|ref|null: false,foregin_key: true|
 
 ### Association
 _ belongs_to :user
