@@ -12,5 +12,10 @@ class TopsController < ApplicationController
     @top = "hoge"
   end
 
+  def edit
+    @top = "hoge"
+  end
+
+
   
 end
