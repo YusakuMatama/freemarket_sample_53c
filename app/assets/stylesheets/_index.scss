@@ -1,0 +1,24 @@
+li{
+  margin-top: 14px;
+}
+
+body{
+  font-family: $font-family;
+  position: relative;
+  font-size: 14px;
+  min-height: 100%;
+  background: rgb(245, 245, 245);
+  color: $text-color;
+}
+
+h1{
+  font-weight: bold;
+}
+
+a{
+  text-decoration: none;
+}
+.default-container {
+  width: 100%;
+}
+
