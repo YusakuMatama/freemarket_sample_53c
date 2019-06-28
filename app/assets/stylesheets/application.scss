@@ -7,8 +7,6 @@
 @import "config/general";
 @import "mixins/mixin";
 @import "mixins/vendor_prefix";
-@import "mixins/mixin";
-@import "mixins/vendor_prefix";
 @import "modules/mypage-side-navi";
 @import "modules/header";
 @import "modules/footer";
@@ -34,3 +32,4 @@
 @import "menu";
 @import "mypage";
 @import "sell-button";
+@import "my-page";
