@@ -1,0 +1,57 @@
+.header-container
+  %header.header-contents
+    %h1.mercari-logo
+      = link_to image_tag('mercari-logo-login.svg', class: 'mercari-logo__size'), class: 'mercari-logo__block-size'
+  %main.main-container
+    .login-container
+      .sign-up-nav
+        %p.sign-up-nav__text
+          アカウントをお持ちでない方はこちら
+        %p.sign-up-nav__link
+          = link_to '新規会員登録', class: 'sign-up-nav__btn'
+      .other-account-nav 
+        .other-account-nav__facebook
+          .other-account-nav__facebook__icon
+            = fa_icon 'facebook-square'
+          .other-account-nav__facebook__btn
+            = link_to 'Facebookでログイン'
+        .other-account-nav__google
+          .other-account-nav__google__icon
+            = fa_icon 'google'
+          .other-account-nav__google__btn
+            = link_to 'Googleでログイン'
+      .login-nav
+        .form-container
+          = form_for(@top, html: {class: "form-container__form"}) do |f|      
+            .form-container__email
+              = f.text_area :email, placeholder:"メールアドレス", class: "form-container__email__input"
+            .form-container__password
+              = f.text_area :password, placeholder:"パスワード", class: "form-container__password__input"
+            .confirm-robot
+            .form-container__submit
+              = f.submit "ログイン", class: "form-container__submit__btn"
+          .forget-password
+            = link_to 'パスワードをお忘れの方', class: 'forget-password__btn'
+  %footer.footer-container
+    %ul.rule-list
+      %li.rule-list__privacy
+        = link_to 'プライバシーポリシー', class: 'rule-list__privacy__btn'
+      %li.rule-list__rule
+        = link_to 'メルカリ利用規約', class: 'rule-list__rule__btn'
+      %li.rule-list__detail
+        = link_to '特定商取引に関する表記', class: 'rule-list__detail__btn'
+    .footer-logo
+      = link_to image_tag('logo-gray-login.svg', class: 'footer-logo__size'), class: 'footer-logo__block-size'
+    .copy-light
+      %small© 2019 Mercari
+      
+
+        
+
+
+
+
+
+
+
+

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   # devise_for :users
+  root "tops#index"
   get 'mypage/identification' => 'users#identification'
   get 'mypage/card' => 'users#card'
   get 'sell' => 'items#sell'
@@ -11,4 +12,6 @@ Rails.application.routes.draw do
   get  'sns' => 'registrations#sns'
   get  'phone' => 'registrations#phone'
 
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :tops, only: [:index, :show, :new]
 end
