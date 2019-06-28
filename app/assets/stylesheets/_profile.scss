@@ -1,0 +1,86 @@
+.profile-container{
+  width: 700px;
+  height: 568px;
+  background-color: #ffff;
+
+  &__title {
+    height: 50px;
+    font-size: 24px;
+    padding: 8px 24px;
+    line-height: 35px;
+    border-bottom: 1px solid #f5f5f5;
+    text-align: center;
+    color: #333333;
+    font-weight: bold;
+    box-sizing: border-box;
+  }
+
+  &__detail{
+    height: 518px;
+    position: relative;
+
+    &__banner{
+      height: 156px;
+      padding: 72px 16px 24px;
+      background-image: url('https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg');
+      box-sizing: border-box;
+
+      .person{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-left: 190px;
+      }
+    }
+
+    &__form{
+      textarea:focus{
+        outline: 0;
+        border: 1px solid $blue;
+      }
+      input:focus{
+        outline: 0;
+        border: 1px solid $blue;
+      }
+      &__input{
+        width: 220px;
+        height: 48px;
+        padding: 10px 16px 8px;
+        line-height: 32px;
+        resize: none;
+        position: absolute;
+        top: 78px;
+        left: 274px;
+        box-sizing: border-box;
+
+      }
+      &__edit{
+        width: 668px;
+        min-height: 216px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background: #fff;
+        resize: both;
+        font-size: 16px;
+        line-height: 1.5;
+        cursor: text;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+        position: absolute;
+        bottom: 106px;
+        border-radius: 0;
+      }
+      &__submit-btn{
+        width: 668px;
+        height: 50px;
+        font-size: 14px;
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #fff;
+        position: absolute;
+        bottom: 40px;
+        border-radius: 0;
+      }
+    }
+  }
+}

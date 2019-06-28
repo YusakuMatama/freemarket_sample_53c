@@ -5,7 +5,7 @@ class TopsController < ApplicationController
   end
 
   def show
-    @login = "hoge"
+    @top = "hoge"
   end
 
   def new
@@ -15,7 +15,5 @@ class TopsController < ApplicationController
   def edit
     @top = "hoge"
   end
-
-
   
 end

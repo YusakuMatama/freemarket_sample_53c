@@ -1,1 +1,14 @@
-= render 'login'
+
+.container
+  = render "layouts/header"
+  = render "layouts/bread-crumbs"
+  .main-background
+    .left-content
+      = render "modules/mypage-side-navi"
+      %section.right-continer
+        = render 'profile'
+        -# = render 'login' あとで消す。今はrouteの関係で残す。
+  = render "layouts/aside"
+  = render "layouts/footer"
+  = render "layouts/footer-sell-btn"
+
