@@ -4,17 +4,17 @@
     = form_for(@top, html: {class: "top-contents__form"}) do |f|            
       = f.text_area :content, placeholder:"何かお探しですか？", class: "top-contents__form__input"
       %label.top-contents__form__icon
-        = fa_icon'search'
+        %i.fas.fa-search
         = f.submit "send", class: "top-contents__form__icon__search"
 
   .lower-contents
     .left-category
       %ul.left-category__list
         %li.left-category__list__cate
-          = fa_icon'list-ul'
+          %i.fas.fa-list-ul
           = link_to 'カテゴリーから探す', root_path, class: 'left-category__list__cate__link-btn'
         %li.left-category__list__brand
-          = fa_icon'tag'
+          %i.fas.fa-tag
           = link_to 'ブランドから探す', root_path, class: 'left-category__list__brand__link-btn'
     .right-category
       %ul.right-category__list
