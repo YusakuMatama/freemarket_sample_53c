@@ -3,4 +3,9 @@ class UsersController < ApplicationController
   end
   def card
   end
+
+  def index
+    @top = "hoge"
+  end
+
 end
