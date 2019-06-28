@@ -1,0 +1,23 @@
+.container
+  = render "layouts/header"
+  = render "layouts/bread-crumbs"
+  .main-background
+    .left-content
+      = render "modules/mypage-side-navi"
+      .card__content
+        .card__content__top
+          支払い方法
+        .card__content__middle
+          .card__content__middle__text
+            クレジットカード一覧
+          .card__content__middle__btn
+            .card__content__middle__btn__text
+              %i.fas.fa-credit-card
+              クレジットカードを追加する
+          .card__content__middle__bottom
+            = link_to "#", target: "blank", class: "card__content__middle__bottom__link" do
+              #card__span 支払い方法について
+              %i.fas.fa-angle-right
+  = render "layouts/aside"
+  = render "layouts/footer"
+  = render "layouts/sell-button"

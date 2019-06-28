@@ -1,20 +1,3 @@
-.lower-banner
-  .banner-contents
-    .banner-contents__left        
-      %h2.upper-text
-        スマホでかんたんフリマアプリ
-      %p.lower-text
-        今すぐ無料ダウンロード！          
-      %ul.icon-contents
-        %li.icon-contents__mercari
-          = image_tag('mercari-icon.png', class: 'icon-contents__mercari__logo')
-        %li.icon-contents__app
-          = link_to image_tag('app-store.jpg', class: 'icon-contents__app__logo'), root_path
-        %li.icon-contents__google
-          = link_to image_tag('google-play.jpg', class: 'icon-contents__google__logo'), root_path
-    .banner-contents__right
-      = image_tag('footer.png', class: 'banner-contents__right__image')
-
 .global-footer
   .footer-clearfix
     .about-mercari
