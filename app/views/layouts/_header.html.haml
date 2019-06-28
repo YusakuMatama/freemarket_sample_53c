@@ -1,0 +1,32 @@
+.header
+  .header__container
+    .header__container__search
+      = link_to image_tag("logo.svg"), '#', class: "header__container__search__logo"
+      = form_tag '#', method: :get, class: "header__container__search__form" do
+        = text_field_tag :keyword, "", class: "header__container__search__form__input", placeholder: "何かお探しですか？"
+        = button_tag type: "submit",class: "header__container__search__form__button" do
+          %i.fas.fa-search
+    .header__container__navigation.navigation
+      .navigation__left
+        .navigation__left__category
+          %i.fas.fa-list-ul
+          = link_to "カテゴリーから探す"
+          .navigation__left__category__menu
+            -# = render "items/category-menu"
+        .navigation__left__brand
+          %i.fas.fa-tag
+          = link_to "ブランドから探す"
+          .navigation__left__brand__menu
+            -# = render "items/brand-menu"
+      .navigation__right
+        .navigation__right__note
+          = link_to "お知らせ", "#"
+          .navigation__right__note__list
+            -# = render "layouts/note-list"
+        .navigation__right__todo
+          = link_to "やることリスト", "#"
+          .navigation__right__todo__list
+            -# = render "layouts/todo-list"
+        .navigation__right__mypage
+          = image_tag image_path("member_photo_noimage_thumb.png")
+          = link_to "マイページ", '#', class: "navigation__right__mypage__link"

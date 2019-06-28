@@ -1,0 +1,171 @@
+.completion-all-container{
+  background-color: #EEEEEE;
+  .completion-head-container{
+    background-color: #EEEEEE;
+    width: 100%;
+    height: 100px;
+    .mercari_logo{
+      width: 180px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 25px;
+    }
+  }
+  .shipping-message-container{
+    background-color:#fff6de;
+    height: 80px;
+    width: 600px;
+    padding-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    .shipping-message1{
+      height: 30px;
+      width: 200px;
+      color: #ea352d;
+      font-size: 17px;
+      font-weight: 600;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    .fa-clock{
+      color: #ea352d;
+      font-size: 20px;
+    }
+    }
+    .shipping-message2{
+      height: 30px;
+      width: 270px;
+      color: #333;
+      font-size: 14px;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+  }
+  .item-completion-message-container{
+    background-color:#fff;
+    height: 80px;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    .item-completion-message{
+      height: 20px;
+      width: 170px;
+      color: #333;
+      font-size: 18px;
+      font-weight: 600;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 20px;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+  }
+  .buy-item-container{
+    background-color:#fff;
+    height: 175px;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1px;
+    padding-top: 5px;
+    .item-photo{
+      height: 120px;
+      width: 95px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 5px;
+    }
+    .item-name{
+      height: 20px;
+      width: 180px;
+      font-weight: 600;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 5px;
+      font-size: 14px;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+  }
+  .buy-item-price-container{
+    background-color:#fff;
+    height: 50px;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    .buy-item-price{
+      height: 30px;
+      width: 50px;
+      color: #333;
+      font-size: 18px;
+      font-weight: 600;
+      margin-left: 250px;
+      margin-right: 20px;
+      padding-top: 20px;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+      display: flex;
+      line-height: 1;
+    }
+    .buy-item-tax{
+      height: 30px;
+      width: 50px;
+      color: #333;
+      font-size: 12px;
+      padding-top: 20px;
+    }
+  }
+  .shipping-address-container{
+    background-color: #fff;
+    height: 120px;
+    width: 600px;
+    margin-top: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    .shipping-address-head{
+      font-size: 13px;
+      padding-top: 20px;
+      padding-left: 200px;
+      font-weight: 500;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+    .shipping-address{
+      font-size: 12px;
+      padding-left: 200px;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+    .shipping-name{
+      font-size: 12px;
+      padding-left: 200px;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+  }
+  .method-of-payment-container{
+    background-color: #fff;
+    height: 120px;
+    width: 600px;
+    margin-top: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    .method-of-payment-head{
+      font-size: 12px;
+      padding-top: 10px;
+      padding-left: 200px;
+      padding-bottom: 50px;
+      font-weight: 500;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+    .method-of-payment{
+      font-size: 12px;
+      padding-top: 20px;
+      padding-left: 200px;
+      font-weight: 500;
+      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    }
+  }
+}

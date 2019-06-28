@@ -1,10 +1,17 @@
-.buy-all-container
-  .head-container
+.completion-all-container
+  .completion-head-container
     .mercari_logo
-      = render "layouts/single-header"
-  .head-bar-container
-    .head-bar
-      購入内容の確認
+      = image_tag("logo.svg", class:"mercari_logo")
+  .shipping-message-container
+    .shipping-message1
+      = link_to root_path do
+        %i.far.fa-clock
+      発送をお待ちください
+    .shipping-message2
+      出品者からの発送通知をお待ちください
+  .item-completion-message-container
+    .item-completion-message
+      購入が完了しました
   .buy-item-container
     .item-photo
       = image_tag("m89940654731_1.jpg", class:"item-photo") 
@@ -15,15 +22,6 @@
       ¥6,200
     .buy-item-tax
       送料込み
-  .pay-price-container
-    .pay-price-title
-      支払い金額
-    .pay-price
-      ¥ 6,200
-  .buy-button-container
-    .buy-button
-      = link_to "/items/1" do
-        購入する
   .shipping-address-container
     .shipping-address-head
       配送先
@@ -32,13 +30,12 @@
       神奈川県横浜市中央区1-1-1
     .shipping-name
       山田 花子
-    .change-button
-      .p 変更する >
   .method-of-payment-container
     .method-of-payment-head
       支払い方法
     .method-of-payment
-    .change-button
-      .p 変更する >
-  
+  .after-shipping
+  .footer-container
+
   = render "layouts/single-footer"
+  

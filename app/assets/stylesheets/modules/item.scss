@@ -1,7 +1,7 @@
 .all-container{
   background-color: #EEEEEE;
   font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
-  height: 2000px;
+  height: 1900px;
   .head-container{
     background-color: #EEEEEE;
     width: 100%;
@@ -102,6 +102,7 @@
     .p:hover{
       color: #5BB7E5;
       text-decoration: underline;
+      cursor: pointer;
     }
   }
 
@@ -160,10 +161,18 @@
       height: 50px;
       width: 600px;
       font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+      position: relative;
       a{
         text-decoration: none;
         color: #fff;
         font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        padding: 20px;
       }
     }
   }
@@ -231,14 +240,27 @@
         margin-left: 20px
       }
     }
-    .right-report{
-      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
-      color:#0099e8;
-      font-size: 13px;
-      margin-top: 10px;
-      margin-left: 100px;
-      .p:hover{
-        color: #5BB7E5;
+    .right-report-button{
+      a{
+      display: flex;
+      .fa-lock{
+        color:#0099e8;
+        font-size: 15px;
+        margin-top: 12px; 
+        margin-left: 100px;
+      }
+      .right-report-message{
+        font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+        color:#0099e8;
+        font-size: 13px;
+        margin-top: 12px;
+        margin-left: 5px;
+        .a:hover{
+          color: #5BB7E5;
+          text-decoration: underline;
+          cursor: pointer;
+          }
+        }
       }
     }
   }
@@ -274,18 +296,19 @@
       .input{
         margin-top: 2px;
         margin-bottom: 2px;
-        padding-bottom: 20px;
+        padding-bottom: 10px;
         margin-left: 50px;
         text-align: center;
         background: #aaa;
         border: 1px solid #aaa;
         color: #fff;
         display: block;
-        line-height: 30px;
+        line-height: 10px;
         transition: all ease-out .3s;
         height: 30px;
         width: 600px;
         font-size: 1.5ex; 
+        cursor: pointer;
       }
     }
   }
@@ -304,6 +327,7 @@
       .p:hover{
         color: #5BB7E5;
         text-decoration: underline;
+        cursor: pointer;
       }
     }
     .right-link-tag{
@@ -314,6 +338,7 @@
       .p:hover{
         color: #5BB7E5;
         text-decoration: underline;
+        cursor: pointer;
       }
     }
   }
@@ -347,5 +372,10 @@
       color: #aa262a;
       font-size: 45px;
     }
+  }
+  .foot-container{
+    background-color: #EEEEEE;
+    width: 100%;
+    height: 50px;
   }
 }
