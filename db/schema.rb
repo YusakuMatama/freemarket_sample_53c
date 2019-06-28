@@ -10,7 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190626041623) do
+ActiveRecord::Schema.define(version: 20190628094156) do
+
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "zip",         null: false
+    t.integer  "prefectures", null: false
+    t.string   "city",        null: false
+    t.string   "block",       null: false
+    t.string   "building"
+    t.integer  "user_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "neme",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "content",    limit: 65535, null: false
+    t.integer  "user_id",                  null: false
+    t.integer  "item_id",                  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "favorite_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "item_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "item_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "image",      null: false
@@ -30,9 +68,47 @@ ActiveRecord::Schema.define(version: 20190626041623) do
     t.integer  "days_to_ship",                                      null: false
     t.integer  "price",                                             null: false
     t.boolean  "sales_condition",                   default: false, null: false
-    t.integer  "user_id",                                           null: false
+    t.integer  "seller_id",                                         null: false
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
+    t.integer  "buyer_id"
+    t.date     "selled_at"
+  end
+
+  create_table "order_status", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "status",     null: false
+    t.integer  "item_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "nickname",                                  null: false
+    t.string   "first_name",                                null: false
+    t.string   "last_name",                                 null: false
+    t.string   "first_name_kana",                           null: false
+    t.string   "last_name_kana",                            null: false
+    t.date     "birthday",                                  null: false
+    t.string   "tel"
+    t.string   "card_id",                                   null: false
+    t.integer  "money",                         default: 0, null: false
+    t.integer  "point",                         default: 0, null: false
+    t.text     "comment",         limit: 65535
+    t.integer  "user_id",                                   null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
+  end
+
+  create_table "user_evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "high_count"
+    t.integer  "medium_count"
+    t.integer  "low_count"
+    t.integer  "user_id",                    null: false
+    t.text     "comment",      limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["user_id"], name: "index_user_evaluations_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
