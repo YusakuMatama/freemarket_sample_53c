@@ -1,5 +1,5 @@
 .container
-  = render "layouts/header"
+  = render "header-tops"
   = render "layouts/bread-crumbs"
   .main-background
     .left-content
@@ -8,5 +8,6 @@
         %section.right-continer
           = render 'logout'
   .footer
+    = render "layouts/aside"
     = render "layouts/footer"
     = render "layouts/footer-sell-btn"
