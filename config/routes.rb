@@ -12,8 +12,7 @@ Rails.application.routes.draw do
   get  'sns' => 'registrations#sns'
   get  'phone' => 'registrations#phone'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :items, only: [:index, :new, :show]
+  resources :items
   resources :tops, only: [:index, :show, :new, :edit]
   resources :users, only: [:index]
 
