@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @top = "hoge"
+    # binding.pry
   end
 
   def sell

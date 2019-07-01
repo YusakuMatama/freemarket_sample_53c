@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190630052738) do
+ActiveRecord::Schema.define(version: 20190701053338) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "zip",         null: false
@@ -18,9 +18,10 @@ ActiveRecord::Schema.define(version: 20190630052738) do
     t.string   "city",        null: false
     t.string   "block",       null: false
     t.string   "building"
-    t.integer  "user_id",     null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id",     null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
   create_table "brands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -38,50 +39,59 @@ ActiveRecord::Schema.define(version: 20190630052738) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "content",    limit: 65535, null: false
-    t.integer  "user_id",                  null: false
-    t.integer  "item_id",                  null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "item_id",                  null: false
+    t.integer  "user_id",                  null: false
+    t.index ["item_id"], name: "index_comments_on_item_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "favorite_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "item_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id",    null: false
+    t.integer  "item_id",    null: false
+    t.index ["item_id"], name: "index_favorite_items_on_item_id", using: :btree
+    t.index ["user_id"], name: "index_favorite_items_on_user_id", using: :btree
   end
 
   create_table "item_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "image",      null: false
-    t.integer  "item_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "item_id",    null: false
+    t.index ["item_id"], name: "index_item_images_on_item_id", using: :btree
   end
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                                              null: false
     t.text     "detail",              limit: 65535,                 null: false
-    t.integer  "category_id",                                       null: false
-    t.integer  "brand_id"
     t.integer  "condition",                                         null: false
     t.integer  "delivery_cost",                                     null: false
     t.integer  "delivery_prefecture",                               null: false
     t.integer  "days_to_ship",                                      null: false
     t.integer  "price",                                             null: false
     t.boolean  "sales_condition",                   default: false, null: false
-    t.integer  "seller_id",                                         null: false
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.integer  "buyer_id"
     t.date     "selled_at"
     t.integer  "delivery_method",                                   null: false
+    t.integer  "category_id",                                       null: false
+    t.integer  "brand_id",                                          null: false
+    t.integer  "user_id",                                           null: false
+    t.index ["brand_id"], name: "index_items_on_brand_id", using: :btree
+    t.index ["category_id"], name: "index_items_on_category_id", using: :btree
+    t.index ["user_id"], name: "index_items_on_user_id", using: :btree
   end
 
-  create_table "order_status", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "order_statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "status",     null: false
-    t.integer  "item_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "item_id",    null: false
+    t.index ["item_id"], name: "index_order_statuses_on_item_id", using: :btree
   end
 
   create_table "profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -96,9 +106,12 @@ ActiveRecord::Schema.define(version: 20190630052738) do
     t.integer  "money",                         default: 0, null: false
     t.integer  "point",                         default: 0, null: false
     t.text     "comment",         limit: 65535
-    t.integer  "user_id",                                   null: false
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.integer  "user_id",                                   null: false
+    t.string   "card_yy",                                   null: false
+    t.string   "card_mm",                                   null: false
+    t.string   "card_sec_id",                               null: false
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 
@@ -106,10 +119,10 @@ ActiveRecord::Schema.define(version: 20190630052738) do
     t.integer  "high_count"
     t.integer  "medium_count"
     t.integer  "low_count"
-    t.integer  "user_id",                    null: false
     t.text     "comment",      limit: 65535
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "user_id",                    null: false
     t.index ["user_id"], name: "index_user_evaluations_on_user_id", using: :btree
   end
 
@@ -125,4 +138,5 @@ ActiveRecord::Schema.define(version: 20190630052738) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "item_images", "items"
 end
