@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
     # @item = Item.find(params[:item_id])
     @item = Item.find(1)
     
-    Payjp.api_key = 'sk_test_3a44432a5832448337757685'
+    Payjp.api_key = ENV['PAYJP_TEST_SECRET_KEY']
     Payjp::Charge.create(currency: 'jpy', amount: 100, card: params['payjp-token'])
 
     
