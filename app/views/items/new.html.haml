@@ -20,10 +20,8 @@
       支払い金額
     .pay-price
       ¥ 6,200
-  .buy-button-container
-    .buy-button
-      = link_to "/items/1" do
-        購入する
+  = form_tag(action: :purchase, method: :post) do
+    %script.payjp-button{"data-key" => "pk_test_3d0be1a0d9f61d53b0ac2cfc", :src => "https://checkout.pay.jp", :type => "text/javascript", "data-text" => "購入する"}
   .shipping-address-container
     .shipping-address-head
       配送先

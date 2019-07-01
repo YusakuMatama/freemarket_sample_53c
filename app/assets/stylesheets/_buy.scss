@@ -98,12 +98,12 @@
       font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
     }
   }
-  .buy-button-container{
+  form {
     background-color: #fff;
     height: 50px;
     width: 600px;
     margin: 0 auto;
-    .buy-button{
+    #payjp_checkout_box {
       display: block;
       margin: 0 auto;
       background-color: #ea352d;
@@ -120,15 +120,12 @@
       width: 300px;
       font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
       position: relative;
-      a{
+      input{
         color: #fff;
         position: absolute;
-        top: 0;
-        right: 0;
         bottom: 0;
         left: 0;
         text-align: center;
-        padding: 10px;
       }
     }
   }
