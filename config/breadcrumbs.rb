@@ -3,27 +3,27 @@ crumb :root do
 end
 
 crumb :mypage do
-  link "マイページ", 'tops/edit'
+  link "マイページ", edit_top_path(1)
   parent :root
 end
 
 crumb :profile do
-  link "プロフィール", 'tops/show'
+  link "プロフィール", tops_show_path
   parent :mypage
 end
 
 crumb :logout do
-  link "ログアウト", 'tops/new'
+  link "ログアウト", new_top_path
   parent :mypage
 end
 
 crumb :identification do
-  link "本人情報の登録", 'mypage/identification'
+  link "本人情報の登録", mypage_identification_path
   parent :mypage
 end
 
 crumb :card do
-  link "支払い方法", 'mypage/card'
+  link "支払い方法", mypage_card_path
   parent :mypage
 end
 
