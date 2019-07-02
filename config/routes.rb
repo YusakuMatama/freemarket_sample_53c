@@ -11,9 +11,10 @@ Rails.application.routes.draw do
   get  'credit' => 'registrations#credit'
   get  'sns' => 'registrations#sns'
   get  'phone' => 'registrations#phone'
+  get 'mypage' => 'users#show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :items, only: [:index, :new, :show]
+  resources :items, only: [:index, :new, :show, :create]
   resources :tops, only: [:index, :show, :new, :edit]
   resources :users, only: [:index]
 
