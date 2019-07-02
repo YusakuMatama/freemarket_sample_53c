@@ -7,7 +7,15 @@
         = @item.name
       .item-category
         .item-category__image
-          = image_tag("pants.jpg", class:"top-item-photo") 
+          .owl-carousel.owl-loaded.owl-drag
+            - @item.item_images.each do |image|
+              .owl-stage-outer
+                = image_tag image.image.url, width: "300", height: "300"
+                - unless @item.sales_condition
+                  .item-category__image__none-sold
+                - else
+                  .item-category__image__sold-out-top
+                    .sold-out-text-top SOLD
         .item-category__list
           .item-category__list__container
             .item-wrap
@@ -104,9 +112,13 @@
         - else
           着払い
     .buy-button-container
-      .buy-button
-        = link_to new_item_path do
-          購入画面に進む
+      - unless @item.sales_condition
+        .buy-button
+          = link_to new_item_path do
+            購入画面に進む
+      -else
+        .buy-button-sold
+          売り切れました
     .item-description-container
       .item-description
         = safe_join(@item.detail.split("\n"), tag(:br))
@@ -127,7 +139,18 @@
           %i.fas.fa-lock
           .right-report-message
             あんしん・あんぜんへの取り組み
-              
+
+    .parent-own-item-container
+      - unless @item.sales_condition
+        = link_to "商品の編集", edit_item_path(@item), class: "parent-own-item-container__edit"
+        .parent-own-item-container__or
+          or
+        - unless @item.sales_condition == 0
+          = link_to "出品を停止する", "#", class: "parent-own-item-container__close"
+        - else
+          = link_to "出品を再開する", "#", class: "parent-own-item-container__open"
+      = link_to "商品を削除する", "/items/#{@item.id}", method: :delete, class: "parent-own-item-container__delete-btn"
+
   .coment-form-container
     %form.form{:action => "/test", method: "post"}
       .precautionary-note

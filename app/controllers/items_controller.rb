@@ -10,7 +10,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # binding.pry
   end
 
   def sell
