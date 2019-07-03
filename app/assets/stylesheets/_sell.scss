@@ -4,12 +4,12 @@
     min-height: 2400px;
     // height : 2100px;
     width: 100%;
-    &_conteiner {
+    &__conteiner {
       min-height: 2400px;
       width: 700px;
       margin: 0 auto;
       background-color: white;
-      &_inner {
+      &__inner {
         height: 100%;
         width: 100%;
         .header-text {
@@ -47,14 +47,14 @@
               border-color: rgb(209, 209, 209);
               position: relative;
 
-              .sell-box_container_drop-box {
+              &__drop-box {
                 min-height: 160px;
                 background: #f5f5f5;
                 border: 1px dashed #ccc;
                 font-size: 0;
                 text-align: center;
 
-                #drop-box_text {
+                &__text {
                   height: 162px;
                   font-size: 13px;
                   text-align: center;
@@ -78,8 +78,6 @@
           top: 0;
           left: 0;
         }
-
-
 
         .sell-content {
           height: 320px;
@@ -128,7 +126,6 @@
           }
         }
         
-
         .sell-content-detail {
           height: 299px;
           // height : 180px;
@@ -186,7 +183,6 @@
             }
           }
         }
-
 
         .sell-content-shipping-method {
           min-height: 409px;

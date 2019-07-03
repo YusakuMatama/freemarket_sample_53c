@@ -1,8 +1,8 @@
 .main_container 
   = render 'layouts/single-header'
   .main-contents
-    .main-contents_conteiner
-      .main-contents_conteiner_inner
+    .main-contents__conteiner
+      .main-contents__conteiner__inner
         %h2.header-text
           商品の情報を入力
         .sell-form
@@ -14,8 +14,8 @@
               .sell-upload_text-bottom
                 最大10枚までアップロードできます
               .sell-box_container
-                .sell-box_container_drop-box
-                  #drop-box_text
+                .sell-box_container__drop-box
+                  #sell-box_container__drop-box__text
                     ドラッグアンドドロップ
                     またはクリックしてファイルをアップロード
                     = f.fields_for :item_images do |fin|
