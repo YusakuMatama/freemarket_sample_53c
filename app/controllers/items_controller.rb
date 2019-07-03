@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.build_brand
     @item.build_category
-    10.times {@item.item_images.build
+    @item.item_images.build
     @category = Category.all
     @brand = Brand.all
 
