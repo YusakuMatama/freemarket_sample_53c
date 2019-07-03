@@ -7,19 +7,18 @@ function display_image(files){
 
 // ファイル読み込みが完了した際のイベント登録
 reader.onload = (function(files) {
-return function(e) {
-  //既存のプレビューを削除
-  // .prevewの領域の中にロードした画像を表示するimageタグを追加
-  display_preview.append($('<img>').attr({
-            src: e.target.result,
-            width: "114px",
-            class: "preview",
-            title: files.name
-        }));
-
-};
-})(files);
-reader.readAsDataURL(files);
+  return function(e) {
+    //既存のプレビューを削除
+    // .prevewの領域の中にロードした画像を表示するimageタグを追加
+    display_preview.append($('<img>').attr({
+              src: e.target.result,
+              width: "114px",
+              class: "preview",
+              title: files.name
+          }));
+  };
+  })(files);
+  reader.readAsDataURL(files);
 };
 
 //drop zoneの実装
@@ -28,7 +27,6 @@ function handleFileSelect(evt) {
   evt.preventDefault();
 
   $files = evt.dataTransfer.files[0];
-  console.log($files);
   display_image($files);
   var output = [];
 }
@@ -50,7 +48,6 @@ $('.new_item').on('submit', function(e){
   if(typeof $files != 'undefined'){
     formdata.append('item[item_images_attributes][0][image]',$files);
   }
-  console.log("ajax");
 
   $.ajax({
     url: 'http://localhost:3000/items',
@@ -63,40 +60,14 @@ $('.new_item').on('submit', function(e){
   })
 
   .done(function(data, textStatus, jqXHR){
-    console.log(data);
   })
   .fail(function(jqXHR, textStatus, errorThrown){
-    console.log("fail");
-    console.log("XMLHttpRequest : " + XMLHttpRequest.status);
-    console.log("textStatus     : " + textStatus);
-    console.log("errorThrown    : " + errorThrown.message);
-    })
+  })
 });
 
 $('input[type="file"]').on('change', function(e){
-  console.log("1");
   var image_file = e.target.files[0];
   display_image(image_file);
-  console.log(image_file);
-});
-
-$(".price_input").on("keyup", function(){
-  $(".right-price").empty();
-  $(".right-price-maney").empty();
-
-  var input = $(".price_input").val(),
-      fee = $(".right-price"),
-      fee_maney = Math.floor(input * 0.1),
-      maney = $(".right-price-maney"),
-      maney_maney = "¥" + (input - fee_maney);
-  if (input >= 300 && input <= 9999999){
-  fee.append(fee_maney);
-  maney.append(maney_maney);
-  }
-  else {
-    fee.append("-----");
-    maney.append("-----");
-  }
 });
 
 });
