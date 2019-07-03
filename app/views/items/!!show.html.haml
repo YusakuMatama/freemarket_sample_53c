@@ -1,0 +1,41 @@
+.completion-all-container
+  .completion-head-container
+    .mercari_logo
+      = image_tag("logo.svg", class:"mercari_logo")
+  .shipping-message-container
+    .shipping-message1
+      = link_to root_path do
+        %i.far.fa-clock
+      発送をお待ちください
+    .shipping-message2
+      出品者からの発送通知をお待ちください
+  .item-completion-message-container
+    .item-completion-message
+      購入が完了しました
+  .buy-item-container
+    .item-photo
+      = image_tag("m89940654731_1.jpg", class:"item-photo") 
+    .item-name
+      VIS LEE コラボホワイトデニム M
+  .buy-item-price-container
+    .buy-item-price
+      ¥6,200
+    .buy-item-tax
+      送料込み
+  .shipping-address-container
+    .shipping-address-head
+      配送先
+    .shipping-address
+      〒111-1111
+      神奈川県横浜市中央区1-1-1
+    .shipping-name
+      山田 花子
+  .method-of-payment-container
+    .method-of-payment-head
+      支払い方法
+    .method-of-payment
+  .after-shipping
+  .footer-container
+
+  = render "layouts/single-footer"
+  

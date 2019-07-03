@@ -10,17 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190701062133) do
+ActiveRecord::Schema.define(version: 20190701084441) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "zip",         null: false
-    t.integer  "prefectures", null: false
-    t.string   "city",        null: false
-    t.string   "block",       null: false
+    t.string   "zip",             null: false
+    t.integer  "prefectures",     null: false
+    t.string   "city",            null: false
+    t.string   "block",           null: false
     t.string   "building"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "user_id",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "user_id",         null: false
+    t.string   "first_name",      null: false
+    t.string   "last_name",       null: false
+    t.string   "first_name_kana", null: false
+    t.string   "last_name_kana",  null: false
+    t.string   "tel"
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
@@ -109,6 +114,9 @@ ActiveRecord::Schema.define(version: 20190701062133) do
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.integer  "user_id",                                   null: false
+    t.string   "card_yy",                                   null: false
+    t.string   "card_mm",                                   null: false
+    t.string   "card_sec_id",                               null: false
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 
@@ -135,11 +143,5 @@ ActiveRecord::Schema.define(version: 20190701062133) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "comments", "items"
-  add_foreign_key "comments", "users"
   add_foreign_key "item_images", "items"
-  add_foreign_key "items", "brands"
-  add_foreign_key "items", "categories"
-  add_foreign_key "items", "users"
-  add_foreign_key "order_statuses", "items"
 end
