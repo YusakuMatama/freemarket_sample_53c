@@ -29,7 +29,14 @@ class ItemsController < ApplicationController
     
     items_params
     @item = Item.new(@params_item)
+   
     if @item.save 
+      params.require(:item).require(:item_images_attributes).each do |image|
+        Item.item_images.create(image: image, item_id: :id)
+        # ぷろぐらむ
+      end
+
+
       @item_status = OrderStatus.create(status: 1, item_id: Item.all.last().id)
 
       # if @params_images.present?
@@ -54,7 +61,7 @@ def items_params
     @params_brand = @params_brand[:id]
   end
 
-  @params_item = params.require(:item).permit(:name, :detail, :condition, :delivery_cost, :delivery_prefecture, :days_to_ship, :delivery_method, :price, item_images_attributes: [:image]).merge(user_id: 1, sales_condition: 1, category_id: @params_category[:id], brand_id: @params_brand)
+  @params_item = params.require(:item).permit(:name, :detail, :condition, :delivery_cost, :delivery_prefecture, :days_to_ship, :delivery_method, :price, item_images_attributes: {image: []}).merge(user_id: 1, sales_condition: 1, category_id: @params_category[:id], brand_id: @params_brand)
   params_int(@params_item)
 end
 
@@ -62,8 +69,11 @@ def params_int(model_params)
   model_params.each do |key,value|
     unless key == "item_images_attributes" 
       if integer_string?(value)
-        model_params[key]=value.to_i
+        model_params[key] = value.to_i
       end
+    end
+    if key == "item_images_attributes"
+      model_params[key] = value 
     end
   end
 end

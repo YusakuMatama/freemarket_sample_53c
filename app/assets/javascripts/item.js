@@ -1,19 +1,36 @@
 $(document).on('turbolinks:load', function(){
+
+
+function display_image(files){
+  reader = new FileReader();
+  display_preview = $("#preview");
+
+// ファイル読み込みが完了した際のイベント登録
+reader.onload = (function(files) {
+return function(e) {
+  //既存のプレビューを削除
+  // .prevewの領域の中にロードした画像を表示するimageタグを追加
+  display_preview.append($('<img>').attr({
+            src: e.target.result,
+            width: "114px",
+            class: "preview",
+            title: files.name
+        }));
+
+};
+})(files);
+reader.readAsDataURL(files);
+};
+
 //drop zoneの実装
 function handleFileSelect(evt) {
   evt.stopPropagation();
   evt.preventDefault();
 
-  files = evt.dataTransfer.files; // FileList object.
-
-  // 以下に必要なFile Objectのプロパティを記述
+  $files = evt.dataTransfer.files[0];
+  console.log($files);
+  display_image($files);
   var output = [];
-  for (var i = 0, f; f = files[i]; i++) {
-    output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                f.size, ' bytes, last modified: ',
-                f.lastModifiedDate.toLocaleDateString(), '</li>');
-  }
-  document.getElementById('drop-box_text').innerHTML = '<ul>' + output.join('') + '</ul>';
 }
 
 function handleDragOver(evt) {
@@ -23,27 +40,26 @@ function handleDragOver(evt) {
 }
 
 // イベントリスナーを設定
-var dropZone = document.getElementById('sell-box_container');
+var dropZone = document.getElementById('file-drop-zone');
 dropZone.addEventListener('dragover', handleDragOver, false);
-dropZone.addEventListener('drop', handleFileSelect, false);  console.log("hoge");
+dropZone.addEventListener('drop', handleFileSelect, false);
 
-function file_upload(){
-  let formdata = new FormData($('.new_item').get(0));
-  var url = (window.location.href);
-  if($('input[name="item[item_images_attributes][0][image]"]').val() == ""){
-    formdata.append('item[item_images_attributes][0][image]',files[0])    
+$('.new_item').on('submit', function(e){
+  e.preventDefault();  
+  let formdata = new FormData(this);
+  if(typeof $files != 'undefined'){
+    formdata.append('item[item_images_attributes][0][image]',$files);
   }
-  console.log(url);
-  console.log(formdata);
+  console.log("ajax");
 
   $.ajax({
-    url: url,
+    url: 'http://localhost:3000/items',
     type: "POST",
     data: formdata,
     cache: false,
     processData: false,
     contentType: false,
-    dqtaType: 'html'
+    dataType: 'html'
   })
 
   .done(function(data, textStatus, jqXHR){
@@ -51,18 +67,28 @@ function file_upload(){
   })
   .fail(function(jqXHR, textStatus, errorThrown){
     console.log("fail");
-  })
-}
+    console.log("XMLHttpRequest : " + XMLHttpRequest.status);
+    console.log("textStatus     : " + textStatus);
+    console.log("errorThrown    : " + errorThrown.message);
+    })
+});
+
+$('input[type="file"]').on('change', function(e){
+  console.log("1");
+  var image_file = e.target.files[0];
+  display_image(image_file);
+  console.log(image_file);
+});
 
 $(".price_input").on("keyup", function(){
   $(".right-price").empty();
   $(".right-price-maney").empty();
 
-  var input = $(".price_input").val();
-  var fee = $(".right-price");
-  var fee_maney = Math.floor(input * 0.1);
-  var maney = $(".right-price-maney");
-  var maney_maney = "¥" + (input - fee_maney);
+  var input = $(".price_input").val(),
+      fee = $(".right-price"),
+      fee_maney = Math.floor(input * 0.1),
+      maney = $(".right-price-maney"),
+      maney_maney = "¥" + (input - fee_maney);
   if (input >= 300 && input <= 9999999){
   fee.append(fee_maney);
   maney.append(maney_maney);
@@ -71,40 +97,7 @@ $(".price_input").on("keyup", function(){
     fee.append("-----");
     maney.append("-----");
   }
-
-
 });
 
 });
 
-// function file_upload()
-// {
-//     // フォームデータを取得
-//     let formdata = () => new FormData($('#my_form').get(0));
-//     // ファイルが未登録なら一番最初のファイルを追加
-//     // 複数ファイルアップロードの場合ここを修正
-//     if($('input[name="upload_file"]').val() == ""){
-//       formdata.append('upload_file',files[0])
-//     }
-
-//     //非同期通信
-//     $.ajax({
-//         url  : "/upload2",
-//         type : "POST",
-//         data : formdata,
-//         cache       : false,
-//         contentType : false,
-//         processData : false,
-//         dataType: 'html',
-
-//     })
-//     .done(function(data, textStatus, jqXHR){
-//         console.log(data);
-//     })
-//     .fail(function(jqXHR, textStatus, errorThrown){
-//         console.log("fail");
-//     })
-//     .always(function(data){
-//         console.log("complete")
-//     });
-// }
