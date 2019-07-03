@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  # devise_for :users
+
+  devise_for :users,
+  controllers: {
+  registrations: 'users/registrations',
+  omniauth_callbacks: 'users/omniauth_callbacks'
+  }
+
   root "tops#index"
   get 'mypage/identification' => 'users#identification'
   get 'mypage/card' => 'users#card'
