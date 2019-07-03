@@ -13,25 +13,25 @@ class ItemsController < ApplicationController
   end
 
   def sell
-    @item = Item.new
-    @item.build_brand
-    @item.build_category
-    @item.item_images.build
-    @category = Category.all
-    @brand = Brand.all
+    @items = Item.new
+    @items.build_brand
+    @items.build_category
+    @items.item_images.build
+    @categories = Category.all
+    @brands = Brand.all
 
     # @item.build_order_statu
   end
 
   def create
-    @category = Category.all
-    @brand = Brand.all
+    @categories = Category.all
+    @brands = Brand.all
     
     items_params
-    @item = Item.new(@params_item)
+    @items = Item.new(@params_item)
    
-    if @item.save 
-      @item_status = OrderStatus.create(status: 1, item_id: Item.all.last().id)
+    if @items.save 
+      @items_status = OrderStatus.create(status: 1, item_id: Item.all.last().id)
       redirect_to root_path
     else
       render :sell
@@ -40,17 +40,17 @@ class ItemsController < ApplicationController
 
 private
 def items_params
-  @params_category = params.require(:item).require(:category_attributes).permit(:id)
+  @params_categories = params.require(:item).require(:category_attributes).permit(:id)
 
-  @params_brand = params.require(:item).require(:brand_attributes).permit(:name)
-  @params_brand = @brand.find_by(name: @params_brand[:name])
+  @params_brands = params.require(:item).require(:brand_attributes).permit(:name)
+  @params_brands = @brands.find_by(name: @params_brands[:name])
 
-  if @params_brand.present?
-    @params_brand = @params_brand[:id]
+  if @params_brands.present?
+    @params_brands = @params_brands[:id]
   end
 
-  @params_item = params.require(:item).permit(:name, :detail, :condition, :delivery_cost, :delivery_prefecture, :days_to_ship, :delivery_method, :price, item_images_attributes: {image: []}).merge(user_id: 1, sales_condition: 1, category_id: @params_category[:id], brand_id: @params_brand)
-  params_int(@params_item)
+  @params_items = params.require(:item).permit(:name, :detail, :condition, :delivery_cost, :delivery_prefecture, :days_to_ship, :delivery_method, :price, item_images_attributes: {image: []}).merge(user_id: 1, sales_condition: 1, category_id: @params_categories[:id], brand_id: @params_brands)
+  params_int(@params_items)
 end
 
 def params_int(model_params)
@@ -79,5 +79,5 @@ end
 
 private
 def set_item
-  @item = Item.find(params[:id])
+  @items = Item.find(params[:id])
 end
