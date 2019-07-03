@@ -19,8 +19,6 @@ class ItemsController < ApplicationController
     @items.item_images.build
     @categories = Category.all
     @brands = Brand.all
-
-    # @item.build_order_statu
   end
 
   def create
@@ -75,9 +73,8 @@ rescue ArgumentError
   false
 end
 
+def set_item
+  @item = Item.find(params[:id])
 end
 
-private
-def set_item
-  @items = Item.find(params[:id])
 end

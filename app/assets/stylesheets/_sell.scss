@@ -2,7 +2,6 @@
   background-color: rgb(245, 245, 245);
   .main-contents {
     min-height: 2400px;
-    // height : 2100px;
     width: 100%;
     &__conteiner {
       min-height: 2400px;
@@ -128,7 +127,6 @@
         
         &-detail {
           height: 299px;
-          // height : 180px;
           width: 620px;
           padding: 88px 40px 40px;
           border-bottom: solid 1px rgb(245, 245, 245);
@@ -186,7 +184,6 @@
 
         &-shipping-method {
           min-height: 409px;
-          // height : 290px;
           width: 617px;
           padding: 40px;
           border-bottom: solid 1px rgb(245, 245, 245);
