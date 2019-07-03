@@ -37,7 +37,7 @@
               font-size: 13px;
               margin-top: 3px;
             }
-            #sell-box_container {
+            .sell-box_container {
               height: 162px;
               width: 620px;
               margin-top: 8px;
@@ -46,7 +46,7 @@
               border-width: 1px;
               border-color: rgb(209, 209, 209);
               cursor: pointer;
-              #sell-box_container_drop-box {
+              .sell-box_container_drop-box {
                 min-height: 160px;
                 background: #f5f5f5;
                 border: 1px dashed #ccc;
@@ -58,6 +58,7 @@
                   font-size: 13px;
                   text-align: center;
                   font-size: 14px;
+                  display: block;
                 }
               }
             }
@@ -65,9 +66,9 @@
         }
         .file-send-btn{
           height: 162px;
-          cursor: pointer;
+          display: none;
         }
-        .file-drop-zone{
+        #file-drop-zone{
           width: 620px;
           height: 162px;
           display: block;

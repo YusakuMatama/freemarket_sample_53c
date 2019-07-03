@@ -13,13 +13,15 @@
                 %span.required-tag 必須
               .sell-upload_text-bottom
                 最大10枚までアップロードできます
-              #sell-box_container
-                #sell-box_container_drop-box
-                  %output#drop-box_text
-                  = f.fields_for :item_images do |fin|
-                    =fin.file_field :image, class: "file-send-btn"
-                    %pドラッグアンドドロップ
+              .sell-box_container
+                .sell-box_container_drop-box
+                  #drop-box_text
+                    ドラッグアンドドロップ
                     またはクリックしてファイルをアップロード
+                    = f.fields_for :item_images do |fin|
+                      %label#file-drop-zone
+                        =fin.file_field :image, class: "file-send-btn", multiple: true
+                        #preview
                       
             .sell-content
               .form_item-name
