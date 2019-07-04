@@ -1,10 +1,13 @@
 class Item < ApplicationRecord
-  belongs_to :user
+  # belongs_to :user  deviseの実装後にコメントアウトを消す
   belongs_to :category
   belongs_to :brand, optional: true
   has_one :order_status, dependent: :destroy
   has_many :item_images, dependent: :destroy
   has_many :comments
+  accepts_nested_attributes_for :brand
+  accepts_nested_attributes_for :category
+  accepts_nested_attributes_for :item_images
 
   enum condition: {"新品、未使用": 1, "未使用に近い": 2, "目立った傷や汚れなし": 3, "やや傷や汚れあり": 4, "傷や汚れあり": 5, "全体的に状態が悪い": 6}
 
