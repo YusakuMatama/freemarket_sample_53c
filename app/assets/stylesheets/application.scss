@@ -1,5 +1,7 @@
 @import "font-awesome";
 @import "font-awesome-sprockets";
+@import "slick";
+@import "slick-theme";
 @import "config/colors";
 @import "config/reset";
 @import "config/variables";
@@ -21,8 +23,6 @@
 @import "identification";
 @import "sell";
 @import "registration";
-@import "credit";
-@import "sns";
 @import "main";
 @import "logout";
 @import "login";
@@ -31,3 +31,5 @@
 @import "item";
 @import "buy";
 @import "completion";
+@import "nsignup";
+@import "signin";

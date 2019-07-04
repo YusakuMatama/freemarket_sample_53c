@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show]
 
   def index
     
@@ -9,7 +10,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
   end
 
   def sell
@@ -34,4 +34,9 @@ class ItemsController < ApplicationController
     @status.update(status: 3)
     redirect_to '/items/1' #このパスは仮置き
   end
+end
+
+private
+def set_item
+  @item = Item.find(params[:id])
 end

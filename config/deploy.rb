@@ -22,6 +22,7 @@ set :repo_url, "git@github.com:53-c/freemarket_sample_53c.git"
 
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml"
+set :linked_files, %w{ config/secrets.yml }
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
@@ -32,6 +33,14 @@ set :rbenv_ruby, '2.5.1' #カリキュラム通りに進めた場合、2.5.1か2
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :default_env, {
+  rbenv_root: "/usr/local/rbenv",
+  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
+  AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
+  AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"],
+  PAYJP_TEST_SECRET_KEY: ENV["PAYJP_TEST_SECRET_KEY"],
+  PAYJP_TEST_PUBLIC_KEY: ENV["PAYJP_TEST_PUBLIC_KEY"]
+}
 
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }

@@ -80,3 +80,6 @@ gem 'debase','0.2.2'
 gem 'nokogiri'
 
 gem 'payjp'
+gem "jquery-slick-rails"
+gem "omniauth-google-oauth2"
+gem 'omniauth-facebook'
