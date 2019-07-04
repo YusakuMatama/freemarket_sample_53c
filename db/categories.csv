@@ -1,4 +1,4 @@
-id,created_at,updated_at,name,parent_id,grandchildren_id
+id,created_at,updated_at,name,parent_id,grandparent_id
 1,20190630,20190630,レディース,
 2,20190630,20190630,メンズ,
 3,20190630,20190630,ベビー・キッズ,
