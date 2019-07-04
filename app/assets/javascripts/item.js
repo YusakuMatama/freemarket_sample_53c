@@ -2,9 +2,14 @@ $(document).on('turbolinks:load', function(){
 
 
 function display_image(files){
-  reader = new FileReader();
-  display_preview = $("#preview");
-
+var  reader = new FileReader();
+var  display_preview = $("#preview");
+var  new_input = `
+                    <label id = "file-drop-zone1">
+                    <input class="file-send-btn" multiple="multiple" type="file" 
+                    name="item[item_images_attributes][0][image][]" id="item_item_images_attributes_0_image">
+                    <id = "preview" >
+                  `
 // ファイル読み込みが完了した際のイベント登録
 reader.onload = (function(files) {
 return function(e) {
@@ -16,10 +21,25 @@ return function(e) {
             class: "preview",
             title: files.name
         }));
-
 };
 })(files);
 reader.readAsDataURL(files);
+$("#file-drop-zone").css({
+  "width" : "20%",
+  "float" : "right",
+  "pointer-events": "none"
+});
+// $("#file-drop-zone").remove();
+$(".sell-box_container__drop-box__text__second").append(new_input);
+$("#file-drop-zone1").css({
+  "width" : "80%",
+  "display" : "block",
+  "float" : "left",
+  "height" : "162px"
+
+});
+
+
 };
 
 //drop zoneの実装
@@ -29,6 +49,7 @@ function handleFileSelect(evt) {
 
   $files = evt.dataTransfer.files[0];
   display_image($files);
+
 }
 
 function handleDragOver(evt) {
@@ -78,15 +99,17 @@ $(".price_input").on("keyup", function(){
       fee = $(".right-price"),
       fee_maney = Math.floor(input * 0.1),
       maney = $(".right-price-maney"),
-      maney_maney = "¥" + (input - fee_maney);
-  if (input >= 300 && input <= 9999999){
-  fee.append(fee_maney);
-  maney.append(maney_maney);
-  }
-  else {
-    fee.append("-----");
-    maney.append("-----");
-  }
+      get_maney = (input - fee_maney).toLocaleString();
+      chn_get_maney = "¥" + get_maney;
+
+      if (input >= 300 && input <= 9999999){
+        fee.append(fee_maney.toLocaleString());
+        maney.append(chn_get_maney);
+        }
+      else {
+        fee.append("-----");
+        maney.append("-----");
+      }
 });
 
 });

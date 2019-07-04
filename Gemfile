@@ -81,6 +81,7 @@ gem 'nokogiri'
 
 gem 'payjp'
 gem "jquery-slick-rails"
+gem "gon"
 
 gem 'gretel'
 gem "omniauth-google-oauth2"
