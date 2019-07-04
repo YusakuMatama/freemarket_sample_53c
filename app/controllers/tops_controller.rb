@@ -8,10 +8,6 @@ class TopsController < ApplicationController
     @user = "hoge"
   end
 
-  def new
-    @top = "hoge"
-  end
-
   def edit
     @user = "hoge"
   end
