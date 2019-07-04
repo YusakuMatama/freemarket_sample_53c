@@ -4,7 +4,7 @@ class CreateUserEvaluations < ActiveRecord::Migration[5.0]
       t.integer :high_count
       t.integer :medium_count
       t.integer :low_count
-      t.integer :user_id ,null: false ,index: true ,foreign_key: true
+      t.references :user, null: false ,index: true, foreign_key: true
       t.text :comment
       t.timestamps
     end

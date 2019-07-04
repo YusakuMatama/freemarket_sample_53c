@@ -9,10 +9,13 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
       t.date :birthday ,null: false
       t.string :tel
       t.string :card_id ,null: false
+      t.string :card_yy ,null: false
+      t.string :card_mm ,null: false
+      t.string :card_sec_id ,null: false
       t.integer :money ,null: false ,default:0
       t.integer :point ,null: false ,default:0
       t.text :comment
-      t.integer :user_id ,null: false, index: true ,foreign_key: true
+      t.references :user ,null: false, index: true, foreign_key: true
       t.timestamps
     end
   end
