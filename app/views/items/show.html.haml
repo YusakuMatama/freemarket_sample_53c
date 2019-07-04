@@ -1,0 +1,363 @@
+.all-container
+  = render "layouts/header"
+  
+  .main-container
+    .item-container
+      .item-name
+        = @item.name
+      .item-category
+        .item-category__image
+          .owl-carousel.owl-loaded.owl-drag
+            - @item.item_images.each do |image|
+              .owl-stage-outer
+                = image_tag image.image.url, width: "300", height: "300"
+                - unless @item.sales_condition
+                  .item-category__image__none-sold
+                - else
+                  .item-category__image__sold-out-top
+                    .sold-out-text-top SOLD
+        .item-category__list
+          .item-category__list__container
+            .item-wrap
+              .item-wrap__title
+                出品者
+              .item-wrap__detail
+                .item-wrap__detail__name
+                  = link_to "#{@item.user.profile.nickname}", "/"
+                .item-wrap__detail__iine
+                  .item-wrap__detail__iine__high
+                    = link_to root_path do
+                      %i.far.fa-grin
+                      3
+                  .item-wrap__detail__iine__normal
+                    = link_to root_path do
+                      %i.far.fa-meh
+                      5
+
+                  .item-wrap__detail__iine__low
+                    = link_to root_path do
+                      %i.far.fa-frown-open
+                      1
+            .item-wrap
+              .item-wrap__category
+                カテゴリー
+              .item-wrap__detail
+                - if !@item.category.parent_id
+                  = link_to "/" do
+                    .item-wrap__detail__name
+                      = @item.category.name
+                - elsif !@item.category.parent.parent_id
+                  = link_to "/" do
+                    .item-wrap__detail__name
+                      = @item.category.parent.name
+                  = link_to "/" do
+                    .item-wrap__detail__name
+                      %i.fas.fa-angle-right
+                      = @item.category.name
+                - else
+                  = link_to "/" do
+                    .item-wrap__detail__name
+                      = @item.category.parent.parent.name
+                  = link_to "/" do
+                    .item-wrap__detail__name
+                      %i.fas.fa-angle-right
+                      = @item.category.parent.name
+                  = link_to "/" do
+                    .item-wrap__detail__name
+                      %i.fas.fa-angle-right
+                      = @item.category.name
+            .item-wrap
+              .item-wrap__brand
+                ブランド
+              .item-wrap__info
+                = link_to "/" do
+                  .brand-name
+                    - if @item.brand_id.present?
+                      = @item.brand.name
+                    - else
+                      .no-name
+            .item-wrap
+              .item-wrap__condition
+                商品の状態
+              .item-wrap__info
+                = @item.condition
+            .item-wrap
+              .item-wrap__tax
+                配送料の負担
+              .item-wrap__info
+                = @item.delivery_cost
+            .item-wrap
+              .item-wrap__send
+                配送の方法
+              .item-wrap__info
+                = @item.delivery_method
+            .item-wrap
+              .item-wrap__ken
+                発送元地域
+              .item-wrap__info
+                = @item.delivery_prefecture
+            .item-wrap
+              .item-wrap__day
+                発送日の目安
+              .item-wrap__info
+                = @item.days_to_ship
+    .item-price-container
+      .item-price
+        #{number_to_currency(@item.price, :unit => "¥ ", :precision => 0)}
+      .item-tax
+        (税込)
+      .item-tax__shipping
+        - if @item.delivery_cost=="送料込み(出品者負担)"
+          送料込み
+        - else
+          着払い
+    .buy-button-container
+      - unless @item.sales_condition
+        .buy-button
+          = link_to new_item_path do
+            購入画面に進む
+      -else
+        .buy-button-sold
+          売り切れました
+    .item-description-container
+      .item-description
+        = safe_join(@item.detail.split("\n"), tag(:br))
+    .for-item-button-zone
+      %button.left-iine-button
+        .heart
+          ♡
+        .iine
+          いいね!
+        .count
+          10
+      .middle-report-button
+        .middle-report
+          %i.far.fa-flag
+          不適切な商品の報告
+      .right-report-button
+        = link_to root_path do
+          %i.fas.fa-lock
+          .right-report-message
+            あんしん・あんぜんへの取り組み
+
+    .parent-own-item-container
+      - unless @item.sales_condition
+        = link_to "商品の編集", edit_item_path(@item), class: "parent-own-item-container__edit"
+        .parent-own-item-container__or
+          or
+        - unless @item.sales_condition == 0
+          = link_to "出品を停止する", "#", class: "parent-own-item-container__close"
+        - else
+          = link_to "出品を再開する", "#", class: "parent-own-item-container__open"
+      = link_to "商品を削除する", "/items/#{@item.id}", method: :delete, class: "parent-own-item-container__delete-btn"
+
+  .coment-form-container
+    %form.form{:action => "/test", method: "post"}
+      .precautionary-note
+        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      %div
+        %textarea.textarea#message{placeholder: ""}
+      %div
+        %input.input{:type => "submit", :value => "コメントする"}/
+  .left-and-right-link-tag-container
+    .left-link-tag
+      .p < ZARA シャツ 新品
+    .right-link-tag
+      .p 親も年とってまいりましたコミックエッセイ >
+  .icon-line-facebook-container
+    .icon-line-facebook
+      %ul.header__lists
+        %li.list
+          = link_to root_path do
+            %i.fab.fa-twitter-square
+        %li.list
+          = link_to root_path do
+            %i.fab.fa-facebook-square
+        %li.list
+          = link_to root_path do
+            %i.fab.fa-line
+        %li.list
+          = link_to root_path do
+            %i.fab.fa-paypal
+  .other-product-container
+    .product-container
+      %h3.product-container__title
+        = link_to '出品者', root_path, class: 'product-container__title__link-btn'          
+      .product-container__contents
+        .product-container__contents__child
+          = link_to image_tag('ladies.jpg', class: 'product-container__contents__child__image-size'), root_path, class: 'product-container__contents__child__image-block-size'
+          .product-container__contents__child__body
+            .product-container__contents__child__body__name
+              手袋新品コレアーレグローブス Correale gloves ラビットファー
+            .product-container__contents__child__body__info
+              .product-container__contents__child__body__info__price
+                ¥ 900
+              .product-container__contents__child__body__info__iine
+                %i.fa.fa-heart
+                1
+            .product-container__contents__child__body__tax
+              (税込)
+
+        .product-container__contents__child
+          = link_to image_tag('ladies.jpg', class: 'product-container__contents__child__image-size'), root_path, class: 'product-container__contents__child__image-block-size'
+          .product-container__contents__child__body
+            .product-container__contents__child__body__name
+              手袋新品コレアーレグローブス Correale gloves ラビットファー
+            .product-container__contents__child__body__info
+              .product-container__contents__child__body__info__price
+                ¥ 900
+              .product-container__contents__child__body__info__iine
+                %i.fa.fa-heart
+                1
+            .product-container__contents__child__body__tax
+              (税込)
+
+        .product-container__contents__child
+          = link_to image_tag('ladies.jpg', class: 'product-container__contents__child__image-size'), root_path, class: 'product-container__contents__child__image-block-size'
+          .product-container__contents__child__body
+            .product-container__contents__child__body__name
+              手袋新品コレアーレグローブス Correale gloves ラビットファー
+            .product-container__contents__child__body__info
+              .product-container__contents__child__body__info__price
+                ¥ 900
+              .product-container__contents__child__body__info__iine
+                %i.fa.fa-heart
+                1
+            .product-container__contents__child__body__tax
+              (税込)
+
+    .product-container
+      .product-container__contents
+        .product-container__contents__child
+          = link_to image_tag('ladies.jpg', class: 'product-container__contents__child__image-size'), root_path, class: 'product-container__contents__child__image-block-size'
+          .product-container__contents__child__body
+            .product-container__contents__child__body__name
+              手袋新品コレアーレグローブス Correale gloves ラビットファー
+            .product-container__contents__child__body__info
+              .product-container__contents__child__body__info__price
+                ¥ 900
+              .product-container__contents__child__body__info__iine
+                %i.fa.fa-heart
+                1
+            .product-container__contents__child__body__tax
+              (税込)
+
+        .product-container__contents__child
+          = link_to image_tag('ladies.jpg', class: 'product-container__contents__child__image-size'), root_path, class: 'product-container__contents__child__image-block-size'
+          .product-container__contents__child__body
+            .product-container__contents__child__body__name
+              手袋新品コレアーレグローブス Correale gloves ラビットファー
+            .product-container__contents__child__body__info
+              .product-container__contents__child__body__info__price
+                ¥ 900
+              .product-container__contents__child__body__info__iine
+                %i.fa.fa-heart
+                1
+            .product-container__contents__child__body__tax
+              (税込)
+
+        .product-container__contents__child
+          = link_to image_tag('ladies.jpg', class: 'product-container__contents__child__image-size'), root_path, class: 'product-container__contents__child__image-block-size'
+          .product-container__contents__child__body
+            .product-container__contents__child__body__name
+              手袋新品コレアーレグローブス Correale gloves ラビットファー
+            .product-container__contents__child__body__info
+              .product-container__contents__child__body__info__price
+                ¥ 900
+              .product-container__contents__child__body__info__iine
+                %i.fa.fa-heart
+                1
+            .product-container__contents__child__body__tax
+              (税込)
+    .product-container
+      %h3.product-container__title
+        = link_to '出品者', root_path, class: 'product-container__title__link-btn'          
+      .product-container__contents
+        .product-container__contents__child
+          = link_to image_tag('ladies.jpg', class: 'product-container__contents__child__image-size'), root_path, class: 'product-container__contents__child__image-block-size'
+          .product-container__contents__child__body
+            .product-container__contents__child__body__name
+              手袋新品コレアーレグローブス Correale gloves ラビットファー
+            .product-container__contents__child__body__info
+              .product-container__contents__child__body__info__price
+                ¥ 900
+              .product-container__contents__child__body__info__iine
+                %i.fa.fa-heart
+                1
+            .product-container__contents__child__body__tax
+              (税込)
+
+        .product-container__contents__child
+          = link_to image_tag('ladies.jpg', class: 'product-container__contents__child__image-size'), root_path, class: 'product-container__contents__child__image-block-size'
+          .product-container__contents__child__body
+            .product-container__contents__child__body__name
+              手袋新品コレアーレグローブス Correale gloves ラビットファー
+            .product-container__contents__child__body__info
+              .product-container__contents__child__body__info__price
+                ¥ 900
+              .product-container__contents__child__body__info__iine
+                %i.fa.fa-heart
+                1
+            .product-container__contents__child__body__tax
+              (税込)
+
+        .product-container__contents__child
+          = link_to image_tag('ladies.jpg', class: 'product-container__contents__child__image-size'), root_path, class: 'product-container__contents__child__image-block-size'
+          .product-container__contents__child__body
+            .product-container__contents__child__body__name
+              手袋新品コレアーレグローブス Correale gloves ラビットファー
+            .product-container__contents__child__body__info
+              .product-container__contents__child__body__info__price
+                ¥ 900
+              .product-container__contents__child__body__info__iine
+                %i.fa.fa-heart
+                1
+            .product-container__contents__child__body__tax
+              (税込)
+
+    .product-container
+      .product-container__contents
+        .product-container__contents__child
+          = link_to image_tag('ladies.jpg', class: 'product-container__contents__child__image-size'), root_path, class: 'product-container__contents__child__image-block-size'
+          .product-container__contents__child__body
+            .product-container__contents__child__body__name
+              手袋新品コレアーレグローブス Correale gloves ラビットファー
+            .product-container__contents__child__body__info
+              .product-container__contents__child__body__info__price
+                ¥ 900
+              .product-container__contents__child__body__info__iine
+                %i.fa.fa-heart
+                1
+            .product-container__contents__child__body__tax
+              (税込)
+
+        .product-container__contents__child
+          = link_to image_tag('ladies.jpg', class: 'product-container__contents__child__image-size'), root_path, class: 'product-container__contents__child__image-block-size'
+          .product-container__contents__child__body
+            .product-container__contents__child__body__name
+              手袋新品コレアーレグローブス Correale gloves ラビットファー
+            .product-container__contents__child__body__info
+              .product-container__contents__child__body__info__price
+                ¥ 900
+              .product-container__contents__child__body__info__iine
+                %i.fa.fa-heart
+                1
+            .product-container__contents__child__body__tax
+              (税込)
+
+        .product-container__contents__child
+          = link_to image_tag('ladies.jpg', class: 'product-container__contents__child__image-size'), root_path, class: 'product-container__contents__child__image-block-size'
+          .product-container__contents__child__body
+            .product-container__contents__child__body__name
+              手袋新品コレアーレグローブス Correale gloves ラビットファー
+            .product-container__contents__child__body__info
+              .product-container__contents__child__body__info__price
+                ¥ 900
+              .product-container__contents__child__body__info__iine
+                %i.fa.fa-heart
+                1
+            .product-container__contents__child__body__tax
+              (税込)
+
+  =render "layouts/aside"
+  =render "layouts/footer"

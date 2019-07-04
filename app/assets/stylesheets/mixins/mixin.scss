@@ -5,3 +5,338 @@
     display: block;
   }
 }
+
+@mixin table(){
+    font-size: 14px;
+    padding: 0 8px;
+    text-align: left;
+    font-weight: 400;          
+    background: #fafafa;
+    border-collapse: collapse;
+    border: 1px solid #f5f5f5;
+    box-sizing: border-box;          
+}
+
+@mixin table-info(){
+  padding: 8px;
+  text-align: left;
+  font-weight: 400;          
+  border-collapse: collapse;
+  border: 1px solid #f5f5f5;
+  box-sizing: border-box;          
+}
+
+@mixin footerContent {
+  display: block;
+  margin-top: 18px;
+  width: auto;
+  float: left;
+}
+
+@mixin buttont{
+  .btn-default {
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    text-align: center;
+    .btn-red {
+    background: #ea352d;
+    border: 1px solid #ea352d;
+    color: #fff;
+    padding: 0;
+    text-decoration: none;
+    }
+    .btn-mail {
+      position: relative;
+      background: #eee;
+      color: #000;
+      padding: 0;
+      border: 1px solid transparent;
+      margin-bottom: 16px;
+      i {
+        color: #ccc;
+        font-size: 20px;
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        transform: translate(0, -50%);
+      }
+    }
+    .btn-sns {
+      position: relative;
+      i {
+        font-size: 26px;
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        transform: translate(0, -50%);
+      }
+      .btn-sns-facebook {
+      margin: 0px 0 0;
+      background: #385185;
+      color: #fff;
+      padding: 0;
+      text-decoration: none;
+      }
+      .btn-sns-google {
+      margin: 16px 0 0;
+      background: #fff url(https://www.mercari.com/jp/assets/img/common/common/google.svg) no-repeat 3px top;
+      border: #979797 solid 1px;
+      color: #333;
+      padding: 0;
+      text-decoration: none;
+      }
+    }
+  }
+}
+
+@mixin link($color) {
+  color: $color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@mixin fadeout() {
+  &:after {
+    display: block;
+    content: '';
+    position: absolute;
+    bottom: 46px;
+    right: 0;
+    width: 50%;
+    height: 1.5em;
+    background: -webkit-gradient(linear, left top, right top, from(rgba(255,255,255,0)), color-stop(72%, #fff));
+    background: linear-gradient(to right, rgba(255,255,255,0), #fff 72%);
+  }
+}
+
+@mixin visual-size($url) {
+  width: 100%;
+  height: 390px;
+  background-image: url($url);
+}
+
+@mixin face($color) {
+  color: $color;
+  font-size: 16px;
+}
+
+@mixin btn() {
+  display: inline-block;
+  color: #333;
+  border: 1px solid #f5f5f5;
+  background: #f5f5f5;
+  padding: 8px 16px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+@mixin sns-icon($color) {
+  background-color: $color;
+  border-radius: 4px;
+  text-decoration: none;
+  line-height: 44px;
+  height: 44px;
+  width: 44px;
+  display: inline-block;
+}
+
+@mixin items-new() {
+  box-sizing: border-box;
+  background-color: $white;
+  margin: 0 auto 2px;
+  color: $black;
+  width: 700px;
+  font-size: 14px;
+  vertical-align: middle;
+
+    span {
+    margin: 0;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 16px;
+    position: relative;
+    line-height: 1;
+    .require {
+      background-color: $red;
+      border-radius: 2px;
+      font-size: 12px;
+      color: $white;
+      padding: 3px;
+      position: absolute;
+      top: -1px;
+      right: -40px;
+      line-height: 1;
+    }
+  }
+}
+
+@mixin new-item-form($width) {
+  outline: 0;
+  background: $white;
+  font-size: 16px;
+  border: 1px solid $silver;
+  line-height: 1.5;
+  margin-top: 8px;
+  width: ($width);
+}
+
+@mixin mypage-btn() {
+  height: 38px;
+  float: left;
+  vertical-align: middle;
+  line-height: 34px;
+  font-size: 14px;
+  margin-left: 20px;
+  color: $black;
+}
+
+@mixin header-btn() {
+  text-decoration: none;
+  color: $black;
+  font-size: 14px;
+  font-weight: 400px;
+}
+
+@mixin header-nav() {
+  color: $black;
+  font-size: 14px;
+  line-height: 33px;
+  margin-left: 8px;
+  float: right;
+}
+
+@mixin btn-default() {
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+}
+
+@mixin btn-icon() {
+  position: absolute;
+  top: 15px;
+  left: 16px;
+  font-size: 20px;
+}
+
+@mixin input-default() {
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid $mail-icon;
+  background-color: $white;
+  line-height: 1.5;
+  font-size: 16px;
+  width: 100%;
+}
+
+@mixin require-label {
+  background-color: $red-btn;
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: $white;
+  font-size: 12px;
+  vertical-align: top;
+}
+
+@mixin moving-dot {
+  height: 12px;
+  width: 12px;
+  margin: 8px auto 0;
+  border-radius: 50%;
+  background-color: $mail-icon;
+}
+
+@mixin moving-bar {
+  position: absolute;
+  bottom: 5px;
+  z-index: -1;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background-color: $mail-icon;
+}
+
+@mixin select-default() {
+  position: relative;
+  z-index: 2;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid $mail-icon;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+@mixin textarea-default() {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid $mail-icon;
+  background-color: $white;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@mixin user-profile-main-content() {
+    float: left;
+    width: calc(100vw - 742px);
+    height: 100%;
+}
+
+@mixin items-comment-btn() {
+  background-color: $item-comment-btn;
+  margin-top: 8px;
+  color: $white;
+  height: 48px;
+  font-size: 14px;
+  width: 652px;
+}
+
+@mixin modal-btn() {
+  line-height: 63px;
+  cursor: pointer;
+  border-top: 1px solid $mail-icon;
+  width: 50%;
+  text-align: center;
+}
+
+@mixin input-default() {
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid $mail-icon;
+  background-color: $white;
+  line-height: 1.5;
+  font-size: 16px;
+  width: 100%;
+}
+
+@mixin lightBlue-underline {
+  color: #0099e8;
+  text-decoration: none;
+  &:hover {
+    opacity: 0.7;
+    border-bottom: 1px solid #0099e8;
+  }
+}
+@mixin icon {
+  display: inline-block;
+  margin: 0 8px 8px 0;
+  vertical-align: middle;
+  text-align: center;
+}

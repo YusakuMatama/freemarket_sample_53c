@@ -1,0 +1,16 @@
+.container
+  = render "layouts/header"
+  %nav.bread-crumb
+    - breadcrumb :logout
+    = breadcrumbs separator: " &rsaquo; "
+
+  .main-background
+    .left-content
+      = render "modules/mypage-side-navi"
+      .right-identity-information
+        %section.right-continer
+          = render 'logout'
+  .footer
+    = render "layouts/aside"
+    = render "layouts/footer"
+    = render "layouts/footer-sell-btn"

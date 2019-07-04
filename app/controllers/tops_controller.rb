@@ -13,15 +13,11 @@ class TopsController < ApplicationController
   end
 
   def show
-    @top = "hoge"
-  end
-
-  def new
-    @top = "hoge"
+    @user = "hoge"
   end
 
   def edit
-    @top = "hoge"
+    @user = "hoge"
   end
   
 end

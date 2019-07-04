@@ -1,6 +1,9 @@
 .container
-  = render "header-users"
-  = render "layouts/bread-crumbs"
+  = render "layouts/header"
+  %nav.bread-crumb
+    - breadcrumb :card
+    = breadcrumbs separator: " &rsaquo; "
+
   .main-background
     .left-content
       = render "modules/mypage-side-navi"
