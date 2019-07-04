@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show]
 
   def index
     @top = "hoge"
@@ -9,9 +10,13 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @top = "hoge"
   end
 
   def sell
   end
+end
+
+private
+def set_item
+  @item = Item.find(params[:id])
 end
