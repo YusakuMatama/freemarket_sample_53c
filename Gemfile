@@ -80,3 +80,7 @@ gem 'debase','0.2.2'
 gem 'nokogiri'
 gem "jquery-slick-rails"
 gem "gon"
+
+gem 'gretel'
+gem "omniauth-google-oauth2"
+gem 'omniauth-facebook'
