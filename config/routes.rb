@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get  'credit' => 'registrations#credit'
   get  'sns' => 'registrations#sns'
   get  'phone' => 'registrations#phone'
+
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'mypage' => 'users#show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -26,7 +28,11 @@ Rails.application.routes.draw do
   get 'tops/show' => 'tops#show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :items
+  resources :items do
+    collection do
+      post 'purchase'
+    end
+  end
   resources :tops, only: [:index, :show, :new, :edit]
   resources :users, only: [:index]
 

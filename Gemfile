@@ -78,6 +78,8 @@ gem 'fog-aws'
 gem 'ruby-debug-ide','0.7.0'
 gem 'debase','0.2.2'
 gem 'nokogiri'
+
+gem 'payjp'
 gem "jquery-slick-rails"
 gem "gon"
 
