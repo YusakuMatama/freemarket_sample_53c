@@ -4,10 +4,18 @@
   .main-container
     .item-container
       .item-name
-        VIS LEE コラボホワイトデニム M
+        = @item.name
       .item-category
         .item-category__image
-          = image_tag("pants.jpg", class:"top-item-photo") 
+          .owl-carousel.owl-loaded.owl-drag
+            - @item.item_images.each do |image|
+              .owl-stage-outer
+                = image_tag image.image.url, width: "300", height: "300"
+                - unless @item.sales_condition
+                  .item-category__image__none-sold
+                - else
+                  .item-category__image__sold-out-top
+                    .sold-out-text-top SOLD
         .item-category__list
           .item-category__list__container
             .item-wrap
@@ -15,7 +23,7 @@
                 出品者
               .item-wrap__detail
                 .item-wrap__detail__name
-                  = link_to "りょう"
+                  = link_to "#{@item.user.profile.nickname}", "/"
                 .item-wrap__detail__iine
                   .item-wrap__detail__iine__high
                     = link_to root_path do
@@ -34,58 +42,86 @@
               .item-wrap__category
                 カテゴリー
               .item-wrap__detail
-                .item-wrap__detail__name
-                  = link_to "レディース"
-                .item-wrap__detail__name--list
-                  %i.fas.fa-chevron-right
-                  = link_to "バッグ", root_path 
-
+                - if !@item.category.parent_id
+                  = link_to "/" do
+                    .item-wrap__detail__name
+                      = @item.category.name
+                - elsif !@item.category.parent.parent_id
+                  = link_to "/" do
+                    .item-wrap__detail__name
+                      = @item.category.parent.name
+                  = link_to "/" do
+                    .item-wrap__detail__name
+                      %i.fas.fa-angle-right
+                      = @item.category.name
+                - else
+                  = link_to "/" do
+                    .item-wrap__detail__name
+                      = @item.category.parent.parent.name
+                  = link_to "/" do
+                    .item-wrap__detail__name
+                      %i.fas.fa-angle-right
+                      = @item.category.parent.name
+                  = link_to "/" do
+                    .item-wrap__detail__name
+                      %i.fas.fa-angle-right
+                      = @item.category.name
             .item-wrap
               .item-wrap__brand
                 ブランド
               .item-wrap__info
-                フルラ
+                = link_to "/" do
+                  .brand-name
+                    - if @item.brand_id.present?
+                      = @item.brand.name
+                    - else
+                      .no-name
             .item-wrap
               .item-wrap__condition
                 商品の状態
               .item-wrap__info
-                目立った傷や汚れなし
+                = @item.condition
             .item-wrap
               .item-wrap__tax
                 配送料の負担
               .item-wrap__info
-                送料込み（出品者負担）
+                = @item.delivery_cost
             .item-wrap
               .item-wrap__send
                 配送の方法
               .item-wrap__info
-                らくらくメルカリ便
+                = @item.delivery_method
             .item-wrap
               .item-wrap__ken
                 発送元地域
               .item-wrap__info
-                千葉県
+                = @item.delivery_prefecture
             .item-wrap
               .item-wrap__day
                 発送日の目安
               .item-wrap__info
-                4~7日で発送
+                = @item.days_to_ship
     .item-price-container
       .item-price
-        ¥6,200
+        #{number_to_currency(@item.price, :unit => "¥ ", :precision => 0)}
       .item-tax
         (税込)
       .item-tax__shipping
-        送料込み
+        - if @item.delivery_cost=="送料込み(出品者負担)"
+          送料込み
+        - else
+          着払い
     .buy-button-container
-      .buy-button
-        = link_to new_item_path do
-          購入画面に進む
+      - unless @item.sales_condition
+        .buy-button
+          = link_to new_item_path do
+            購入画面に進む
+      -else
+        .buy-button-sold
+          売り切れました
     .item-description-container
       .item-description
-        2回だけ着ました。
-        %br
-        シミ汚れ等なく美品です。
+        = safe_join(@item.detail.split("\n"), tag(:br))
     .for-item-button-zone
       %button.left-iine-button
         .heart
@@ -103,7 +139,18 @@
           %i.fas.fa-lock
           .right-report-message
             あんしん・あんぜんへの取り組み
-              
+
+    .parent-own-item-container
+      - unless @item.sales_condition
+        = link_to "商品の編集", edit_item_path(@item), class: "parent-own-item-container__edit"
+        .parent-own-item-container__or
+          or
+        - unless @item.sales_condition == 0
+          = link_to "出品を停止する", "#", class: "parent-own-item-container__close"
+        - else
+          = link_to "出品を再開する", "#", class: "parent-own-item-container__open"
+      = link_to "商品を削除する", "/items/#{@item.id}", method: :delete, class: "parent-own-item-container__delete-btn"
+
   .coment-form-container
     %form.form{:action => "/test", method: "post"}
       .precautionary-note
