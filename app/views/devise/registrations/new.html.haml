@@ -113,7 +113,7 @@
                 %br/
                 = f.fields_for :profile, Profile.new do |profile|
                   .birthday_select
-                    = raw sprintf(profile.date_select(:birthday, use_month_numbers: true, start_year: (Time.now.year - 100), end_year: (Time.now.year), default: Time.now(), class: ".birthday_select__wrap" ,date_separator: '%s'), '年 ', '月 ') + '日'
+                    = raw sprintf(profile.date_select(:birthday, use_month_numbers: true, start_year: 1900, end_year: (Time.now.year), class: ".birthday_select__wrap" ,date_separator: '%s'), '年 ', '月 ') + '日'
                 %ul
                   %li#error-birth_date.error-notice-signin
                 .signup__forminfo
@@ -164,26 +164,24 @@
                     = address.label :お名前
                     %span.form-require 必須
                     %br/
-                    = address.text_field :last_name, autocomplete: "last_name", id: "last_name", class: "input-default", placeholder: "例）山田"
-                    %ul
-                      %li#error-last_name.error-notice-signin
+                    = address.text_field :last_name, autocomplete: "last_name", id: "d_last_name", class: "input-default", placeholder: "例）山田"
                     %br/
-                    = address.text_field :first_name, autocomplete: "first_name", id: "first_name", class: "input-default", placeholder: "例）彩"
+                    = address.text_field :first_name, autocomplete: "first_name", id: "d_first_name", class: "input-default", placeholder: "例）彩"
                     %ul
-                      %li#error-first_name.error-notice-signin
+                      %li#error-d_last_name.error-notice-signin
+                      %li#error-d_first_name.error-notice-signin
                   .address__group
                     = address.label :お名前カナ
                     %span.form-require 必須
                     %br/
-                    = address.text_field :last_name_kana, autocomplete: "last_name_kana", id: "last_name_kana", class: "input-default", placeholder: "例）ヤマダ"
-                    %ul
-                      %li#error-last_name_kana.error-notice-signin
-                      %li#error-last_name_kana1.error-notice-signin
+                    = address.text_field :last_name_kana, autocomplete: "last_name_kana", id: "d_last_name_kana", class: "input-default", placeholder: "例）ヤマダ"
                     %br/
-                    = address.text_field :first_name_kana, autocomplete: "first_name_kana", id: "first_name_kana", class: "input-default", placeholder: "例）アヤ"
+                    = address.text_field :first_name_kana, autocomplete: "first_name_kana", id: "d_first_name_kana", class: "input-default", placeholder: "例）アヤ"
                     %ul
-                      %li#error-first_name_kana.error-notice-signin
-                      %li#error-first_name_kana1.error-notice-signin
+                      %li#error-d_last_name_kana.error-notice-signin
+                      %li#error-d_last_name_kana1.error-notice-signin
+                      %li#error-d_first_name_kana.error-notice-signin
+                      %li#error-d_first_name_kana1.error-notice-signin
                   .address__group
                     = address.label :郵便番号
                     %span.form-require 必須
@@ -263,7 +261,7 @@
                   %span.form-require 必須
                   %br/
                   = f.fields_for :profile, Profile.new do |profile|
-                    = profile.select :card_mm, [["--",],["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]], {}, { class: "card__block__select exp_month2", id: "month" }                   
+                    = profile.select :card_mm, [["--",],["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]], {}, { class: "card__block__select exp_month2", id: "month" }
                   = f.label :月
                   = f.fields_for :profile, Profile.new do |profile|
                     = profile.select :card_yy, [["--",],["19",2019],["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]], {}, { class: "card__block__select exp_year2", id: "year" }

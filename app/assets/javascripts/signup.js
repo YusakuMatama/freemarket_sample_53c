@@ -99,40 +99,40 @@ pages.eq(0).fadeIn();
 
   $('.next-step3').click(function(e) {
     $('.error-notice-signin').text("")
-    var last_name = $('#last_name').val();
-    var first_name = $('#first_name').val();
-    var last_name_kana = $('#last_name_kana').val();
-    var first_name_kana = $('#first_name_kana').val();
+    var last_name = $('#d_last_name').val();
+    var first_name = $('#d_first_name').val();
+    var last_name_kana = $('#d_last_name_kana').val();
+    var first_name_kana = $('#d_first_name_kana').val();
     var zipcord = $('#zipcord').val();
     var prefecture = $('#prefecture').val();
     var city = $('#city').val();
     var address = $('#address').val();
     var building_name = $('#building_name').val();
     var tel = $('#tel').val();
-    
+
     if(last_name == "")
     {
-      $('#error-last_name').text("姓 を入力してください");
+      $('#error-d_last_name').text("姓 を入力してください");
     };
     if(first_name == "")
     {
-      $('#error-first_name').text("名 を入力してください");
+      $('#error-d_first_name').text("名 を入力してください");
     };
     if(last_name_kana == "")
     {
-      $('#error-last_name_kana').text("姓カナ を入力してください");
+      $('#error-d_last_name_kana').text("姓カナ を入力してください");
     };
     if(!last_name_kana.match(/^[ァ-ロワヲンー 　\r\n\t]*$/))
     {
-      $('#error-last_name_kana1').text("姓カナ はカナ文字を入力してください");
+      $('#error-d_last_name_kana1').text("姓カナ はカナ文字を入力してください");
     };
     if(first_name_kana == "")
     {
-      $('#error-first_name_kana').text("名カナ を入力してください");
+      $('#error-d_first_name_kana').text("名カナ を入力してください");
     };
     if(!first_name_kana.match(/^[ァ-ロワヲンー 　\r\n\t]*$/))
     {
-      $('#error-first_name_kana1').text("名カナ はカナ文字を入力してください");
+      $('#error-d_first_name_kana1').text("名カナ はカナ文字を入力してください");
     };
     if(zipcord == "")
     {
