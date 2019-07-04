@@ -1,4 +1,4 @@
 .logout-container
   .logout-container__content
     .logout-container__content__btn-block-size
-      = link_to "ログアウト", root_path, class: 'btn'
+      = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'

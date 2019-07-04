@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
+  
+  def signup
+  end
+
   def identification
   end
+
   def card
   end
 
-  def index
-    @top = "hoge"
+  def logout
   end
 
 end

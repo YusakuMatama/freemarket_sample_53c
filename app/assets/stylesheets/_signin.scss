@@ -1,0 +1,28 @@
+.solo-countainer{
+  padding: 0 0 220px;
+  position: relative;
+  .solo-main{
+    display: block;
+    .container{
+      width: 700px;
+      margin: 0 auto;
+      background: #fff;
+      .main-head{
+        padding: 32px 16px;
+        font-size: 22px;
+        line-height: 1.5;
+        text-align: center;
+        font-weight: 500;
+      }
+      .main-inner{
+        padding: 64px;
+        border-top: 1px solid #f5f5f5;
+        .main-content{
+          width: 320px;
+          margin: 0 auto;
+          @include buttont;
+        }
+      }
+    }
+  }
+}
