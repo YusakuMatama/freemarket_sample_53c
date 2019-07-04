@@ -17,8 +17,11 @@ class ItemsController < ApplicationController
     @items.build_brand
     @items.build_category
     @items.item_images.build
-    @categories = Category.all
+
+    @categories = Category.where(parent_id: nil)
+    gon.category = Category.all
     @brands = Brand.all
+
   end
 
   def create
@@ -26,7 +29,7 @@ class ItemsController < ApplicationController
     @brands = Brand.all
     
     items_params
-    @items = Item.new(@params_item)
+    @items = Item.new(@params_items)
    
     if @items.save 
       @items_status = OrderStatus.create(status: 1, item_id: Item.all.last().id)
@@ -47,7 +50,7 @@ def items_params
     @params_brands = @params_brands[:id]
   end
 
-  @params_items = params.require(:item).permit(:name, :detail, :condition, :delivery_cost, :delivery_prefecture, :days_to_ship, :delivery_method, :price, item_images_attributes: {image: []}).merge(user_id: 1, sales_condition: 1, category_id: @params_categories[:id], brand_id: @params_brands)
+  @params_items = params.require(:item).permit(:name, :detail, :condition, :delivery_cost, :delivery_prefecture, :days_to_ship, :delivery_method, :price, item_images_attributes: [:image]).merge(user_id: 1, sales_condition: 1, category_id: @params_categories[:id], brand_id: @params_brands)
   params_int(@params_items)
 end
 
