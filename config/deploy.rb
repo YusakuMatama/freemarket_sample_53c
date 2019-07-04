@@ -56,6 +56,15 @@ set :ssh_options, auth_methods: ['publickey'],
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 
+set :default_env, {
+  rbenv_root: "/usr/local/rbenv",
+  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
+  PAYJP_TEST_SECRET_KEY: ENV["PAYJP_TEST_SECRET_KEY"],
+  PAYJP_TEST_PUBLIC_KEY: ENV["PAYJP_TEST_PUBLIC_KEY"]
+}
+
+set :linked_files, %w{ config/secrets.yml }
+
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
