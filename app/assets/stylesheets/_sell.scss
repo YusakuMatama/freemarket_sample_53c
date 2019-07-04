@@ -1,14 +1,14 @@
 .main_container {
   background-color: rgb(245, 245, 245);
   .main-contents {
-    height: 2100px;
+    min-height: 2400px;
     width: 100%;
-    &_conteiner {
-      height: 2100px;
+    &__conteiner {
+      min-height: 2400px;
       width: 700px;
       margin: 0 auto;
       background-color: white;
-      &_inner {
+      &__inner {
         height: 100%;
         width: 100%;
         .header-text {
@@ -21,7 +21,7 @@
 
 
         .sell-form {
-          height: 100%;
+          min-height: 100%;
           width: 700px;
           .sell-form_image-box {
             height: 220px;
@@ -44,20 +44,39 @@
               border-style: dashed;
               border-width: 1px;
               border-color: rgb(209, 209, 209);
-              .sell-box_container_drop-box {
-                height: 100%;
-                width: 100%;
-                .drop-box_text {
-                  margin-top: 60px;
+              position: relative;
+
+              &__drop-box {
+                min-height: 160px;
+                background: #f5f5f5;
+                border: 1px dashed #ccc;
+                font-size: 0;
+                text-align: center;
+
+                &__text {
+                  height: 162px;
                   font-size: 13px;
                   text-align: center;
-                  font-weight: bold;
+                  font-size: 14px;
+                  display: block;
                 }
               }
             }
           }
         }
-
+        .file-send-btn{
+          height: 162px;
+          display: none;
+        }
+        #file-drop-zone{
+          width: 620px;
+          height: 162px;
+          display: block;
+          cursor: pointer;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
 
         .sell-content {
           height: 320px;
@@ -104,13 +123,12 @@
               padding: 10px 16px 8px 10px;
             }
           }
-        }
         
-
-        .sell-content-detail {
-          height: 180px;
+        
+        &-detail {
+          height: 299px;
           width: 620px;
-          padding: 40px;
+          padding: 88px 40px 40px;
           border-bottom: solid 1px rgb(245, 245, 245);
           h3 {
             width: 70px;
@@ -120,7 +138,7 @@
             color: rgb(136, 136, 136);
           }
           .sell-form-box {
-            height: 180px;
+            min-height: 180px;
             width:400px;
            float: right;
            .form-area_bottom {
@@ -162,11 +180,10 @@
               }
             }
           }
-        }
+        
 
-
-        .sell-content-shipping-method {
-          height: 290px;
+        &-shipping-method {
+          min-height: 409px;
           width: 617px;
           padding: 40px;
           border-bottom: solid 1px rgb(245, 245, 245);
@@ -185,7 +202,7 @@
             font-weight: 100;
           }
           .sell-form-box {
-            height: 180px;
+            min-height: 180px;
             width:400px;
             float: right;
             .form-area {
@@ -220,6 +237,7 @@
                   }
                 }
               } 
+            }
           }
         }
       }
@@ -227,7 +245,7 @@
   }
 }
 .contents-price {
-  height: 290px;
+  height: 247px;
   width: 617px;
   padding: 40px;
   border-bottom: solid 1px rgb(245, 245, 245);
@@ -284,6 +302,7 @@
                 border: solid 1px;
                 border-radius: 4px;
                 border-color: rgb(206, 206, 206);
+                resize: none;
               }
             }
           }
@@ -310,14 +329,14 @@
         .left-text {
           float: left;
         }
-        .right-price {
+        .right-price-maney {
           float: right;
         }
       }
     }
   }
 }
-
+}
 .sell_button-box {
   height: 248px;
   width: 620px;
@@ -337,9 +356,10 @@
     margin: 40px 0 0;
     display: block;
     width: 100%;
-    line-height: 48px;
     font-size: 14px;
     text-align: center;
+    cursor: pointer;
+    z-index: 1000;
   }
   .btn-red {
     height: 50px;
@@ -351,9 +371,20 @@
   .btn-gray { 
     height: 50px;
     width: 277px;
+    line-height: 48px;
     margin: 24px auto 0;
     background: #aaa;
     border: 1px solid #aaa;
     color: #fff;
   }
+}
+
+input:focus{
+  outline: 0;
+  border: 1px solid $blue;
+}
+
+textarea:focus{
+  outline: 0;
+  border: 1px solid $blue;
 }
