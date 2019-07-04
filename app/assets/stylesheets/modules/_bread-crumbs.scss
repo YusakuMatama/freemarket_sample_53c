@@ -1,24 +1,31 @@
-.bread-crumbs {
-  display: block;
+.bread-crumb {
   border-top: 1px solid #eee;
-  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  box-shadow: 0 3px 3px 0 #00000029;
   background-color: #fff;
   width: 100%;
   height: 48px;
-
-  ul{
-    margin: 0 auto;
-    padding: 16px 0;
-    color: $light_gray;
+  .breadcrumbs {
+    padding: 16px;
     background-color: #fff;
     width: 1020px;
     height: 15px;
-  }
-  
-  li{
-    display: inline-block;
-    font-size: 14px;
-    line-height: 1.2;
-    padding-left: 10px; 
+    margin: 0 170px;
+    a {
+      font-size: 14px;
+      line-height: 1.2;
+      padding-left: 10px; 
+    }
+    a:hover {
+      text-decoration: underline;
+      color: gray;
+    }
+    .current {
+      background-color: #fff;
+      color: #333333;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 1.2;
+      padding-left: 1px; 
+    }
   }
 }

@@ -5,11 +5,11 @@ class TopsController < ApplicationController
   end
 
   def show
-    @top = "hoge"
+    @user = "hoge"
   end
 
   def edit
-    @top = "hoge"
+    @user = "hoge"
   end
   
 end
