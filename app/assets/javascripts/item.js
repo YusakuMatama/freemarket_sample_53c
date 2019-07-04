@@ -58,10 +58,10 @@ function handleDragOver(evt) {
   evt.dataTransfer.dropEffect = 'copy'; 
 }
 
-// イベントリスナーを設定
+// // イベントリスナーを設定
 var dropZone = document.getElementById('file-drop-zone');
-dropZone.addEventListener('dragover', handleDragOver, false);
-dropZone.addEventListener('drop', handleFileSelect, false);
+// dropZone.addEventListener('dragover', handleDragOver, false);
+// dropZone.addEventListener('drop', handleFileSelect, false);
 
 $('.new_item').on('submit', function(e){
   e.preventDefault();  
