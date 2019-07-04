@@ -2,7 +2,7 @@
   .header-inner
     %h1.top-contents
       = link_to image_tag('mercari-logo.jpg', class: 'top-contents__home-btn-size'), root_path, class: 'top-contents__home-btn-block-size'
-      = form_for(@top, html: {class: "top-contents__form"}) do |f|            
+      = form_for(@top, html: {class: "top-contents__form"}) do |f|
         = f.text_area :content, placeholder:"何かお探しですか？", class: "top-contents__form__input"
         %label.top-contents__form__icon
           %i.fas.fa-search

@@ -5,4 +5,5 @@ class Item < ApplicationRecord
   has_one :order_status, dependent: :destroy
   has_many :item_images, dependent: :destroy
   has_many :comments
+  belongs_to :item_image
 end
