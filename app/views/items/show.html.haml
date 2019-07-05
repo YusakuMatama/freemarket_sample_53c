@@ -23,7 +23,8 @@
                 出品者
               .item-wrap__detail
                 .item-wrap__detail__name
-                  = link_to "#{@item.user.profile.nickname}", "/"
+                  -# = link_to "#{@item.user_id.profile.nickname}", "/"
+                  = link_to "test", "/"
                 .item-wrap__detail__iine
                   .item-wrap__detail__iine__high
                     = link_to root_path do
