@@ -1,15 +1,10 @@
 class TopsController < ApplicationController
 
   def index
-    @top = "hoge"
-  end
-
-  def show
-    @user = "hoge"
+    @user = User.find(current_user)
   end
 
   def edit
-    @user = "hoge"
+    @user = User.find(current_user)
   end
-  
 end

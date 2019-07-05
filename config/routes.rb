@@ -20,12 +20,12 @@ Rails.application.routes.draw do
   get  'sns' => 'registrations#sns'
   get  'phone' => 'registrations#phone'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # For details on the DSL available within this file, see http://guide.rubyonrails.org/routing.html
   get 'mypage' => 'users#show'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'tops/edit' => 'tops#edit'
-  get 'tops/show' => 'tops#show'
+  get 'profile' => 'users#profile'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :items do
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
       get 'complete'
     end
   end
-  resources :tops, only: [:index, :show, :new, :edit]
-  resources :users, only: [:index]
+  resources :tops, only: [:index, :new, :edit]
+  resources :users, only: [:index, :update]
 
 end
