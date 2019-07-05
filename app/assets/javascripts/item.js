@@ -55,7 +55,7 @@ $(document).on('turbolinks:load', function(){
   })
 
   $('.new_item').on('submit', function(e){
-    // e.preventDefault();
+    e.preventDefault();
     
       let formdata = new FormData(this);
       if(typeof $files != 'undefined'){
@@ -63,7 +63,7 @@ $(document).on('turbolinks:load', function(){
       }
 
     $.ajax({
-      url: '/items',
+      url: 'http://13.231.64.140/items',
       type: "POST",
       data: formdata,
       cache: false,
