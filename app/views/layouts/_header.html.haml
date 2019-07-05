@@ -1,10 +1,10 @@
 .header
   .header__container
     .header__container__search
-      = link_to image_tag("logo.svg"), '#', class: "header__container__search__logo"
+      = link_to image_tag("logo.svg"), root_path, class: "header__container__search__logo"
       = form_tag '#', method: :get, class: "header__container__search__form" do
         = text_field_tag :keyword, "", class: "header__container__search__form__input", placeholder: "何かお探しですか？"
-        = button_tag type: "submit",class: "header__container__search__form__button" do
+        = button_tag type: "submit", class: "header__container__search__form__button" do
           %i.fas.fa-search
     .header__container__navigation.navigation
       .navigation__left
@@ -29,7 +29,7 @@
             = render "layouts/todo-list"
         .navigation__right__mypage
           = image_tag image_path("member_photo_noimage_thumb.png")
-          = link_to "マイページ", '#', class: "navigation__right__mypage__link"
+          = link_to "マイページ", tops_edit_path, class: "navigation__right__mypage__link"
 
 -# 一応使う可能性あるため、一旦残す。()
 -# .header  
