@@ -52,10 +52,13 @@ class ItemsController < ApplicationController
     
     @item.update(buyer_id: 1, selled_at: "#{DateTime.now}", ) #buyer_idの値は仮置き
 
-    @status = OrderStatu.find(1)
+    @status = OrderStatus.find(1)
     
     @status.update(status: 3)
-    redirect_to '/items/1' #このパスは仮置き
+    redirect_to '/items/complete' #このパスは仮置き
+  end
+
+  def complete
   end
 
 
