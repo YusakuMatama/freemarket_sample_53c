@@ -1,51 +1,80 @@
-// $(document).on('turbolinks:load', function(){
-// // var category_search = $("#item_category_attributes_id").children();
+$(document).on('turbolinks:load', function(){
 
-// function category_box(category, user_select){
-//   var child_category = [];
-//   var grandchild_category = [];
-//   var select_category_id = "";
-//   var select_category_grandchild_id = "";
+  function category_child_box(category, user_select){
+    var child_category = [];
+    var select_category_id = "";
+    var html = `<select name="item[category_attributes][id]" id="item_category_attributes_child_id"> 
+                <i class="fas fa-chevron-down"></i>    
+                `
+    $(".select-wrap-category").append(html);
+    category.forEach(function(value){
+      if (value.id == user_select){
+        select_category_id = value.id;
+      }
+    });
 
-//   var html = `<select name="item[category_attributes][id]" id="item_category_attributes_child_category_id"> `
-//   $(".select-wrap-category").append(html);
+    child_category = category.filter(function(value){
+      if (select_category_id == value.parent_id)
+      return true;
+    });
 
-//   category.forEach(function(value){
-//     if (value.name == user_select){
-//       select_category_id = value.id;
-//     }
-//   });
+    var select = document.getElementById('item_category_attributes_child_id');
+    var option = document.createElement('option');
+    option.setAttribute('value', "");
+    option.innerHTML = "-----";
+    select.appendChild(option);
 
-//   child_category = category.filter(function(value){
-//     if (select_category_id == value.parent_id)
-//     return true;
-//   });
+    for(var i = 0; i<child_category.length; i++){
+      option = document.createElement('option');
+      option.setAttribute('value', child_category[i].id);
+      option.innerHTML = child_category[i].name;
+      select.appendChild(option);
+    };
+  }
 
-// // selectタグのID取得
-// var select = document.getElementById('item_category_attributes_child_category_id');
-// // option要素の宣言
-// let option = document.createElement('option');
-// // option要素のvalue属性に値をセット
-// child_category.forEach(function(value){
-//   option.setAttribute('value', value.name);
-//   option.innerHTML = value.name;
-//   console.log(option.innerHTML);
-//   console.log(option.setAttribute('value', value.name));
-// });
-//   console.log(select);
+  function category_grandchild_box(category, user_select){
+    var grandchild_category = [];
+    var select_category_id = "";
+    var html = `<select name="item[category_attributes][id]" id="item_category_attributes_grandchild_id"> 
+                <i class="fas fa-chevron-down"></i>    
+                `
+    $(".select-wrap-category").append(html);
+    category.forEach(function(value){
+      if (value.id == user_select){
+        select_category_id = value.id;
+      }
+    });
 
-// // option要素に値をセット
-// // 作成したoption要素をselectタグに追加
-// select.appendChild(option);
-// }
+    grandchild_category = category.filter(function(value){
+      if (select_category_id == value.parent_id)
+      return true;
+    });
 
+    var select = document.getElementById('item_category_attributes_grandchild_id');
+    var option = document.createElement('option');
+    option.setAttribute('value', "");
+    option.innerHTML = "-----";
+    select.appendChild(option);
+    
+    for(var i = 0; i<grandchild_category.length; i++){
+      var option = document.createElement('option');
+      option.setAttribute('value', grandchild_category[i].id);
+      option.innerHTML = grandchild_category[i].name;
+      select.appendChild(option);
+    };
+  }
 
-// $("#item_category_attributes_id").on("change", function(){
-//   var test = $(this).val();
-//   console.log(test);
-//   var user_select_category = $("#item_category_attributes_id option:selected").text();
-//   console.log(user_select_category);  
-//   category_box(gon.category,user_select_category);
-// });
-// });
+  $("#item_category_attributes_id").on("change", function(){
+    $("#item_category_attributes_child_id").remove();
+    $("#item_category_attributes_grandchild_id").remove();
+    var user_select_category = $("#item_category_attributes_id option:selected").val();
+    category_child_box(gon.category,user_select_category);
+  });
+
+  $(document).on("change","#item_category_attributes_child_id", function(){
+    $("#item_category_attributes_grandchild_id").remove();
+    var user_select_category = $("#item_category_attributes_child_id option:selected").val();
+    category_grandchild_box(gon.category,user_select_category);
+  });
+});
 

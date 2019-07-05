@@ -33,7 +33,6 @@ class ItemsController < ApplicationController
    
     if @items.save 
       @items_status = OrderStatus.create(status: 1, item_id: Item.all.last().id)
-      redirect_to root_path
     else
       render :sell
     end
