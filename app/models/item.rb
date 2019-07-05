@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  # belongs_to :user  deviseの実装後にコメントアウトを消す
+  belongs_to :user
   belongs_to :category
   belongs_to :brand, optional: true
   has_one :order_status, dependent: :destroy

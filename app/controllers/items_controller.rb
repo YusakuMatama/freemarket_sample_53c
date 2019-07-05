@@ -33,7 +33,6 @@ class ItemsController < ApplicationController
    
     if @items.save 
       @items_status = OrderStatus.create(status: 1, item_id: Item.all.last().id)
-      redirect_to root_path
     else
       render :sell
     end
@@ -62,7 +61,8 @@ class ItemsController < ApplicationController
   def complete
   end
 
-private
+
+  private
   def items_params
     @params_categories = params.require(:item).require(:category_attributes).permit(:id)
 
@@ -73,7 +73,7 @@ private
       @params_brands = @params_brands[:id]
     end
 
-    @params_items = params.require(:item).permit(:name, :detail, :condition, :delivery_cost, :delivery_prefecture, :days_to_ship, :delivery_method, :price, item_images_attributes: [:image]).merge(user_id: 1, sales_condition: 1, category_id: @params_categories[:id], brand_id: @params_brands)
+    @params_items = params.require(:item).permit(:name, :detail, :condition, :delivery_cost, :delivery_prefecture, :days_to_ship, :delivery_method, :price, item_images_attributes: [:image]).merge(user_id: 1, sales_condition: 0, category_id: @params_categories[:id], brand_id: @params_brands)
     params_int(@params_items)
   end
 
