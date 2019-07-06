@@ -15,15 +15,17 @@
                 最大10枚までアップロードできます
               .sell-box_container
                 .sell-box_container__drop-box
-                  .sell-box_container__drop-box__text
-                    ドラッグアンドドロップ
-                    .sell-box_container__drop-box__text__second
-                      またはクリックしてファイルをアップロード
+                  #preview
                     = f.fields_for :item_images do |fin|
                       %label#file-drop-zone
-                        =fin.file_field :image, class: "file-send-btn"
-                        #preview
-                      
+                        =fin.file_field :image, class: "file-send-btn", multiple: true
+                .sell-box_container__drop-box--next
+                  #preview--next
+                    = f.fields_for :item_images do |fin|
+                      %label#file-drop-zone--next
+                        =fin.file_field :image, class: "file-send-btn", multiple: true
+
+
             .sell-content
               .form_item-name
                 %label 商品名

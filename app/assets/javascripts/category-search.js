@@ -2,19 +2,13 @@ $(document).on('turbolinks:load', function(){
 
   function category_child_box(category, user_select){
     var child_category = [];
-    var select_category_id = "";
     var html = `<select name="item[category_attributes][id]" id="item_category_attributes_child_id"> 
                 <i class="fas fa-chevron-down"></i>    
                 `
     $(".select-wrap-category").append(html);
-    category.forEach(function(value){
-      if (value.id == user_select){
-        select_category_id = value.id;
-      }
-    });
 
     child_category = category.filter(function(value){
-      if (select_category_id == value.parent_id)
+      if (user_select == value.parent_id)
       return true;
     });
 
@@ -34,19 +28,13 @@ $(document).on('turbolinks:load', function(){
 
   function category_grandchild_box(category, user_select){
     var grandchild_category = [];
-    var select_category_id = "";
     var html = `<select name="item[category_attributes][id]" id="item_category_attributes_grandchild_id"> 
                 <i class="fas fa-chevron-down"></i>    
                 `
     $(".select-wrap-category").append(html);
-    category.forEach(function(value){
-      if (value.id == user_select){
-        select_category_id = value.id;
-      }
-    });
 
     grandchild_category = category.filter(function(value){
-      if (select_category_id == value.parent_id)
+      if (user_select == value.parent_id)
       return true;
     });
 
