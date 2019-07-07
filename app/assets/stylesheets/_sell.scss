@@ -120,19 +120,19 @@
           .form_item-intro {
             height: 164px;
             width: 620px;
-            margin-top: 40px;
+            margin: 40px 0 0 40px;
             word-wrap: break-word;
             label {
               height: 14px;
               width: 85px;
               font-size: 14px;
               font-weight: 900;
-              margin-left: 40px;
+              // margin-left: 40px;
             }
             .input-intro {
               height: 142px;
               width: 620px;
-              margin-left: 40px;
+              // margin-left: 40px;
               border: solid 1px;
               border-radius: 5px;
               border-color: rgb(209, 209, 209);
@@ -178,7 +178,7 @@
                   margin: 6px 0 0;
                 }
                 #item_category_attributes_grandchild_id{
-                  margin: 15px 0 0;
+                  margin: 6px 0 0;
                 }
 
                   .select-place {
@@ -208,33 +208,29 @@
               }
             }
           }
-        
-      
-        
-
           .sell-content-shipping-method {
           min-height: 409px;
           width: 617px;
           padding: 40px;
           border-bottom: solid 1px rgb(245, 245, 245);
+          display: flex;
+          justify-content: space-between;
           h3 {
             font-size: 14px;
             font-weight: 900;
-            float: left;
             color: rgb(136, 136, 136);
           }
           .form-area_bottom {
             margin-top: 30px; 
           }
           .form-help {
-            display: inline;
             color: $blue;
             font-weight: 100;
+            margin-right: 115px;
           }
           .sell-form-box {
             min-height: 180px;
             width:400px;
-            float: right;
             .form-area {
               label {
                 font-size: 14px;
@@ -447,16 +443,19 @@ textarea:focus{
       }
       #remove_edit_container{
         display: flex;
+        font-size: 14px;
+        color: $blue;
+        background-color: rgb(245, 245, 245);
 
         .image-remove-btn{
           width: 56px;
           height: 48px;       
-          font-size: 12px;
+          cursor: pointer;
         }
         .image-edit-btn{
           width: 56px;
           height: 48px;
-          font-size: 12px;
+          cursor: pointer;
         }
       }
     }

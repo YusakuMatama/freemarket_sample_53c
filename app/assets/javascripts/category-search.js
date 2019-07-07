@@ -2,9 +2,7 @@ $(document).on('turbolinks:load', function(){
 
   function category_child_box(category, user_select){
     var child_category = [];
-    var html = `<select name="item[category_attributes][id]" id="item_category_attributes_child_id"> 
-                <i class="fas fa-chevron-down"></i>    
-                `
+    var html = `<select name="item[category_attributes][id]" id="item_category_attributes_child_id">                 `
     $(".select-wrap-category").append(html);
 
     child_category = category.filter(function(value){
