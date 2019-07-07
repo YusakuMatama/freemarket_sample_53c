@@ -42,30 +42,17 @@
               .item-wrap__category
                 カテゴリー
               .item-wrap__detail
-                - if !@item.category.parent_id
-                  = link_to "/" do
-                    .item-wrap__detail__name
-                      = @item.category.name
-                - elsif !@item.category.parent.parent_id
-                  = link_to "/" do
-                    .item-wrap__detail__name
-                      = @item.category.parent.name
-                  = link_to "/" do
-                    .item-wrap__detail__name
-                      %i.fas.fa-angle-right
-                      = @item.category.name
-                - else
-                  = link_to "/" do
-                    .item-wrap__detail__name
-                      = @item.category.parent.parent.name
-                  = link_to "/" do
-                    .item-wrap__detail__name
-                      %i.fas.fa-angle-right
-                      = @item.category.parent.name
-                  = link_to "/" do
-                    .item-wrap__detail__name
-                      %i.fas.fa-angle-right
-                      = @item.category.name
+                = link_to "/" do
+                  .item-wrap__detail__name
+                    = @item.category.grandparent.name
+                = link_to "/" do
+                  .item-wrap__detail__name
+                    %i.fas.fa-angle-right
+                    = @item.category.parent.name
+                = link_to "/" do
+                  .item-wrap__detail__name
+                    %i.fas.fa-angle-right
+                    = @item.category.name
             .item-wrap
               .item-wrap__brand
                 ブランド
@@ -111,14 +98,21 @@
           送料込み
         - else
           着払い
-    .buy-button-container
-      - unless @item.sales_condition
-        .buy-button
-          = link_to new_item_path do
-            購入画面に進む
-      -else
-        .buy-button-sold
-          売り切れました
+    - unless @item.user == current_user
+      .buy-button-container
+        - unless @item.sales_condition
+          - if user_signed_in?
+            .buy-button
+              = link_to new_item_path do
+                購入画面に進む
+          - else
+            .buy-button
+              = link_to "/users/sign_in" do
+                購入画面に進む
+        - else
+          .buy-button-sold
+            売り切れました
+
     .item-description-container
       .item-description
         = safe_join(@item.detail.split("\n"), tag(:br))
@@ -140,16 +134,17 @@
           .right-report-message
             あんしん・あんぜんへの取り組み
 
-    .parent-own-item-container
-      - unless @item.sales_condition
-        = link_to "商品の編集", edit_item_path(@item), class: "parent-own-item-container__edit"
-        .parent-own-item-container__or
-          or
-        - unless @item.sales_condition == 0
-          = link_to "出品を停止する", "#", class: "parent-own-item-container__close"
-        - else
-          = link_to "出品を再開する", "#", class: "parent-own-item-container__open"
-      = link_to "商品を削除する", "/items/#{@item.id}", method: :delete, class: "parent-own-item-container__delete-btn"
+    - if user_signed_in? && current_user.id == @item.user_id
+      .parent-own-item-container
+        - unless @item.sales_condition
+          = link_to "商品の編集", edit_item_path(@item), class: "parent-own-item-container__edit"
+          .parent-own-item-container__or
+            or
+          - unless @item.sales_condition == 0
+            = link_to "出品を停止する", "#", class: "parent-own-item-container__close"
+          - else
+            = link_to "出品を再開する", "#", class: "parent-own-item-container__open"
+        = link_to "商品を削除する", "/items/#{@item.id}", method: :delete, class: "parent-own-item-container__delete-btn"
 
   .coment-form-container
     %form.form{:action => "/test", method: "post"}
