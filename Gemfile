@@ -84,5 +84,8 @@ gem "jquery-slick-rails"
 gem "gon"
 
 gem 'gretel'
+gem 'omniauth'
 gem "omniauth-google-oauth2"
 gem 'omniauth-facebook'
+gem 'dotenv-rails'
+

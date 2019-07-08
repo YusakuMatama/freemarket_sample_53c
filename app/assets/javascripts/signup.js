@@ -74,6 +74,70 @@ pages.eq(0).fadeIn();
     {
       $('#error-birth_date').text("生年月日を入力してください");
     };
+    
+    if($('.error-notice-signin').text().length == 0)
+    {
+    e.preventDefault();
+    pages.hide();
+    pages.eq(1).fadeIn();
+    }
+  });
+
+  $('.next-step1').click(function(e) {
+    $('.error-notice-signin').text("")
+    var nickname = $('#nickname').val();
+    var email = $('#email').val();
+    var password = $('#password').val();
+    var password_confirmation = $('#password_confirmation').val();
+    var last_name = $('#last_name').val();
+    var first_name = $('#first_name').val();
+    var last_name_kana = $('#last_name_kana').val();
+    var first_name_kana = $('#first_name_kana').val();
+    var birthday = $('#birthday').val();
+    if(nickname == "")
+    {
+      $('#error-nicnname').text("ニックネーム を入力してください");
+    };
+    if(document.getElementById('error-email'))
+    {
+        if(email == "")
+        {
+          $('#error-email').text("メールアドレス を入力してください");
+        };
+        if(!email.match(/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/))
+        {
+          $('#error-email1').text("フォーマットが不適切です");
+        };
+    }
+    if(last_name == "")
+    {
+      $('#error-last_name').text("姓 を入力してください");
+    };
+    if(first_name == "")
+    {
+      $('#error-first_name').text("名 を入力してください");
+    };
+    if(last_name_kana == "")
+    {
+      $('#error-last_name_kana').text("姓カナ を入力してください");
+    };
+    if(!last_name_kana.match(/^[ァ-ロワヲンー 　\r\n\t]*$/))
+    {
+      $('#error-last_name_kana1').text("姓カナ はカナ文字を入力してください");
+    };
+    if(first_name_kana == "")
+    {
+      $('#error-first_name_kana').text("名カナ を入力してください");
+    };
+    if(!first_name_kana.match(/^[ァ-ロワヲンー 　\r\n\t]*$/))
+    {
+      $('#error-first_name_kana1').text("名カナ はカナ文字を入力してください");
+    };
+    if(birthday == "")
+    {
+      $('#error-birth_date').text("生年月日を入力してください");
+    };
+    
     if($('.error-notice-signin').text().length == 0)
     {
     e.preventDefault();
