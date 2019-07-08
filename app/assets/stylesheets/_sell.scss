@@ -506,3 +506,96 @@ textarea:focus{
     }
   }
 }
+
+#overlay{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: none;
+  z-index: 3000;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: all ease-out .3s;
+
+  #modalwindow{
+    width: 600px;
+    padding: 0 0 40px;
+    margin: 24px auto;
+    color: $white;
+    box-sizing: border-box;
+
+    .item_image_change_wrap{
+      padding: 16px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+
+      &__text{
+        margin: 12px 0 0 ;
+        font-size: 18px;
+      }
+      &__change-btn{
+        display: flex;
+
+        .fa-search{
+
+        }
+        .file-send-btn--edit{
+
+        }
+      }
+
+      .file-drop-zone-edit-wrap{
+        height: 425px;
+        margin: 0 auto;
+
+        #file-drop-zone--edit{
+          width: 380px;
+          height: 380px;
+          background-color: whitesmoke;
+          border-style: dashed;
+          border-width: 1px;
+          border-color: #d1d1d1;
+          display: block;
+          cursor: pointer;
+
+          .preview--edit{
+
+          }
+        }
+
+        .file-drop-zone-edit-wrap__size-change{
+          width: 300px;
+          margin: 16px auto 0;
+          padding: 8px 0 4px;
+          box-sizing: border-box;
+
+          &__small-icon{
+
+          }
+
+          &__bar{
+
+          }
+
+          &__big-icon{
+
+          }
+        }
+      }
+      .item_image_change_ok_btn{
+        display: flex;
+
+        #image-cancel-btn{
+
+        }
+        #image-comformation-btn{
+
+        }
+      }
+    }
+  }
+}

@@ -2,15 +2,8 @@ $(document).on('turbolinks:load', function(){
 
   var dropzone = document.getElementById('file-drop-zone');
   var dropzone_next = document.getElementById('file-drop-zone--next');
-  var drop_zone_count = 0;
+  var dropzone_edit = document.getElementById('file-drop-zone--edit');
   var $upload_files = [];
-
-  function countUp(){
-    drop_zone_count++;
-  };
-  function countDown(){
-    drop_zone_count--;
-  };
 
   function display_new_upload_zone(){
     if(5 <= $upload_files.length && $upload_files.length <= 10 ){
@@ -78,12 +71,10 @@ $(document).on('turbolinks:load', function(){
     };  
   }
 
-  
 
 // 画像の表示と削除、編集ボタンの追加
   function display_image(display_file){
     var  reader = new FileReader();
-    console.log($upload_files);
 
     reader.onload = (function(display_file) {
       return function(e) {
@@ -116,7 +107,6 @@ $(document).on('turbolinks:load', function(){
     $upload_files.push(drop_file);
 
     display_image(drop_file[0]);
-    countUp();
     adjust_file_field();
     display_new_upload_zone();
     $(this).val();
@@ -130,12 +120,21 @@ $(document).on('turbolinks:load', function(){
     $upload_files.push(drop_file);
 
     display_image(drop_file[0]);
-    countUp();
     adjust_file_field();
 
     e.preventDefault();
   })
 
+  $(dropzone_edit).on("drop", function(e){
+    e = e.originalEvent;
+    var drop_file = e.dataTransfer.files;
+    $upload_files.push(drop_file);
+
+    display_image(drop_file[0]);
+    adjust_file_field();
+
+    e.preventDefault();
+  })
 
   // ファイルから選択したファイルを画像で表示
   $('input[type="file"]').on('change', function(e){
@@ -144,7 +143,6 @@ $(document).on('turbolinks:load', function(){
       $upload_files.push(input_file);
     
       display_image(input_file[0]);
-      countUp();
       adjust_file_field();
       display_new_upload_zone();
     
@@ -187,7 +185,6 @@ $(document).on('turbolinks:load', function(){
           }
         };
       }
-
       if(preview_children_count == 4){
         move_image = $("#preview--next ul:first");
         $(move_image).appendTo("#preview");
@@ -202,12 +199,85 @@ $(document).on('turbolinks:load', function(){
       else{
         $(".sell-box_container__drop-box--next").css({
         "display" : "none"
-      })
+        })
       }
       adjust_file_field();
-      
-
     });
+
+  // 選択した画像の編集
+
+  function display_preview_edit(src,title,edit_btn_parent){
+    modalwindow_html =`<div id='overlay'>
+                        <div id='modalwindow'>
+                          <div class= "item_image_change_wrap">
+                            <div class="item_image_change_wrap__text">写真を切り取る</div>
+                            <div class="item_image_change_wrap__change-btn">                        
+                              <i class="fas fa-search"></i>  
+                              <input type="file" class="file-send-btn--edit" >
+                                写真を変更する。
+                              </input>
+                            </div>
+                            </div>
+                          </div>
+                          <div class="file-drop-zone-edit-wrap">
+                            <label id="file-drop-zone--edit">
+                              <img src="${src}" class="preview--edit" title="${title}"></img>
+                            </label>
+                            <div class="file-drop-zone-edit-wrap__size-change">
+                              <div class="file-drop-zone-edit-wrap__size-change__small-icon"></div>
+                              <div class="file-drop-zone-edit-wrap__size-change__bar"></div>
+                              <div class="file-drop-zone-edit-wrap__size-change__big-icon"></div>
+                            </div>
+                          </div>
+                          <div class="item_image_change_ok_btn"
+                            <div id='image-cancel-btn'>キャンセル</div>
+                            <div id='image-comformation-btn'>完了</divn>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                      `
+      $(edit_btn_parent).append(modalwindow_html);      
+    }
+    // 画像の表示と削除、編集ボタンの追加
+    function display_image_edit(display_file,edit_btn_parent){
+      var  reader = new FileReader();
+
+      reader.onload = (function(display_file) {
+        return function(e) {
+          var src = e.target.result;
+          var title = display_file.name;
+          display_preview_edit(src,title,edit_btn_parent);
+        };
+
+      })(display_file);
+      reader.readAsDataURL(display_file);
+    };
+
+
+
+  $(document).on('click', ".image-edit-btn",function(e){
+    var user_select_edit_image = $(this).parent().parent().parent();
+    user_select_edit_image_result = user_select_edit_image.index() - 1;
+    console.log(user_select_edit_image_result);
+
+    for (i = 0; i < $upload_files.length; i++){
+      if (i == user_select_edit_image_result){
+        display_image_edit($upload_files[i][0], $(this).parent());
+      }
+    };
+    console.log($upload_files);
+
+    $('#overlay').fadeIn();
+      $(document).on('click', "#image-cancel-btn",function(e){
+        $('#overlay').fadeOut();
+      });
+      $(document).on('click', "#image-comformation-btn",function(e){
+
+        $('#overlay').fadeOut();
+      });
+
+  });
 
   // $files＋formdataをajax通信でDBに渡す。
   $('.new_item').on('submit', function(e){
