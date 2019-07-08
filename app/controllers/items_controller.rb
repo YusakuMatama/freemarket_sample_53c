@@ -2,11 +2,9 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show]
 
   def index
-    
   end
 
   def new
-    
   end
 
   def show
@@ -60,7 +58,6 @@ class ItemsController < ApplicationController
 
   def complete
   end
-
 
   private
   def items_params
