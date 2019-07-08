@@ -86,3 +86,4 @@ gem "gon"
 gem 'gretel'
 gem "omniauth-google-oauth2"
 gem 'omniauth-facebook'
+gem 'ransack'
