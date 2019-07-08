@@ -8,39 +8,58 @@ $(document).on('turbolinks:load', function(){
   function countUp(){
     drop_zone_count++;
   };
-
   function countDown(){
     drop_zone_count--;
   };
 
-// 入力ゾーンの修正
-  function adjust_file_field(){
-      if($upload_files.length <= 5){
-        $("#file-drop-zone").css({
-        "width" : "80%"  
-      });  
-      if($upload_files.length == 5){
-        $("#file-drop-zone").css({
-          "pointer-events" : "none",
-          "border" : "none"
-        });    
-      }
-    }
-      if(5 < $upload_files.length && $upload_files.length <= 10 ){
-        $("#file-drop-zone--next").css({
-        "width" : "80%"  
-      });
-      if($upload_files.length == 10){
-        $("#file-drop-zone--next").css({
-          "pointer-events" : "none",  
-          "border" : "none"
-        });    
-      } 
+  function display_new_upload_zone(){
+    if(5 <= $upload_files.length && $upload_files.length <= 10 ){
+      $(".sell-box_container__drop-box--next").css({
+        "display" : "block"
+      })
     }
   };
+// 入力ゾーンの幅変更
+  function adjust_file_field(){
+    if($upload_files.length == 0){
+      $("#file-drop-zone").css({
+        "display" : "block",
+        "width" : "100%"  
+    });
+    }  
+    if(0 < $upload_files.length && $upload_files.length < 5){
+      $("#file-drop-zone").css({
+      "display" : "block",
+      "width" : "80%"  
+    });
+    }  
+    if($upload_files.length == 5){
+      $("#file-drop-zone").css({
+        "display" : "none"
+    });    
+    }
+    if($upload_files.length == 5){
+      $("#file-drop-zone--next").css({
+        "display" : "block",
+        "width" : "100%"  
+      });    
+    }
+    if(5 < $upload_files.length && $upload_files.length < 10 ){
+      $("#file-drop-zone--next").css({
+        "display" : "block",
+        "width" : "80%"  
+    });
+    }
+    if($upload_files.length == 10){
+      $("#file-drop-zone--next").css({
+        "display" : "none"
+    });    
+    } 
+  };
 
+  // 入力した画像＋削除・編集ボタンの表示
   function display_preview(src,title){
-    html =` <ul>
+    html =` <ul id="add_file_image">
              <li id="image_display_container">
                <img src="${src}" class="preview" title="${title}"></img>
                <div id ="remove_edit_container">
@@ -75,7 +94,6 @@ $(document).on('turbolinks:load', function(){
 
     })(display_file);
     reader.readAsDataURL(display_file);
-
   };
   
 // 画像のドラッグ後、ドロップエリアにコピーを許可
@@ -100,12 +118,8 @@ $(document).on('turbolinks:load', function(){
     display_image(drop_file[0]);
     countUp();
     adjust_file_field();
-
-    if(5 <= $upload_files.length && $upload_files.length <= 10 ){
-        $(".sell-box_container__drop-box--next").css({
-          "display" : "block"
-        })
-      }
+    display_new_upload_zone();
+    $(this).val();
 
     e.preventDefault();
   })
@@ -122,15 +136,78 @@ $(document).on('turbolinks:load', function(){
     e.preventDefault();
   })
 
+
   // ファイルから選択したファイルを画像で表示
   $('input[type="file"]').on('change', function(e){
     var input_file = e.target.files;
-    $upload_files.push(input_file);
-
-    display_image(input_file[0]);
-    countUp();
-    adjust_file_field();
+    if(input_file.length != 0){
+      $upload_files.push(input_file);
+    
+      display_image(input_file[0]);
+      countUp();
+      adjust_file_field();
+      display_new_upload_zone();
+    
+      if(5 <= $upload_files.length && $upload_files.length <= 10 ){
+        $(".sell-box_container__drop-box--next").css({
+          "display" : "block"
+        })
+      }
+      else{
+        $(".sell-box_container__drop-box--next").css({
+        "display" : "none"
+      })
+      }
+    }
   });
+
+    // 選択した画像の削除
+    $(document).on('click', ".image-remove-btn",function(e){
+      var user_select_delete_image = $(this).parent().parent().parent();
+      user_select_delete_image_result = user_select_delete_image.index() - 1;
+
+      user_select_delete_image.remove();
+      preview_children_attr = document.getElementById("preview");
+      preview_children_count = preview_children_attr.childElementCount - 1;
+
+      preview_next_children_attr = document.getElementById("preview--next");
+      preview_next_children_count = preview_next_children_attr.childElementCount - 1;
+
+      if (preview_children_count < 5){
+        for (i = 0; i < $upload_files.length; i++){
+          if (i == user_select_delete_image_result){
+            $upload_files.splice(i, 1);
+          }
+        };
+      }
+      if (preview_children_count == 5){
+        for (i = 0; i < $upload_files.length; i++){
+          if (i == user_select_delete_image_result + 5){
+            $upload_files.splice(i, 1);
+          }
+        };
+      }
+
+      if(preview_children_count == 4){
+        move_image = $("#preview--next ul:first");
+        $(move_image).appendTo("#preview");
+        console.log(move_image);
+      }
+
+      if(5 <= $upload_files.length && $upload_files.length <= 10 ){
+        $(".sell-box_container__drop-box--next").css({
+          "display" : "block"
+        })
+      }
+      else{
+        $(".sell-box_container__drop-box--next").css({
+        "display" : "none"
+      })
+      }
+      adjust_file_field();
+      
+
+    });
 
   // $files＋formdataをajax通信でDBに渡す。
   $('.new_item').on('submit', function(e){
@@ -155,69 +232,7 @@ $(document).on('turbolinks:load', function(){
     })
 
     .always(function(items){
-      console.log(items);
-      $('#product-sell-btn').prop('disabled', false);
-      $(".form_item-name p:last").remove();
-      $(".form_item-intro p:last").remove();
-      $(".form_item-intro p:last").remove();
-      $(".select-wrap-category p:last").remove();
-      $(".select-wrap-condition p:last").remove();
-      $(".select-wrap-days_to_ship p:last").remove();
-      $(".select-wrap-delivery_cost p:last").remove();
-      $(".select-wrap-delivery_method p:last").remove();
-      $(".select-wrap-delivery_prefecture p:last").remove();
-      $(".sell-price_form p:last").remove();
-
-      if(typeof items != 'undefined'){
-        if (items.name == ""){
-          $(".form_item-name").append(`<p>入力してください。</p>`)
-          $(".form_item-name p:last").css({"color" : "red"});
-        }
-        if (items.name.length > 40){
-          $(".form_item-name").append(`<p>40文字以下で入力してください。</p>`)
-          $(".form_item-name p:last").css({"color" : "red"});
-        }
-        if (items.detail == ""){
-          $(".form_item-intro").append(`<p>入力してください。</p>`)
-          $(".form_item-intro p:last").css({"color" : "red"});
-        }
-        if (items.detail.length > 1000){
-          $(".form_item-intro").append(`<p>1000文字以下で入力してください。</p>`)
-          $(".form_item-intro p:last").css({"color" : "red"});
-        }
-        if (items.category_id === null){
-          $(".select-wrap-category").append(`<p>入力してください。</p>`)
-          $(".select-wrap-category p:last").css({"color" : "red"});
-        }
-        if (items.condition === null){
-          $(".select-wrap-condition").append(`<p>入力してください。</p>`)
-          $(".select-wrap-condition p:last").css({"color" : "red"});
-        }
-        if (items.days_to_ship === null){
-          $(".select-wrap-days_to_ship").append(`<p>入力してください。</p>`)
-          $(".select-wrap-days_to_ship p:last").css({"color" : "red"});
-        }
-        if (items.delivery_cost === null){
-          $(".select-wrap-delivery_cost").append(`<p>入力してください。</p>`)
-          $(".select-wrap-delivery_cost p:last").css({"color" : "red"});
-        }
-        if (items.delivery_method === null){
-          $(".select-wrap-delivery_method").append(`<p>入力してください。</p>`)
-          $(".select-wrap-delivery_method p:last").css({"color" : "red"});
-        }
-        if (items.delivery_prefecture === null){
-          $(".select-wrap-delivery_prefecture").append(`<p>入力してください。</p>`)
-          $(".select-wrap-delivery_prefecture p:last").css({"color" : "red"});
-        }
-        if (items.price < 300 || items.price > 9999999){
-          $(".sell-price_form").append(`<p>300〜9999999円の範囲で入力してください。</p>`)
-          $(".sell-price_form p:last").css({"color" : "red"});
-        }
-        $('html,body').animate({scrollTop: 0},'fast');
-      }
-      else{
-        window.location.href = '/';
-      }
+      sell_function_validation(items);
     })
   });
 });

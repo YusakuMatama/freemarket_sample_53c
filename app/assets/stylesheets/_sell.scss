@@ -80,6 +80,13 @@
           display: block;
           cursor: pointer;
           order: 2;
+          
+          .fa-camera{
+            width: 20px;
+            height: 20px;
+            display: block;
+            margin: auto;
+          }
         }
 
         #file-drop-zone--next{
@@ -178,7 +185,7 @@
                   margin: 6px 0 0;
                 }
                 #item_category_attributes_grandchild_id{
-                  margin: 6px 0 0;
+                  margin: 15px 0 0;
                 }
 
                   .select-place {
@@ -430,7 +437,8 @@ textarea:focus{
   ul{
     width : 112.4px;
     height : 162px;
-    margin-right: 12px;
+    margin: 0 12px 5px 0;
+    background-color: rgb(245, 245, 245);
 
     #image_display_container{
 
@@ -438,14 +446,12 @@ textarea:focus{
         width : 112px;
         height : 114px;
         object-fit: contain;
-        background-color: rgb(245, 245, 245);
         order: 1;
       }
       #remove_edit_container{
         display: flex;
         font-size: 14px;
         color: $blue;
-        background-color: rgb(245, 245, 245);
 
         .image-remove-btn{
           width: 56px;
@@ -466,9 +472,10 @@ textarea:focus{
   display: flex;
 
   ul{
-    width : 113px;
+    width : 112.4px;
     height : 162px;
     margin-right: 12px;
+    background-color: rgb(245, 245, 245);
 
     #image_display_container{
 
@@ -481,16 +488,19 @@ textarea:focus{
       }
       #remove_edit_container{
         display: flex;
+        color: $blue;
 
         .image-remove-btn{
           width: 56px;
           height: 48px;       
           font-size: 12px;
+          cursor: pointer;
         }
         .image-edit-btn{
           width: 56px;
           height: 48px;
           font-size: 12px;
+          cursor: pointer;
         }
       }
     }
