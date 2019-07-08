@@ -15,15 +15,17 @@
                 最大10枚までアップロードできます
               .sell-box_container
                 .sell-box_container__drop-box
-                  .sell-box_container__drop-box__text
-                    ドラッグアンドドロップ
-                    .sell-box_container__drop-box__text__second
-                      またはクリックしてファイルをアップロード
+                  #preview
                     = f.fields_for :item_images do |fin|
                       %label#file-drop-zone
-                        =fin.file_field :image, class: "file-send-btn"
-                        #preview
-                      
+                        =fin.file_field :image, class: "file-send-btn", multiple: true
+                .sell-box_container__drop-box--next
+                  #preview--next
+                    = f.fields_for :item_images do |fin|
+                      %label#file-drop-zone--next
+                        =fin.file_field :image, class: "file-send-btn", multiple: true
+
+
             .sell-content
               .form_item-name
                 %label 商品名
@@ -56,7 +58,7 @@
                   %label 商品の状態
                   %span.required-tag 必須
                   %div
-                    .select-wrap-condiiton
+                    .select-wrap-condition
                       = f.select :condition, Item.conditions, prompt: "------", class: "select-place"
                       %i.fas.fa-chevron-down
             .sell-content-shipping-method
@@ -133,7 +135,7 @@
                   また、出品をもちまして
                   =link_to '加盟店規約', "#", class:"notes__link"
                   に同意したことになります。
-              = f.submit "出品する", class: "btn-sell btn-red"
+              = f.submit "出品する", class: "btn-sell btn-red", id: "product-sell-btn"
               = link_to "もどる", "/mypage", class: "btn-sell btn-gray"
           
   = render 'layouts/single-footer'

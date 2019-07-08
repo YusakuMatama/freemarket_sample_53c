@@ -23,10 +23,9 @@
         .sell-form {
           width: 700px;
           .sell-form_image-box {
-            height: 220px;
+            min-height: 220px;
             width: 620px;
             padding: 40px;
-            border-bottom: solid 1px rgb(245, 245, 245);
             .sell-upload_text-top {
               font-size: 16px;
               font-weight: bold;
@@ -36,24 +35,16 @@
               margin-top: 3px;
             }
             .sell-box_container {
-              height: 162px;
+              min-height: 162px;
               width: 620px;
               margin-top: 8px;
-              background-color: rgb(245, 245, 245);
-              border-style: dashed;
-              border-width: 1px;
-              border-color: rgb(209, 209, 209);
               position: relative;
 
               &__drop-box {
-                min-height: 160px;
-                background: #f5f5f5;
-                border: 1px dashed #ccc;
                 font-size: 0;
                 text-align: center;
 
                 &__text {
-                  height: 162px;
                   font-size: 13px;
                   text-align: center;
                   font-size: 14px;
@@ -67,6 +58,11 @@
                   }
                 }
               }
+              &__drop-box--next {
+                height: 164px;
+                text-align: center;
+                display: none;
+              }
             }
           }
         }
@@ -77,11 +73,32 @@
         #file-drop-zone{
           width: 620px;
           height: 162px;
+          background-color: whitesmoke;
+          border-style: dashed;
+          border-width: 1px;
+          border-color: #d1d1d1;
           display: block;
           cursor: pointer;
-          position: absolute;
-          top: 0;
-          left: 0;
+          order: 2;
+          
+          .fa-camera{
+            width: 20px;
+            height: 20px;
+            display: block;
+            margin: auto;
+          }
+        }
+
+        #file-drop-zone--next{
+          width: 620px;
+          height: 162px;
+          background-color: whitesmoke;
+          border-style: dashed;
+          border-width: 1px;
+          border-color: #d1d1d1;
+          display: block;
+          cursor: pointer;
+          order: 2;
         }
 
         .sell-content {
@@ -110,19 +127,19 @@
           .form_item-intro {
             height: 164px;
             width: 620px;
-            margin-top: 40px;
+            margin: 40px 0 0 40px;
             word-wrap: break-word;
             label {
               height: 14px;
               width: 85px;
               font-size: 14px;
               font-weight: 900;
-              margin-left: 40px;
+              // margin-left: 40px;
             }
             .input-intro {
               height: 142px;
               width: 620px;
-              margin-left: 40px;
+              // margin-left: 40px;
               border: solid 1px;
               border-radius: 5px;
               border-color: rgb(209, 209, 209);
@@ -198,33 +215,29 @@
               }
             }
           }
-        
-      
-        
-
           .sell-content-shipping-method {
           min-height: 409px;
           width: 617px;
           padding: 40px;
           border-bottom: solid 1px rgb(245, 245, 245);
+          display: flex;
+          justify-content: space-between;
           h3 {
             font-size: 14px;
             font-weight: 900;
-            float: left;
             color: rgb(136, 136, 136);
           }
           .form-area_bottom {
             margin-top: 30px; 
           }
           .form-help {
-            display: inline;
             color: $blue;
             font-weight: 100;
+            margin-right: 115px;
           }
           .sell-form-box {
             min-height: 180px;
             width:400px;
-            float: right;
             .form-area {
               label {
                 font-size: 14px;
@@ -416,4 +429,173 @@ input:focus{
 textarea:focus{
   outline: 0;
   border: 1px solid $blue;
+}
+
+#preview{
+  display: flex;
+
+  ul{
+    width : 112.4px;
+    height : 162px;
+    margin: 0 12px 5px 0;
+    background-color: rgb(245, 245, 245);
+
+    #image_display_container{
+
+      .preview{
+        width : 112px;
+        height : 114px;
+        object-fit: contain;
+        order: 1;
+      }
+      #remove_edit_container{
+        display: flex;
+        font-size: 14px;
+        color: $blue;
+
+        .image-remove-btn{
+          width: 56px;
+          height: 48px;       
+          cursor: pointer;
+        }
+        .image-edit-btn{
+          width: 56px;
+          height: 48px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+#preview--next{
+  display: flex;
+
+  ul{
+    width : 112.4px;
+    height : 162px;
+    margin-right: 12px;
+    background-color: rgb(245, 245, 245);
+
+    #image_display_container{
+
+      .preview{
+        width : 112px;
+        height : 114px;
+        object-fit: contain;
+        background-color: rgb(245, 245, 245);
+        order: 1;
+      }
+      #remove_edit_container{
+        display: flex;
+        color: $blue;
+
+        .image-remove-btn{
+          width: 56px;
+          height: 48px;       
+          font-size: 12px;
+          cursor: pointer;
+        }
+        .image-edit-btn{
+          width: 56px;
+          height: 48px;
+          font-size: 12px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+#overlay{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: none;
+  z-index: 3000;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: all ease-out .3s;
+
+  #modalwindow{
+    width: 600px;
+    padding: 0 0 40px;
+    margin: 24px auto;
+    color: $white;
+    box-sizing: border-box;
+
+    .item_image_change_wrap{
+      padding: 16px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+
+      &__text{
+        margin: 12px 0 0 ;
+        font-size: 18px;
+      }
+      &__change-btn{
+        display: flex;
+
+        .fa-search{
+
+        }
+        .file-send-btn--edit{
+
+        }
+      }
+
+      .file-drop-zone-edit-wrap{
+        height: 425px;
+        margin: 0 auto;
+
+        #file-drop-zone--edit{
+          width: 380px;
+          height: 380px;
+          background-color: whitesmoke;
+          border-style: dashed;
+          border-width: 1px;
+          border-color: #d1d1d1;
+          display: block;
+          cursor: pointer;
+
+          .preview--edit{
+
+          }
+        }
+
+        .file-drop-zone-edit-wrap__size-change{
+          width: 300px;
+          margin: 16px auto 0;
+          padding: 8px 0 4px;
+          box-sizing: border-box;
+
+          &__small-icon{
+
+          }
+
+          &__bar{
+
+          }
+
+          &__big-icon{
+
+          }
+        }
+      }
+      .item_image_change_ok_btn{
+        display: flex;
+
+        #image-cancel-btn{
+
+        }
+        #image-comformation-btn{
+
+        }
+      }
+    }
+  }
 }

@@ -29,10 +29,14 @@ class ItemsController < ApplicationController
     items_params
     @items = Item.new(@params_items)
    
-    if @items.save 
+    if @items.save(context: :sell_step)
       @items_status = OrderStatus.create(status: 1, item_id: Item.all.last().id)
     else
+      @items = Item.new(@params_items)
       render :sell
+      respond_to do |format|
+        format.json
+      end
     end
   end
 
@@ -65,12 +69,13 @@ class ItemsController < ApplicationController
 
     @params_brands = params.require(:item).require(:brand_attributes).permit(:name)
     @params_brands = @brands.find_by(name: @params_brands[:name])
+    
 
     if @params_brands.present?
       @params_brands = @params_brands[:id]
     end
 
-    @params_items = params.require(:item).permit(:name, :detail, :condition, :delivery_cost, :delivery_prefecture, :days_to_ship, :delivery_method, :price, item_images_attributes: [:image]).merge(user_id: 1, sales_condition: 0, category_id: @params_categories[:id], brand_id: @params_brands)
+    @params_items = params.require(:item).permit(:name, :detail, :condition, :delivery_cost, :delivery_prefecture, :days_to_ship, :delivery_method, :price, item_images_attributes: [:image] ).merge(user_id: current_user.id, sales_condition: 0, category_id: @params_categories[:id], brand_id: @params_brands)
     params_int(@params_items)
   end
 
