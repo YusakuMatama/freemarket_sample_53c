@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
     @items.build_category
     @items.item_images.build
 
-    @categories = Category.where(parent_id: nil)
+    @categories = Category.where(parent_id: 0)
     gon.category = Category.all
     @brands = Brand.all
 
