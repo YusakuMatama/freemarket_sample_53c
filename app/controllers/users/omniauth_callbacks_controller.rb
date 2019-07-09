@@ -38,7 +38,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session["devise.facebook_data"] = request.env["omniauth.auth"]
 
       # 新規ユーザの場合、`ユーザ名`登録用のテンプレートをrender
-#      @getemail = session["devise.google_data"]["info"]["email"]
+      @getemail = ""
       @getname = session["devise.facebook_data"]["extra"]["raw_info"]["name"]
       @user = User.new()
       render 'devise/registrations/after_omniauth_signup'
