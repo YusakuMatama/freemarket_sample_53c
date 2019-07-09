@@ -7,53 +7,56 @@ $(document).on('turbolinks:load', function(){
   var user_select_edit_image;
   var user_select_edit_image_select_last;
 
-  function display_new_upload_zone(){
+// 次のドロップゾーンの表示
+  function display_dropZone(){
     if(5 <= upload_files.length && upload_files.length <= 10 ){
-      $(".sell-box_container__drop-box--next").css({
+      $(".sell-box_container__drop-box--next").css({  // 入力ファイルが5以上のとき、次のドロップゾーンを表示する。
         "display" : "block"
       })
     }
-  };
+    else{
+      $(".sell-box_container__drop-box--next").css({
+      "display" : "none"
+    })
+    }
+  }
 // 入力ゾーンの幅変更
   function adjust_file_field(){
     if(upload_files.length == 0){
-      $("#file-drop-zone").css({
+      $("#file-drop-zone").css({  // 入力ファイルがないとき、最初のドロップゾーンを表示したままにし、幅は100％にする。
         "display" : "block",
         "width" : "100%"  
-    });
+      });
     }  
     if(0 < upload_files.length && upload_files.length < 5){
-      $("#file-drop-zone").css({
+      $("#file-drop-zone").css({  // 入力ファイルが5以下のとき、最初のドロップゾーンの幅を80%ずつ縮める。
       "display" : "block",
       "width" : "80%"  
-    });
+      });
     }  
     if(upload_files.length == 5){
-      $("#file-drop-zone").css({
+      $("#file-drop-zone").css({  // 入力ファイルが5のとき、最初のドロップゾーンを非表示にする。
         "display" : "none"
-    });    
-    }
-    if(upload_files.length == 5){
-      $("#file-drop-zone--next").css({
+      });    
+      $("#file-drop-zone--next").css({  // 入力ファイルが5のとき、次のドロップゾーンを非表示にする。
         "display" : "block",
         "width" : "100%"  
       });    
     }
     if(5 < upload_files.length && upload_files.length < 10 ){
-      $("#file-drop-zone--next").css({
+      $("#file-drop-zone--next").css({  // 入力ファイルが5以上のとき、次のドロップゾーンを80%ずつ縮める。
         "display" : "block",
         "width" : "80%"  
     });
     }
     if(upload_files.length == 10){
-      $("#file-drop-zone--next").css({
+      $("#file-drop-zone--next").css({  // 入力ファイルが10のとき、次のドロップゾーンを非表示にする。
         "display" : "none"
     });    
     } 
   };
-
   // 入力した画像＋削除・編集ボタンの表示
-  function display_preview(src,title){
+  function display_preview(src,title){ 
     html =` <ul id="add_file_image">
              <li id="image_display_container">
                <img src="${src}" class="preview" title="${title}"></img>
@@ -67,155 +70,116 @@ $(document).on('turbolinks:load', function(){
     if(upload_files.length <= 5){
     $("#preview").append(html);
     };
-
     if(5 < upload_files.length && upload_files.length <= 10 ){
       $("#preview--next").append(html);
     };  
   }
-
-
 // 画像の表示と削除、編集ボタンの追加
   function display_image(display_file){
     var  reader = new FileReader();
 
-    reader.onload = (function(display_file) {
+    reader.onload = (function(display_file) { // 読み込んだ画像に編集・削除ボタンをつけて表示する。
       return function(e) {
         var src = e.target.result;
         var title = display_file.name;
         display_preview(src,title);
       };
-
     })(display_file);
     reader.readAsDataURL(display_file);
   };
-  
 // 画像のドラッグ後、ドロップエリアにコピーを許可
-  $(dropzone).on("dragover", function(e){
-    e = e.originalEvent;
-    e.dataTransfer.dropEffect = 'copy';
-    e.preventDefault();
+ function dragoverCopy(e){
+  e = e.originalEvent;
+  e.dataTransfer.dropEffect = 'copy';
+  e.preventDefault();
+ }
+  $(dropzone).on("dragover", function(e){ // 上段のドロップゾーン
+    dragoverCopy(e);
   })
 
-  $(dropzone_next).on("dragover", function(e){
-    e = e.originalEvent;
-    e.dataTransfer.dropEffect = 'copy';
-    e.preventDefault();
+  $(dropzone_next).on("dragover", function(e){ // 下段のドロップゾーン
+    dragoverCopy(e);
   })
 
-  $(document).on("dragover", dropzone_edit, function(e){
-    e = e.originalEvent;
-    e.dataTransfer.dropEffect = 'copy';
-    e.preventDefault();
-
+  $(document).on("dragover", dropzone_edit, function(e){ // モーダルウインドウのドロップゾーン
+    dragoverCopy(e);
   })
 
 // ドロップした画像を$upload_filesに代入する。
-  $(dropzone).on("drop", function(e){
+  function dropGetFile(e){
     e = e.originalEvent;
     var drop_file = e.dataTransfer.files;
-    upload_files.push(drop_file);
+    upload_files.push(drop_file);  // ドロップ画像を配列に格納する。upload_filesに格納されたファイルは最終的にDBに保存される。
     $('#product-sell-btn').prop('disabled', false);
 
-    display_image(drop_file[0]);
     adjust_file_field();
+    display_image(drop_file[0]);
+  }
+  $(dropzone).on("drop", function(e){  // 上段のドロップゾーンに入れたファイルをupload_filsに格納する。
+    dropGetFile(e);
     display_new_upload_zone();
-    $(this).val();
 
     e.preventDefault();
   })
-
-  $(dropzone_next).on("drop", function(e){
-    e = e.originalEvent;
-    var drop_file = e.dataTransfer.files;
-    upload_files.push(drop_file);
-
-    display_image(drop_file[0]);
-    adjust_file_field();
-
+  $(dropzone_next).on("drop", function(e){  // 下段のドロップゾーンに入れたファイルをupload_filsに格納する。
+    dropGetFile(e)
     e.preventDefault();
   })
-
-  $(document).on("drop", dropzone_edit, function(e){
+  // モーダルウインドウのドロップゾーン
+  $(document).on("drop", dropzone_edit, function(e){  // モーダルウインドウのドロップゾーンに入れたファイルをedit_filsに格納する。
     e = e.originalEvent;
     var drop_file = e.dataTransfer.files;
     edit_file.length = 0;
     edit_file.push(drop_file);
 
-    display_image_edit_display(drop_file[0]);
+    display_image_edit_display(drop_file[0]);  // モーダルウインドウ内に画像が表示される。
 
     e.preventDefault();
   })
 
   // ファイルから選択したファイルを画像で表示
-  $(document).on('change','.file-send-btn',function(e){
+  $(document).on('change','.file-send-btn',function(e){  // ファイル選択で選択したファイルをupload_filesに格納する。
     var input_file = e.target.files;
     $('#product-sell-btn').prop('disabled', false);
 
     if(input_file.length != 0){
-      upload_files.push(input_file);
-    
-      display_image(input_file[0]);
-      adjust_file_field();
-      display_new_upload_zone();
-    
-      if(5 <= upload_files.length && upload_files.length <= 10 ){
-        $(".sell-box_container__drop-box--next").css({
-          "display" : "block"
-        })
-      }
-      else{
-        $(".sell-box_container__drop-box--next").css({
-        "display" : "none"
-      })
-      }
+      upload_files.push(input_file);  // upload_filesに選択ファイルを格納する。
+      display_image(input_file[0]); // ドロップゾーンに選択ファイルを表示する。
+      adjust_file_field(); // ドロップゾーンのサイズ調整。
+      display_dropZone(); // 上段のドロップゾーンが埋まれば、次のドロップゾーンを表示。
     }
-    console.log(upload_files);
-
   });
-
-    // 選択した画像の削除
+// 選択した画像の削除
     $(document).on('click', ".image-remove-btn",function(e){
-      user_select_delete_image = $(this).parent().parent().parent();
-      user_select_delete_image_result = user_select_delete_image.index() - 1;
-
+      var user_select_delete_image = $(this).parent().parent().parent(); // 削除したい画像の要素を取得
+      var user_select_delete_image_result = user_select_delete_image.index() - 1; // 削除したい画像の要素の位置が、ドロップゾーンの何番目か確認
       user_select_delete_image.remove();
-      preview_children_attr = document.getElementById("preview");
-      preview_children_count = preview_children_attr.childElementCount - 1;
+      var preview_children_attr = document.getElementById("preview");
+      var preview_children_count = preview_children_attr.childElementCount - 1; // ファイルを削除後、削除したい画像の要素の位置が、今まで入力したファイルの何番目か確認
 
-      if (preview_children_count < 5){
-        for (i = 0; i < upload_files.length; i++){
-          if (i == user_select_delete_image_result){
-            upload_files.splice(i, 1);
-            console.log(user_select_delete_image_result);
+      if (preview_children_count < 5){ // 今まで入力したファイルが４ファイル以下だったら、
+        for (i = 0; i < upload_files.length; i++){ // uploadするファイルの長さの回数だけ繰り返し、
+          if (i == user_select_delete_image_result){ // もし削除したい画像の要素の位置と、upload_files内の配列番号が同じだったら
+            upload_files.splice(i, 1); // その配列番号のデータを削除する。
           }
         };
       }
-      if (preview_children_count == 5){
+      if (preview_children_count == 5){ // 今まで入力したファイルが５以上だったら、こっちを実行。
         for (i = 0; i < upload_files.length; i++){
-          if (i == user_select_delete_image_result + 5){
+          if (i == user_select_delete_image_result + 5){ // 排除したい画像の要素の位置＋５が、５以上のファイルの位置に相当する。
             upload_files.splice(i, 1);
           }
         };
       }
-      if(preview_children_count == 4){
+      if(preview_children_count == 4){ // 削除処理を実行後、上段のファイルがもし４つだったら、下段の最初のファイルを上段の最後に持ってくる。
         move_image = $("#preview--next ul:first");
         $(move_image).appendTo("#preview");
       }
-
-      if(5 <= upload_files.length && upload_files.length <= 10 ){
-        $(".sell-box_container__drop-box--next").css({
-          "display" : "block"
-        })
-      }
-      else{
-        $(".sell-box_container__drop-box--next").css({
-        "display" : "none"
-        })
-      }
+      display_dropZone();
       adjust_file_field();
     });
 
-  // 選択した画像の編集
+// 選択した画像の編集
   function display_preview_edit(src,title,edit_btn_parent){
     modalwindow_html =`<div id='overlay'>
                         <div id='modalwindow'>
@@ -251,10 +215,10 @@ $(document).on('turbolinks:load', function(){
                         </div>
                       </div>
                       `
-    $(edit_btn_parent).append(modalwindow_html);
+    $(edit_btn_parent).append(modalwindow_html); //モーダルウインドウを表示する。
     $("#overlay").fadeIn();
   }
-
+// モーダルウインドウ内のメイン画像を表示
   function display_image_edit(display_file,edit_btn_parent){
     var  reader = new FileReader();
 
@@ -264,11 +228,10 @@ $(document).on('turbolinks:load', function(){
         var title = display_file.name;
         display_preview_edit(src,title,edit_btn_parent);
       };
-
     })(display_file);
     reader.readAsDataURL(display_file);
   };
-
+// モーダルウインドウ内のメイン画像を選択画像に変更。
   function display_image_edit_display(display_file){
     var  reader = new FileReader();
 
@@ -278,13 +241,11 @@ $(document).on('turbolinks:load', function(){
         var title = display_file.name;
         $('#file-drop-zone--edit').children().remove();
         $('#file-drop-zone--edit').append(`<img src="${src}" class="preview--edit" title="${title}"></img>`);
-
       };
-
     })(display_file);
     reader.readAsDataURL(display_file);
   };
-
+// モーダルウインドウで選択した画像を、メイン画面のドロップゾーン側に表示。
   function display_image_edit_display_last(display_file, append_file){
     var  reader = new FileReader();
     reader.onload = (function(display_file) {
@@ -293,66 +254,60 @@ $(document).on('turbolinks:load', function(){
         var title = display_file.name;
         $(append_file).prepend(`<img src="${src}" class="preview" title="${title}"></img>`);
       };
-
     })(display_file);
     reader.readAsDataURL(display_file);
   };
-
+// モーダルウインドウで画像を選択。
   $(document).on('change','.file-send-btn--edit',function(e){
     edit_file.length = 0;
     var input_edit_file = document.getElementById('edit_image').files;
     edit_file.push(input_edit_file);
     display_image_edit_display(input_edit_file[0]);         
   });
-
+// モーダルウインドウを表示。
   $(document).on('click', ".image-edit-btn",function(e){
-    var user_select_edit_image_select = $(this).parent().parent().parent();
-    user_select_edit_image_select_last = user_select_edit_image_select.parent().attr("id")
+    var user_select_edit_image_select = $(this).parent().parent().parent(); 
+    user_select_edit_image_select_last = user_select_edit_image_select.parent().attr("id")//編集選択した画像の親要素のidを取得。
     user_select_edit_image = $(this).parent().parent();
-    user_select_edit_image_result = user_select_edit_image_select.index() - 1;
+    user_select_edit_image_result = user_select_edit_image_select.index() - 1;//編集選択した画像が、ドロップゾーンの何番目か確認。
 
-    preview_children_attr = document.getElementById("preview");
-    preview_children_count = preview_children_attr.childElementCount - 1;
-
-    if (user_select_edit_image_select_last == "preview"){
+    if (user_select_edit_image_select_last == "preview"){// 編集選択した要素が上段のドロップゾーンの場合
       for (i = 0; i < upload_files.length; i++){
         if (i == user_select_edit_image_result){
-          display_image_edit(upload_files[i][0], $(this).parent());
+          display_image_edit(upload_files[i][0], $(this).parent());// モーダルウインドウに編集選択した画像を表示
         }
       };
     }
-    if (user_select_edit_image_select_last == "preview--next"){
+    if (user_select_edit_image_select_last == "preview--next"){// 編集選択した要素が上段か下段のどちらのドロップゾーンか確認
       for (i = 0; i < upload_files.length; i++){
         if (i == user_select_edit_image_result + 5){
-          display_image_edit(upload_files[i][0], $(this).parent());
+          display_image_edit(upload_files[i][0], $(this).parent());// モーダルウインドウに編集選択した画像を表示
         }
       };
     }
   });
-
+// モーダルウインドウのキャンセルを押した時の処理
   $(document).on('click', "#image-cancel-btn",function(e){
     $('#overlay').fadeOut();
     $('#overlay').remove();
   });
-  $(document).on('click', "#image-comformation-btn",function(e){
+// モーダルウインドウの完了を押した時の処理
+$(document).on('click', "#image-comformation-btn",function(e){
     $('#overlay').fadeOut();
     $('#overlay').remove();
-    preview_children_attr = document.getElementById("preview");
-    preview_children_count = preview_children_attr.childElementCount - 1;
 
-    if(edit_file.length != 0){
-
-      if (user_select_edit_image_select_last == "preview"){
+    if(edit_file.length != 0){ //モーダルウインドウで画像を変更していれば
+      if (user_select_edit_image_select_last == "preview"){ //編集ボタンを押した画像が上段のドロップゾーンだったら
         for (i = 0; i < upload_files.length; i++){
           if (i == user_select_edit_image_result){
-            upload_files.splice(i+1, 0, edit_file[0]);
-            upload_files.splice(i, 1);
-            user_select_edit_image.children("img").remove();
-            display_image_edit_display_last(edit_file[0][0], user_select_edit_image);
+            upload_files.splice(i+1, 0, edit_file[0]);//モーダルウインドウで選択した画像をupload_filesに挿入する。
+            upload_files.splice(i, 1);//編集選択した画像をupload_filesから削除する。
+            user_select_edit_image.children("img").remove();//編集選択した画像の表示を削除する。
+            display_image_edit_display_last(edit_file[0][0], user_select_edit_image);//モーダルウインドウで選択した画像をメイン画面のドロップゾーンに表示する。
           }
         }
       }
-      if (user_select_edit_image_select_last == "preview--next"){
+      if (user_select_edit_image_select_last == "preview--next"){//編集ボタンを押した画像が下段のドロップゾーンだったら
         for (i = 0; i < upload_files.length; i++){
           if (i == user_select_edit_image_result + 5){
             upload_files.splice(i+1, 0, edit_file[0]);
@@ -365,7 +320,7 @@ $(document).on('turbolinks:load', function(){
     }      
   });
 
-  // $files＋formdataをajax通信でDBに渡す。
+  // upload_filesをajax通信でDBに渡す。
   $('.new_item').on('submit', function(e){
     e.preventDefault();
     var formdata = new FormData(this);
@@ -373,15 +328,13 @@ $(document).on('turbolinks:load', function(){
     var ajax_files = [];
     $(".sell-form_image-box p:last").remove();
     
-    if(upload_files.length == 0){
-      $('#product-sell-btn').prop('disabled');
-      $(".sell-form_image-box").append(`<p>画像を登録してください。</p>`)
+    if(upload_files.length == 0){//upload_filesが何もなかったら
+      $(".sell-form_image-box").append(`<p>画像を登録してください。</p>`)//validationメッセージを表示する。
       $(".sell-form_image-box p:last").css({"color" : "red"});
       $('html,body').animate({scrollTop: 0},'fast');
       return false;
     };
-
-    for (i = 0; i < upload_files.length; i++){
+    for (i = 0; i < upload_files.length; i++){//upload_files内のデータを取り出し、それぞれにキーを分配する。
       ajax_files[i] = "item[item_images_attributes]" + "[" + i + "]" + '[image]';
       formdata.append(ajax_files[i], upload_files[i][0]);
     };
@@ -395,10 +348,8 @@ $(document).on('turbolinks:load', function(){
       contentType: false,
       dataType: 'json'
     })
-
+//validation
     .always(function(items){
-      console.log(items);
-      // sell_function_validation(items);
       $('#product-sell-btn').prop('disabled', false);
       $(".form_item-name p:last").remove();
       $(".form_item-intro p:last").remove();

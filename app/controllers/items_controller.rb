@@ -25,13 +25,15 @@ class ItemsController < ApplicationController
 
   end
   def edit
+    @items = Item.find(params[:id])
     @items.build_brand
     @items.build_category
     @items.item_images.build
 
     @categories = Category.where(parent_id: 0)
     gon.category = Category.all
-
+    gon.category_user_select = Category.find(params[:id])
+    gon.items_images = @items.item_images
   end
 
   def update
