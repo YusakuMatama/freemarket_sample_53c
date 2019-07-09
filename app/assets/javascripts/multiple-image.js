@@ -114,6 +114,7 @@ $(document).on('turbolinks:load', function(){
     e = e.originalEvent;
     var drop_file = e.dataTransfer.files;
     upload_files.push(drop_file);
+    $('#product-sell-btn').prop('disabled', false);
 
     display_image(drop_file[0]);
     adjust_file_field();
@@ -148,6 +149,8 @@ $(document).on('turbolinks:load', function(){
   // ファイルから選択したファイルを画像で表示
   $(document).on('change','.file-send-btn',function(e){
     var input_file = e.target.files;
+    $('#product-sell-btn').prop('disabled', false);
+
     if(input_file.length != 0){
       upload_files.push(input_file);
     
@@ -213,7 +216,6 @@ $(document).on('turbolinks:load', function(){
     });
 
   // 選択した画像の編集
-
   function display_preview_edit(src,title,edit_btn_parent){
     modalwindow_html =`<div id='overlay'>
                         <div id='modalwindow'>
@@ -249,60 +251,59 @@ $(document).on('turbolinks:load', function(){
                         </div>
                       </div>
                       `
-      $(edit_btn_parent).append(modalwindow_html);
-      $("#overlay").fadeIn();
-    }
+    $(edit_btn_parent).append(modalwindow_html);
+    $("#overlay").fadeIn();
+  }
 
-    function display_image_edit(display_file,edit_btn_parent){
-      var  reader = new FileReader();
+  function display_image_edit(display_file,edit_btn_parent){
+    var  reader = new FileReader();
 
-      reader.onload = (function(display_file) {
-        return function(e) {
-          var src = e.target.result;
-          var title = display_file.name;
-          display_preview_edit(src,title,edit_btn_parent);
-        };
+    reader.onload = (function(display_file) {
+      return function(e) {
+        var src = e.target.result;
+        var title = display_file.name;
+        display_preview_edit(src,title,edit_btn_parent);
+      };
 
-      })(display_file);
-      reader.readAsDataURL(display_file);
-    };
+    })(display_file);
+    reader.readAsDataURL(display_file);
+  };
 
-    function display_image_edit_display(display_file){
-      var  reader = new FileReader();
+  function display_image_edit_display(display_file){
+    var  reader = new FileReader();
 
-      reader.onload = (function(display_file) {
-        return function(e) {
-          var src = e.target.result;
-          var title = display_file.name;
-          $('#file-drop-zone--edit').children().remove();
-          $('#file-drop-zone--edit').append(`<img src="${src}" class="preview--edit" title="${title}"></img>`);
+    reader.onload = (function(display_file) {
+      return function(e) {
+        var src = e.target.result;
+        var title = display_file.name;
+        $('#file-drop-zone--edit').children().remove();
+        $('#file-drop-zone--edit').append(`<img src="${src}" class="preview--edit" title="${title}"></img>`);
 
-        };
+      };
 
-      })(display_file);
-      reader.readAsDataURL(display_file);
-    };
+    })(display_file);
+    reader.readAsDataURL(display_file);
+  };
 
-    function display_image_edit_display_last(display_file, append_file){
-      var  reader = new FileReader();
-      reader.onload = (function(display_file) {
-        return function(e) {
-          var src = e.target.result;
-          var title = display_file.name;
-          $(append_file).prepend(`<img src="${src}" class="preview" title="${title}"></img>`);
+  function display_image_edit_display_last(display_file, append_file){
+    var  reader = new FileReader();
+    reader.onload = (function(display_file) {
+      return function(e) {
+        var src = e.target.result;
+        var title = display_file.name;
+        $(append_file).prepend(`<img src="${src}" class="preview" title="${title}"></img>`);
+      };
 
-        };
+    })(display_file);
+    reader.readAsDataURL(display_file);
+  };
 
-      })(display_file);
-      reader.readAsDataURL(display_file);
-    };
-
-    $(document).on('change','.file-send-btn--edit',function(e){
-      edit_file.length = 0;
-      var input_edit_file = document.getElementById('edit_image').files;
-      edit_file.push(input_edit_file);
-      display_image_edit_display(input_edit_file[0]);         
-    });
+  $(document).on('change','.file-send-btn--edit',function(e){
+    edit_file.length = 0;
+    var input_edit_file = document.getElementById('edit_image').files;
+    edit_file.push(input_edit_file);
+    display_image_edit_display(input_edit_file[0]);         
+  });
 
   $(document).on('click', ".image-edit-btn",function(e){
     var user_select_edit_image_select = $(this).parent().parent().parent();
@@ -370,6 +371,15 @@ $(document).on('turbolinks:load', function(){
     var formdata = new FormData(this);
     var url = window.location.protocol + '//' + window.location.host + '/items';    
     var ajax_files = [];
+    $(".sell-form_image-box p:last").remove();
+    
+    if(upload_files.length == 0){
+      $('#product-sell-btn').prop('disabled');
+      $(".sell-form_image-box").append(`<p>画像を登録してください。</p>`)
+      $(".sell-form_image-box p:last").css({"color" : "red"});
+      $('html,body').animate({scrollTop: 0},'fast');
+      return false;
+    };
 
     for (i = 0; i < upload_files.length; i++){
       ajax_files[i] = "item[item_images_attributes]" + "[" + i + "]" + '[image]';
@@ -387,7 +397,70 @@ $(document).on('turbolinks:load', function(){
     })
 
     .always(function(items){
-      sell_function_validation(items);
+      console.log(items);
+      // sell_function_validation(items);
+      $('#product-sell-btn').prop('disabled', false);
+      $(".form_item-name p:last").remove();
+      $(".form_item-intro p:last").remove();
+      $(".form_item-intro p:last").remove();
+      $(".select-wrap-category p:last").remove();
+      $(".select-wrap-condition p:last").remove();
+      $(".select-wrap-days_to_ship p:last").remove();
+      $(".select-wrap-delivery_cost p:last").remove();
+      $(".select-wrap-delivery_method p:last").remove();
+      $(".select-wrap-delivery_prefecture p:last").remove();
+      $(".sell-price_form p:last").remove();
+    
+      if(typeof items != 'undefined'){
+        if (items.name == ""){
+          $(".form_item-name").append(`<p>入力してください。</p>`)
+          $(".form_item-name p:last").css({"color" : "red"});
+        }
+        if (items.name.length > 40){
+          $(".form_item-name").append(`<p>40文字以下で入力してください。</p>`)
+          $(".form_item-name p:last").css({"color" : "red"});
+        }
+        if (items.detail == ""){
+          $(".form_item-intro").append(`<p>入力してください。</p>`)
+          $(".form_item-intro p:last").css({"color" : "red"});
+        }
+        if (items.detail.length > 1000){
+          $(".form_item-intro").append(`<p>1000文字以下で入力してください。</p>`)
+          $(".form_item-intro p:last").css({"color" : "red"});
+        }
+        if (items.category_id === null){
+          $(".select-wrap-category").append(`<p>入力してください。</p>`)
+          $(".select-wrap-category p:last").css({"color" : "red"});
+        }
+        if (items.condition === null){
+          $(".select-wrap-condition").append(`<p>入力してください。</p>`)
+          $(".select-wrap-condition p:last").css({"color" : "red"});
+        }
+        if (items.days_to_ship === null){
+          $(".select-wrap-days_to_ship").append(`<p>入力してください。</p>`)
+          $(".select-wrap-days_to_ship p:last").css({"color" : "red"});
+        }
+        if (items.delivery_cost === null){
+          $(".select-wrap-delivery_cost").append(`<p>入力してください。</p>`)
+          $(".select-wrap-delivery_cost p:last").css({"color" : "red"});
+        }
+        if (items.delivery_method === null){
+          $(".select-wrap-delivery_method").append(`<p>入力してください。</p>`)
+          $(".select-wrap-delivery_method p:last").css({"color" : "red"});
+        }
+        if (items.delivery_prefecture === null){
+          $(".select-wrap-delivery_prefecture").append(`<p>入力してください。</p>`)
+          $(".select-wrap-delivery_prefecture p:last").css({"color" : "red"});
+        }
+        if (items.price < 300 || items.price > 9999999){
+          $(".sell-price_form").append(`<p>300〜9999999円の範囲で入力してください。</p>`)
+          $(".sell-price_form p:last").css({"color" : "red"});
+        }
+        $('html,body').animate({scrollTop: 0},'fast');
+      }
+      else{
+        window.location.href = '/';
+      }
     })
   });
 });

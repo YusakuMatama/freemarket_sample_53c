@@ -41,7 +41,6 @@
               position: relative;
 
               &__drop-box {
-                font-size: 0;
                 text-align: center;
 
                 &__text {
@@ -84,8 +83,8 @@
           .fa-camera{
             width: 20px;
             height: 20px;
-            display: block;
             margin: auto;
+            line-height: 160px;
           }
         }
 
@@ -99,6 +98,14 @@
           display: block;
           cursor: pointer;
           order: 2;
+          .fa-camera{
+            width: 20px;
+            height: 20px;
+            margin: auto;
+            line-height: 160px;
+          }
+
+
         }
 
         .sell-content {

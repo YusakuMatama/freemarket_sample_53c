@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :brand
   accepts_nested_attributes_for :category
   accepts_nested_attributes_for :item_images
+  validates_associated :item_images
   validates :name, presence: true, length: { maximum: 75}, on: :sell_step
   validates :detail, presence: true, length: { maximum: 1000}, on: :sell_step
   validates :condition, presence: true, on: :sell_step
