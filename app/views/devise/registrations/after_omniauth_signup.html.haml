@@ -51,23 +51,6 @@
                 %ul
                   %li#error-email.error-notice-signin
                   %li#error-email1.error-notice-signin
-              -# .signup__inner__group
-              -#   = f.label :パスワード
-              -#   %span.form-require 必須
-              -#   %br/
-              -#   = f.password_field :password, autocomplete: "new-password", id: "password", class: "input-default", placeholder: "6文字以上"
-              -#   %ul
-              -#     %li#error-password.error-notice-signin
-              -#     %li#error-password1.error-notice-signin
-              -# .signup__inner__group
-              -#   = f.label :'パスワード(確認)'
-              -#   %span.form-require 必須
-              -#   %br/
-              -#   = f.password_field :password_confirmation, autocomplete: "new-password", id: "password_confirmation", class: "input-default", placeholder: "6文字以上"
-              -#   %ul
-              -#     %li#error-password_confirmation.error-notice-signin
-              -#     %li#error-password_confirmation1.error-notice-signin
-
               .signup__inner__group
                 .signup__inner__group__head
                   ="本人確認"
@@ -119,7 +102,8 @@
                 .signup__forminfo
                   ="※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。"
               .signup__inner__group
-                /%iframe(src="https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc&co=aHR0cHM6Ly93d3cubWVyY2FyaS5jb206NDQz&hl=ja&v=v1555968629716&size=normal&cb=nw8xf9xhent" width="304" height="78" frameborder="0" style="border:0" allowfullscreen)
+                = recaptcha_tags callback: 'recaptchaCallbackFunction'
+                
               .signup__inner__group
                 .signup__notification
                   ="「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします"
