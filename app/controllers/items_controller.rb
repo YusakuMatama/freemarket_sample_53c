@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:show, :edit]
   before_action :set_category_and_brand_info, only: [:sell, :edit, :update, :create]
 
 
@@ -25,7 +25,6 @@ class ItemsController < ApplicationController
 
   end
   def edit
-    @items = Item.find(params[:id])
     @items.build_brand
     @items.build_category
     @items.item_images.build
