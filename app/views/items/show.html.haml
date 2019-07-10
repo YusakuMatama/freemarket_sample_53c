@@ -173,15 +173,15 @@
                             .message-icon-right
                               = link_to "" do
                                 %i.far.fa-flag
-
-        .message-content
-          = form_for @comment, url: item_comments_path(@item), html: {class: "message-form"} do |f|
-            %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            = f.text_area :content, class: "textarea-default"
-            - unless @item.sales_condition
-              = f.submit "コメントする", class: "message-submit button-default"
-            -else
-              .message-submit.button-default.sold-button-comment 売り切れのためコメントできません
+        - if user_signed_in?
+          .message-content
+            = form_for @comment, url: item_comments_path(@item), html: {class: "message-form"} do |f|
+              %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+              = f.text_area :content, class: "textarea-default"
+              - unless @item.sales_condition
+                = f.submit "コメントする", class: "message-submit button-default"
+              -else
+                .message-submit.button-default.sold-button-comment 売り切れのためコメントできません
 
   .left-and-right-link-tag-container
     .left-link-tag
