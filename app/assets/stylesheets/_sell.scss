@@ -18,8 +18,6 @@
           font-weight: bold;
           border-bottom: solid 1px rgb(245, 245, 245);
         }
-
-
         .sell-form {
           width: 700px;
           .sell-form_image-box {
@@ -41,7 +39,6 @@
               position: relative;
 
               &__drop-box {
-                font-size: 0;
                 text-align: center;
 
                 &__text {
@@ -84,8 +81,8 @@
           .fa-camera{
             width: 20px;
             height: 20px;
-            display: block;
             margin: auto;
+            line-height: 160px;
           }
         }
 
@@ -99,8 +96,13 @@
           display: block;
           cursor: pointer;
           order: 2;
+          .fa-camera{
+            width: 20px;
+            height: 20px;
+            margin: auto;
+            line-height: 160px;
+          }
         }
-
         .sell-content {
           height: 320px;
           width: 700px;
@@ -134,12 +136,10 @@
               width: 85px;
               font-size: 14px;
               font-weight: 900;
-              // margin-left: 40px;
             }
             .input-intro {
               height: 142px;
               width: 620px;
-              // margin-left: 40px;
               border: solid 1px;
               border-radius: 5px;
               border-color: rgb(209, 209, 209);
@@ -513,7 +513,7 @@ textarea:focus{
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: $black;
   display: none;
   z-index: 3000;
   overflow-x: hidden;
@@ -522,10 +522,16 @@ textarea:focus{
 
   #modalwindow{
     width: 600px;
+    height: 611px;
     padding: 0 0 40px;
     margin: 24px auto;
-    color: $white;
     box-sizing: border-box;
+    background: $white;
+    color: $black;
+    font-weight: bold;
+    font-size: 12px;
+
+    
 
     .item_image_change_wrap{
       padding: 16px;
@@ -538,63 +544,99 @@ textarea:focus{
         font-size: 18px;
       }
       &__change-btn{
+        font-size: 14px;
+        width: 153px;
+        height: 40px;
+        padding: 12px 16px;
+        box-sizing: border-box;
         display: flex;
-
-        .fa-search{
-
+        background-color: rgb(245, 245, 245);
+        opacity: 0.7;
+        cursor: pointer;
+        .fa-camera{
+          font-size: 16px;
         }
         .file-send-btn--edit{
-
+          width: 153px;
+          height: 40px;
+          padding: 12px 16px;
+          display: none;
         }
       }
+    }
 
-      .file-drop-zone-edit-wrap{
-        height: 425px;
-        margin: 0 auto;
+    .file-drop-zone-edit-wrap{
+      width: 380px;
+      height: 425px;
+      margin: 0 auto;
 
-        #file-drop-zone--edit{
+      #file-drop-zone--edit{
+        width: 380px;
+        height: 380px;
+        background-color: whitesmoke;
+        border-style: dashed;
+        border-width: 1px;
+        border-color: #d1d1d1;
+        display: block;
+        cursor: pointer;
+
+        .preview--edit{
           width: 380px;
           height: 380px;
-          background-color: whitesmoke;
-          border-style: dashed;
-          border-width: 1px;
-          border-color: #d1d1d1;
-          display: block;
-          cursor: pointer;
+          object-fit: contain;
 
-          .preview--edit{
-
-          }
-        }
-
-        .file-drop-zone-edit-wrap__size-change{
-          width: 300px;
-          margin: 16px auto 0;
-          padding: 8px 0 4px;
-          box-sizing: border-box;
-
-          &__small-icon{
-
-          }
-
-          &__bar{
-
-          }
-
-          &__big-icon{
-
-          }
         }
       }
-      .item_image_change_ok_btn{
+
+      .file-drop-zone-edit-wrap__size-change{
+        width: 300px;
+        margin: 16px auto 0;
+        padding: 8px 0 4px;
+        box-sizing: border-box;
         display: flex;
-
-        #image-cancel-btn{
-
+        justify-content: space-between;
+        align-items: center;
+        &__small-icon{
+          .fa-camera{
+            font-size: 16px;
+          }
         }
-        #image-comformation-btn{
 
+        &__bar{
         }
+
+        &__big-icon{
+          .fa-camera{
+            font-size: 24px;
+          }  
+        }
+      }
+    }
+    .item_image_change_ok_btn{
+      width: 380px;
+      padding: 0 16px;
+      font-size: 14px;
+      margin: 24px auto;
+      text-align: center;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+
+      #image-cancel-btn{
+        width: 157px;
+        height: 50px;
+        background: #aaa;
+        border: 1px solid #aaa;
+        color: #fff;
+        line-height: 48px;
+      }
+      #image-comformation-btn{
+        width: 157px;
+        height: 50px;
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #fff;
+        line-height: 48px;
       }
     }
   }

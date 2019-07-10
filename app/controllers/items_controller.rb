@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:show, :edit]
+  before_action :set_category_and_brand_info, only: [:sell, :edit, :update, :create]
+
 
   def index
   end
@@ -16,16 +18,37 @@ class ItemsController < ApplicationController
     @items.build_category
     @items.item_images.build
 
-    @categories = Category.where(parent_id: nil)
+    @categories = Category.where(parent_id: 0)
     gon.category = Category.all
-    @brands = Brand.all
 
+  end
+  def edit
+    @items.build_brand
+    @items.build_category
+    @items.item_images.build
+
+    @categories = Category.where(parent_id: 0)
+    gon.category = Category.all
+    gon.category_user_select = Category.find(params[:id])
+    gon.items_images = @items.item_images
+  end
+
+  def update
+    items_params
+    @items = Item.new(@params_items)
+   
+    if @items.save(context: :sell_step)
+      @items_status = OrderStatus.create(status: 1, item_id: Item.all.last().id)
+    else
+      @items = Item.new(@params_items)
+      render :sell
+      respond_to do |format|
+        format.json
+      end
+    end
   end
 
   def create
-    @categories = Category.all
-    @brands = Brand.all
-    
     items_params
     @items = Item.new(@params_items)
    
@@ -104,5 +127,11 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
+  def set_category_and_brand_info
+    @categories = Category.all
+    @brands = Brand.all
+  end
+
 
 end
