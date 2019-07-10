@@ -1,0 +1,58 @@
+.default-container
+  %header.header
+    = render "layouts/header"
+
+  %main.search-container
+    .search-sidebar
+      = search_form_for @search, url: search_items_path, html: { method: :post } do |f|
+        = f.select(:sorts, {'並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' }, { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} )
+        -# %i.fas.fa-chevron-down
+
+      .search-sidebar__box
+        %h3.search-sidebar__box__head
+          詳細検索
+        = search_form_for @keyword, url: search_items_path, html: { method: :post } do |f|
+          .search-sidebar__box__form-group
+            .search-sidebar__box__form-group__label 
+              キーワードを追加する
+            = f.text_field :name_cont, placeholder: '例)値下げ', class: 'search-text-field'
+            -# = f.submit '検索'
+          .search-sidebar__box__form-group
+            .search-sidebar__box__form-group__label 
+              カテゴリーを選択する
+            = f.collection_select :category_id_eq, @categories, :id, :name, include_blank: 'すべて', class: 'search_select'
+            -# = f.collection_select :category_id_eq, @categories, :id, :name, {class: 'search_select'}
+
+          .search-sidebar__box__form-group
+            .search-sidebar__box__form-group__label 
+              ブランド名から探す
+          = f.collection_select :brand_id_eq, @brands, :id, :name, include_blank: '指定なし', class: 'search-text-field'
+          = f.submit '検索'
+          
+          .search-sidebar__box__form-group
+            .search-sidebar__box__form-group__label 
+              価格
+          -# = f.collection_select :item_id_eq, @keyword, :price, include_blank: '指定なし', class: 'search-text-field'
+
+    .search-result
+      %h2.search-result__head
+        の検索結果
+      .search-result__number
+        件表示
+      .search-result__items
+        - @items.each do |item|
+          = link_to root_path do
+            .search-result__items__box 
+              .search-result__items__box__image
+                = image_tag("ladies.jpg", size: "160x160")
+                -# = image_tag @image.item_images.image.url, width: "160", height: "160"
+              .search-result__items__box__price
+                = number_to_currency(item.price, unit: "¥") 
+              .search-result__items__box__text
+                = item.name
+
+
+  %footer.footer
+    = render "layouts/aside"
+    = render 'layouts/footer'
+    = render 'layouts/footer-sell-btn'

@@ -18,12 +18,16 @@ Rails.application.routes.draw do
   get 'tops/edit' => 'tops#edit'
   get 'profile' => 'users#profile'
   
+
   resources :items do
     collection do
       post 'purchase'
     end
     collection do
       get 'complete'
+    end
+    collection do
+      match 'search' => 'items#search', via: [:get, :post]
     end
   end
   resources :tops, only: [:index, :new, :edit]

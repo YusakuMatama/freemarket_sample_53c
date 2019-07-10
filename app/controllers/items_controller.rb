@@ -61,8 +61,36 @@ class ItemsController < ApplicationController
   def complete
   end
 
+  def search
+    # @items = Item.where('name LIKE ?', "%#{params[:word]}%")
+    if params[:q].present?
+      # 検索フォームからアクセスした時の処理
+      @search = Item.ransack(search_params)
+      @items = @search.result
+    else
+      # 検索フォーム以外からアクセスした時の処理
+      params[:q] = { sorts: 'id desc' }
+      @search = Item.ransack()
+      @items = Item.all
+    end
+
+    @keyword = Item.ransack(params[:q])
+    @items = @keyword.result
+    
+    @q = Item.ransack(params[:q])
+    @categories = Category.all
+    @brands = Brand.all
+    @goods = Item.all
+    @items = @q.result.includes(:category, :brand)
+
+    
+  end
 
   private
+  def search_params
+    params.require(:q).permit(:sorts)
+  end
+
   def items_params
     @params_categories = params.require(:item).require(:category_attributes).permit(:id)
 
