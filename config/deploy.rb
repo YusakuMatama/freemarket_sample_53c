@@ -36,8 +36,16 @@ set :rbenv_ruby, '2.5.1' #カリキュラム通りに進めた場合、2.5.1か2
 set :default_env, {
   rbenv_root: "/usr/local/rbenv",
   path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
+  BASIC_AUTH_USER: ENV["BASIC_AUTH_USER"],
+  BASIC_AUTH_PASSWORD: ENV["BASIC_AUTH_PASSWORD"],
   AWS_ACCESS_KEY_ID: ENV["AWS_ACCESS_KEY_ID"],
   AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"],
+  GOOGLE_APP_ID: ENV["GOOGLE_APP_ID"], 
+  GOOGLE_APP_SECRET: ENV["GOOGLE_APP_SECRET"],
+  RECAPTCHA_SITE_KEY: ENV["RECAPTCHA_SITE_KEY"],
+  RECAPTCHA_SECRET_KEY: ENV["RECAPTCHA_SECRET_KEY"],
+  FACEBOOK_KEY: ENV["FACEBOOK_KEY"],
+  FACEBOOK_SECRET: ENV["FACEBOOK_SECRET"],
   PAYJP_TEST_SECRET_KEY: ENV["PAYJP_TEST_SECRET_KEY"],
   PAYJP_TEST_PUBLIC_KEY: ENV["PAYJP_TEST_PUBLIC_KEY"]
 }
@@ -56,15 +64,6 @@ set :ssh_options, auth_methods: ['publickey'],
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 
-set :default_env, {
-  rbenv_root: "/usr/local/rbenv",
-  path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
-  PAYJP_TEST_SECRET_KEY: ENV["PAYJP_TEST_SECRET_KEY"],
-  PAYJP_TEST_PUBLIC_KEY: ENV["PAYJP_TEST_PUBLIC_KEY"]
-}
-
-set :linked_files, %w{ config/secrets.yml }
-
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
@@ -80,6 +79,18 @@ namespace :deploy do
       upload!('config/secrets.yml', "#{shared_path}/config/secrets.yml")
     end
   end
+
+  desc 'db_seed'
+  task :db_seed do
+    on roles(:db) do |host|
+      with rails_env: fetch(:rails_env) do
+        within current_path do
+          execute :bundle, :exec, :rake, 'db:seed'
+        end
+      end
+    end
+  end
+
   before :starting, 'deploy:upload'
   after :finishing, 'deploy:cleanup'
 end

@@ -18,15 +18,12 @@
           font-weight: bold;
           border-bottom: solid 1px rgb(245, 245, 245);
         }
-
-
         .sell-form {
           width: 700px;
           .sell-form_image-box {
-            height: 220px;
+            min-height: 220px;
             width: 620px;
             padding: 40px;
-            border-bottom: solid 1px rgb(245, 245, 245);
             .sell-upload_text-top {
               font-size: 16px;
               font-weight: bold;
@@ -36,24 +33,15 @@
               margin-top: 3px;
             }
             .sell-box_container {
-              height: 162px;
+              min-height: 162px;
               width: 620px;
               margin-top: 8px;
-              background-color: rgb(245, 245, 245);
-              border-style: dashed;
-              border-width: 1px;
-              border-color: rgb(209, 209, 209);
               position: relative;
 
               &__drop-box {
-                min-height: 160px;
-                background: #f5f5f5;
-                border: 1px dashed #ccc;
-                font-size: 0;
                 text-align: center;
 
                 &__text {
-                  height: 162px;
                   font-size: 13px;
                   text-align: center;
                   font-size: 14px;
@@ -67,6 +55,11 @@
                   }
                 }
               }
+              &__drop-box--next {
+                height: 164px;
+                text-align: center;
+                display: none;
+              }
             }
           }
         }
@@ -77,13 +70,39 @@
         #file-drop-zone{
           width: 620px;
           height: 162px;
+          background-color: whitesmoke;
+          border-style: dashed;
+          border-width: 1px;
+          border-color: #d1d1d1;
           display: block;
           cursor: pointer;
-          position: absolute;
-          top: 0;
-          left: 0;
+          order: 2;
+          
+          .fa-camera{
+            width: 20px;
+            height: 20px;
+            margin: auto;
+            line-height: 160px;
+          }
         }
 
+        #file-drop-zone--next{
+          width: 620px;
+          height: 162px;
+          background-color: whitesmoke;
+          border-style: dashed;
+          border-width: 1px;
+          border-color: #d1d1d1;
+          display: block;
+          cursor: pointer;
+          order: 2;
+          .fa-camera{
+            width: 20px;
+            height: 20px;
+            margin: auto;
+            line-height: 160px;
+          }
+        }
         .sell-content {
           height: 320px;
           width: 700px;
@@ -110,19 +129,17 @@
           .form_item-intro {
             height: 164px;
             width: 620px;
-            margin-top: 40px;
+            margin: 40px 0 0 40px;
             word-wrap: break-word;
             label {
               height: 14px;
               width: 85px;
               font-size: 14px;
               font-weight: 900;
-              margin-left: 40px;
             }
             .input-intro {
               height: 142px;
               width: 620px;
-              margin-left: 40px;
               border: solid 1px;
               border-radius: 5px;
               border-color: rgb(209, 209, 209);
@@ -167,6 +184,9 @@
                 #item_category_attributes_id{
                   margin: 6px 0 0;
                 }
+                #item_category_attributes_grandchild_id{
+                  margin: 15px 0 0;
+                }
 
                   .select-place {
                     -webkit-appearance: none;
@@ -195,33 +215,29 @@
               }
             }
           }
-        
-      
-        
-
           .sell-content-shipping-method {
           min-height: 409px;
           width: 617px;
           padding: 40px;
           border-bottom: solid 1px rgb(245, 245, 245);
+          display: flex;
+          justify-content: space-between;
           h3 {
             font-size: 14px;
             font-weight: 900;
-            float: left;
             color: rgb(136, 136, 136);
           }
           .form-area_bottom {
             margin-top: 30px; 
           }
           .form-help {
-            display: inline;
             color: $blue;
             font-weight: 100;
+            margin-right: 115px;
           }
           .sell-form-box {
             min-height: 180px;
             width:400px;
-            float: right;
             .form-area {
               label {
                 font-size: 14px;
@@ -413,4 +429,215 @@ input:focus{
 textarea:focus{
   outline: 0;
   border: 1px solid $blue;
+}
+
+#preview{
+  display: flex;
+
+  ul{
+    width : 112.4px;
+    height : 162px;
+    margin: 0 12px 5px 0;
+    background-color: rgb(245, 245, 245);
+
+    #image_display_container{
+
+      .preview{
+        width : 112px;
+        height : 114px;
+        object-fit: contain;
+        order: 1;
+      }
+      #remove_edit_container{
+        display: flex;
+        font-size: 14px;
+        color: $blue;
+
+        .image-remove-btn{
+          width: 56px;
+          height: 48px;       
+          cursor: pointer;
+        }
+        .image-edit-btn{
+          width: 56px;
+          height: 48px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+#preview--next{
+  display: flex;
+
+  ul{
+    width : 112.4px;
+    height : 162px;
+    margin-right: 12px;
+    background-color: rgb(245, 245, 245);
+
+    #image_display_container{
+
+      .preview{
+        width : 112px;
+        height : 114px;
+        object-fit: contain;
+        background-color: rgb(245, 245, 245);
+        order: 1;
+      }
+      #remove_edit_container{
+        display: flex;
+        color: $blue;
+
+        .image-remove-btn{
+          width: 56px;
+          height: 48px;       
+          font-size: 12px;
+          cursor: pointer;
+        }
+        .image-edit-btn{
+          width: 56px;
+          height: 48px;
+          font-size: 12px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+#overlay{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: $black;
+  display: none;
+  z-index: 3000;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: all ease-out .3s;
+
+  #modalwindow{
+    width: 600px;
+    height: 611px;
+    padding: 0 0 40px;
+    margin: 24px auto;
+    box-sizing: border-box;
+    background: $white;
+    color: $black;
+    font-weight: bold;
+    font-size: 12px;
+
+    
+
+    .item_image_change_wrap{
+      padding: 16px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+
+      &__text{
+        margin: 12px 0 0 ;
+        font-size: 18px;
+      }
+      &__change-btn{
+        font-size: 14px;
+        width: 153px;
+        height: 40px;
+        padding: 12px 16px;
+        box-sizing: border-box;
+        display: flex;
+        background-color: rgb(245, 245, 245);
+        opacity: 0.7;
+        cursor: pointer;
+        .fa-camera{
+          font-size: 16px;
+        }
+        .file-send-btn--edit{
+          width: 153px;
+          height: 40px;
+          padding: 12px 16px;
+          display: none;
+        }
+      }
+    }
+
+    .file-drop-zone-edit-wrap{
+      width: 380px;
+      height: 425px;
+      margin: 0 auto;
+
+      #file-drop-zone--edit{
+        width: 380px;
+        height: 380px;
+        background-color: whitesmoke;
+        border-style: dashed;
+        border-width: 1px;
+        border-color: #d1d1d1;
+        display: block;
+        cursor: pointer;
+
+        .preview--edit{
+          width: 380px;
+          height: 380px;
+          object-fit: contain;
+
+        }
+      }
+
+      .file-drop-zone-edit-wrap__size-change{
+        width: 300px;
+        margin: 16px auto 0;
+        padding: 8px 0 4px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__small-icon{
+          .fa-camera{
+            font-size: 16px;
+          }
+        }
+
+        &__bar{
+        }
+
+        &__big-icon{
+          .fa-camera{
+            font-size: 24px;
+          }  
+        }
+      }
+    }
+    .item_image_change_ok_btn{
+      width: 380px;
+      padding: 0 16px;
+      font-size: 14px;
+      margin: 24px auto;
+      text-align: center;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+
+      #image-cancel-btn{
+        width: 157px;
+        height: 50px;
+        background: #aaa;
+        border: 1px solid #aaa;
+        color: #fff;
+        line-height: 48px;
+      }
+      #image-comformation-btn{
+        width: 157px;
+        height: 50px;
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #fff;
+        line-height: 48px;
+      }
+    }
+  }
 }

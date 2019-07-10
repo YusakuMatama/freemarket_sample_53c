@@ -17,7 +17,6 @@ class TopsController < ApplicationController
   end
 
   def edit
-    @user = "hoge"
+    @user = User.find(current_user)
   end
-  
 end
