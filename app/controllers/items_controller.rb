@@ -39,6 +39,12 @@ class ItemsController < ApplicationController
       end
     end
   end
+  
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to controller: :tops, action: :index
+  end
 
   def purchase
     
