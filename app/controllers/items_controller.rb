@@ -10,6 +10,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
 
   def sell
@@ -22,6 +24,7 @@ class ItemsController < ApplicationController
     gon.category = Category.all
 
   end
+
   def edit
     @items.build_brand
     @items.build_category
@@ -132,6 +135,5 @@ class ItemsController < ApplicationController
     @categories = Category.all
     @brands = Brand.all
   end
-
 
 end
