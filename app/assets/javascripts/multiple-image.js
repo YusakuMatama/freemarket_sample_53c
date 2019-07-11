@@ -3,7 +3,6 @@ $(document).on('turbolinks:load', function(){
   var dropzone_next = document.getElementById('file-drop-zone--next');
   var dropzone_edit = document.getElementById('file-drop-zone--edit');
   var upload_files = [];
-  upload_files.length = 0;
   var edit_file = [];
   var user_select_edit_image;
   var user_select_edit_image_select_last;
