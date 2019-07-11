@@ -11,10 +11,6 @@ class TopsController < ApplicationController
     @naigiitems = Item.where(brand_id:2).limit(4)
   end
 
-  def show
-    @user = "hoge"
-  end
-
   def edit
     @user = User.find(current_user)
   end
