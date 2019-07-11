@@ -10,7 +10,7 @@
       .search-result__number
         1~132件表示
       .search-result__items
-        = render 'items/search_result_items'
+        = render partial:'search_result_items',collection:@items,as:'item'
 
   %footer.footer
     = render "layouts/aside"
