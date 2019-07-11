@@ -25,6 +25,9 @@ Rails.application.routes.draw do
     collection do
       get 'complete'
     end
+    collection do
+      get 'search'
+    end
     resources :comments, only: [:create]
   end
   resources :tops, only: [:index, :new, :edit]

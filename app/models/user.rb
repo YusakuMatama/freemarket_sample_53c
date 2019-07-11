@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: 'のフォーマットが不適切です' }
  
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_one :profile, dependent: :destroy
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :profile, update_only: true

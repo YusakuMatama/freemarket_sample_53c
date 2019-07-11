@@ -93,6 +93,10 @@ class ItemsController < ApplicationController
   def complete
   end
 
+  def search
+    @items = Item.where('name LIKE(?) OR detail LIKE(?)', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+  end
+
   private
   def items_params
     @params_categories = params.require(:item).require(:category_attributes).permit(:id)
