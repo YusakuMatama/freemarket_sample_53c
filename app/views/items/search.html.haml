@@ -6,10 +6,7 @@
     .search-sidebar
 
     .search-result
-      %h2.search-result__head
-        #{params[:keyword]} の検索結果
-      .search-result__number
-        1~132件表示
+      = render 'items/search_result_head'
       .search-result__items
         - @items.each do |item|
           = link_to root_path do
