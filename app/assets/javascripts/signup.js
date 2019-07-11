@@ -41,7 +41,7 @@ pages.eq(0).fadeIn();
         {
           $('#error-password_confirmation').text("パスワード (確認) を入力してください");
         };
-        if(!password_confirmation == password)
+        if(password_confirmation != password)
         {
           $('#error-password_confirmation1').text("パスワードが一致しません")
         };
@@ -236,11 +236,11 @@ pages.eq(0).fadeIn();
     {
       $('#error-number1').text("カード番号は半角数字 で入力してください");
     };
-    if(month == "")
+    if(month == "--")
     {
       $('#error-month').text("有効期限(月) を入力してください");
     };
-    if(year == "")
+    if(year == "--")
     {
       $('#error-year').text("有効期限(年) を入力してください");
     };
@@ -252,7 +252,7 @@ pages.eq(0).fadeIn();
     {
       $('#error-security_code1').text("セキュリティコードは半角数字 で入力してください");
     };
-    if(!security_code.length == 3 || !security_code.length == 4)
+    if(security_code.length != 3 && security_code.length != 4)
     {
       $('#error-security_code2').text("セキュリティコードは３桁または４桁です");
     };

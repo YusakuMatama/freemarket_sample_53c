@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit]
   before_action :set_category_and_brand_info, only: [:sell, :edit, :update, :create]
 
-
   def index
   end
 
@@ -74,8 +73,7 @@ class ItemsController < ApplicationController
 
   def purchase
     
-    # @item = Item.find(params[:item_id])
-    @item = Item.find(1) #仮置き。実際は上の記述を使う
+    @item = Item.find(params[:item_id])
     
     Payjp.api_key = ENV['PAYJP_TEST_SECRET_KEY']
     begin
@@ -84,9 +82,9 @@ class ItemsController < ApplicationController
       redirect_to items_path
     end
     
-    @item.update(buyer_id: 1, selled_at: "#{DateTime.now}", ) #buyer_idの値は仮置き
+    @item.update(buyer_id: current_user.id, selled_at: "#{DateTime.now}", )
 
-    @status = OrderStatus.find(1)
+    @status = OrderStatus.find(params[:item_id])
     
     @status.update(status: 3)
     redirect_to '/items/complete' #このパスは仮置き

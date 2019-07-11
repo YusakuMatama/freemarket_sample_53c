@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   }
 
   root "tops#index"
+  get 'mypage/profile' => 'users#profile'
   get 'mypage/identification' => 'users#identification'
   get 'mypage/card' => 'users#card'
   get 'signup' => 'users#signup'
@@ -16,7 +17,6 @@ Rails.application.routes.draw do
   get 'mypage' => 'users#show'
 
   get 'tops/edit' => 'tops#edit'
-  get 'profile' => 'users#profile'
   
   resources :items do
     collection do
