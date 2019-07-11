@@ -1,7 +1,6 @@
 class TopsController < ApplicationController
 
   def index
-    @top = "hoge"
     @ladysitems = Item.all.eager_load(:category).where(categories:{grandparent_id: 1}).limit(4)
     @mensitems = Item.all.eager_load(:category).where(categories:{grandparent_id: 2}).limit(4)
     @babykidsitems = Item.all.eager_load(:category).where(categories:{grandparent_id: 3}).limit(4)

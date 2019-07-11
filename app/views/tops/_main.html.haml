@@ -9,7 +9,7 @@
     .product-container-ladys__contents
       .product-container-ladys__contents__child__body
         - @ladysitems.each do |item|
-          = link_to root_path do
+          = link_to "/items/#{item.id}" do
             .product-container-ladys__contents__child__body__image
               = image_tag (item.item_images.first.image.url), size: "213x213"
             .product-container-ladys__contents__child__body__info
@@ -31,7 +31,7 @@
     .product-container-mens__contents
       .product-container-mens__contents__child__body
         - @mensitems.each do |item|
-          = link_to root_path do
+          = link_to "/items/#{item.id}" do
             .product-container-mens__contents__child__body__image
               = image_tag (item.item_images.first.image.url), size: "213x213"
             .product-container-mens__contents__child__body__info
@@ -52,7 +52,7 @@
     .product-container-babykids__contents
       .product-container-babykids__contents__child__body
         - @babykidsitems.each do |item|
-          = link_to root_path do
+          = link_to "/items/#{item.id}" do
             .product-container-babykids__contents__child__body__image
               = image_tag (item.item_images.first.image.url), size: "213x213"
             .product-container-babykids__contents__child__body__info
@@ -73,7 +73,7 @@
     .product-container-cosme__contents
       .product-container-cosme__contents__child__body
         - @cosmeitems.each do |item|
-          = link_to root_path do
+          = link_to "/items/#{item.id}" do
             .product-container-cosme__contents__child__body__image
               = image_tag (item.item_images.first.image.url), size: "213x213"
             .product-container-cosme__contents__child__body__info
@@ -97,7 +97,7 @@
     .product-container-zyaneru__contents
       .product-container-zyaneru__contents__child__body
         - @zyaneruitems.each do |item|
-          = link_to root_path do
+          = link_to "/items/#{item.id}" do
             .product-container-zyaneru__contents__child__body__image
               = image_tag (item.item_images.first.image.url), size: "213x213"
             .product-container-zyaneru__contents__child__body__info
@@ -118,7 +118,7 @@
     .product-container-shufureem__contents
       .product-container-shufureem__contents__child__body
         - @shufureemitems.each do |item|
-          = link_to root_path do
+          = link_to "/items/#{item.id}" do
             %figure.product-container-shufureem__contents__child__body__image
               = image_tag (item.item_images.first.image.url), size: "213x213"
             .product-container-shufureem__contents__child__body__info
@@ -139,7 +139,7 @@
     .product-container-ruiweton__contents
       .product-container-ruiweton__contents__child__body
         - @ruiwetonitems.each do |item|
-          = link_to root_path do
+          = link_to "/items/#{item.id}" do
             .product-container-ruiweton__contents__child__body__image
               = image_tag (item.item_images.first.image.url), size: "213x213"
             .product-container-ruiweton__contents__child__body__info
@@ -160,7 +160,7 @@
     .product-container-naigi__contents
       .product-container-naigi__contents__child__body
         - @naigiitems.each do |item|
-          = link_to root_path do
+          = link_to "/items/#{item.id}" do
             .product-container-naigi__contents__child__body__image
               = image_tag (item.item_images.first.image.url), size: "213x213"
             .product-container-naigi__contents__child__body__info
