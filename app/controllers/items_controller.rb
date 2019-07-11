@@ -44,7 +44,6 @@ class ItemsController < ApplicationController
       @items_status = OrderStatus.create(status: 1, item_id: Item.all.last().id)
     else
       @items = Item.new(@params_items)
-      render :sell
       respond_to do |format|
         format.json
       end

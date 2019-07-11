@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function(){
+
   var dropzone = document.getElementById('file-drop-zone');
   var dropzone_next = document.getElementById('file-drop-zone--next');
   var dropzone_edit = document.getElementById('file-drop-zone--edit');
@@ -135,7 +136,7 @@ $(document).on('turbolinks:load', function(){
   });
 
   // ファイルから選択したファイルを画像で表示
-  $(document).on('change','#file-send-btn',function(e){  // ファイル選択で選択したファイルをupload_filesに格納する。
+  $('#file-send-btn').on('change',function(e){  // ファイル選択で選択したファイルをupload_filesに格納する。
     var input_file = e.target.files;
     console.log(document);
     // $('#product-sell-btn').prop('disabled', false);
@@ -146,10 +147,20 @@ $(document).on('turbolinks:load', function(){
       adjust_file_field(); // ドロップゾーンのサイズ調整。
       display_dropZone(); // 上段のドロップゾーンが埋まれば、次のドロップゾーンを表示。
     }
-    console.log(upload_files);
-    e.preventDefault();
-
   });
+
+  $('#file-send-btn--next').on('change',function(e){  // ファイル選択で選択したファイルをupload_filesに格納する。
+    var input_file = e.target.files;
+    // $('#product-sell-btn').prop('disabled', false);
+
+    if(input_file.length != 0){
+      upload_files.push(input_file);  // upload_filesに選択ファイルを格納する。
+      display_image(input_file[0]); // ドロップゾーンに選択ファイルを表示する。
+      adjust_file_field(); // ドロップゾーンのサイズ調整。
+      display_dropZone(); // 上段のドロップゾーンが埋まれば、次のドロップゾーンを表示。
+    }
+  });
+
 // 選択した画像の削除
     $(document).on('click', ".image-remove-btn",function(e){
       var user_select_delete_image = $(this).parent().parent().parent(); // 削除したい画像の要素を取得
@@ -339,7 +350,6 @@ $(document).on('click', "#image-comformation-btn",function(e){
       ajax_files[i] = "item[item_images_attributes]" + "[" + i + "]" + '[image]';
       formdata.append(ajax_files[i], upload_files[i][0]);
     };
-    upload_files.length = 0;
 
     $.ajax({
       url: url,
@@ -363,6 +373,7 @@ $(document).on('click', "#image-comformation-btn",function(e){
       $(".select-wrap-delivery_method p:last").remove();
       $(".select-wrap-delivery_prefecture p:last").remove();
       $(".sell-price_form p:last").remove();
+      console.log(items);
     
       if(typeof items != 'undefined'){
         if (items.name == ""){
