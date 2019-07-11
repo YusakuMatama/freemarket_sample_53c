@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
   get 'tops/edit' => 'tops#edit'
   get 'profile' => 'users#profile'
-  get 'search' => 'items#search'
   
   resources :items do
     collection do
@@ -25,6 +24,9 @@ Rails.application.routes.draw do
     end
     collection do
       get 'complete'
+    end
+    collection do
+      get 'search'
     end
     resources :comments, only: [:create]
   end
