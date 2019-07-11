@@ -1,7 +1,5 @@
 $(document).on('turbolinks:load', function(){
-    window.onunload = function() {
-      // IE以外用。ここは空でOKです
-    };
+  // window.location.reload();
   var dropzone = document.getElementById('file-drop-zone');
   var dropzone_next = document.getElementById('file-drop-zone--next');
   var dropzone_edit = document.getElementById('file-drop-zone--edit');
@@ -140,7 +138,7 @@ $(document).on('turbolinks:load', function(){
   // ファイルから選択したファイルを画像で表示
   $(document).on('change','#file-send-btn',function(e){  // ファイル選択で選択したファイルをupload_filesに格納する。
     var input_file = e.target.files;
-    $('#product-sell-btn').prop('disabled', false);
+    // $('#product-sell-btn').prop('disabled', false);
 
     if(input_file.length != 0){
       upload_files.push(input_file);  // upload_filesに選択ファイルを格納する。
@@ -149,7 +147,6 @@ $(document).on('turbolinks:load', function(){
       display_dropZone(); // 上段のドロップゾーンが埋まれば、次のドロップゾーンを表示。
     }
     console.log(upload_files);
-    e.preventDefault();
     e.preventDefault();
 
   });
