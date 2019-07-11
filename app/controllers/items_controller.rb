@@ -14,7 +14,6 @@ class ItemsController < ApplicationController
   end
 
   def sell
-    # session.clear
     @items = Item.new
     @items.build_brand
     @items.build_category
