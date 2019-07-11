@@ -1,0 +1,13 @@
+%section.purchase-items
+    %h2.purchase-items__head
+      購入した商品
+    %ul.purchase-items__tabs
+      %li.purchase-items__tabs__text
+        =link_to '取引中', root_path
+      %li.purchase-items__tabs__text
+        =link_to '過去の取引', root_path
+        
+    .purchase-items__container
+      %ul.purchase-items__container__list
+        %li.purchase-items__container__list__text
+          取引中の商品がありません
