@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function(){
+
   var dropzone = document.getElementById('file-drop-zone');
   var dropzone_next = document.getElementById('file-drop-zone--next');
   var dropzone_edit = document.getElementById('file-drop-zone--edit');
@@ -69,11 +70,11 @@ $(document).on('turbolinks:load', function(){
           `
     if(upload_files.length <= 5){
     $("#preview").append(html);
-    };
+    }
     if(5 < upload_files.length && upload_files.length <= 10 ){
       $("#preview--next").append(html);
-    };  
-  }
+    }  
+  };
 // 画像の表示と削除、編集ボタンの追加
   function display_image(display_file){
     var  reader = new FileReader();
@@ -92,18 +93,18 @@ $(document).on('turbolinks:load', function(){
   e = e.originalEvent;
   e.dataTransfer.dropEffect = 'copy';
   e.preventDefault();
- }
+ };
   $(dropzone).on("dragover", function(e){ // 上段のドロップゾーン
     dragoverCopy(e);
-  })
+  });
 
   $(dropzone_next).on("dragover", function(e){ // 下段のドロップゾーン
     dragoverCopy(e);
-  })
+  });
 
   $(document).on("dragover", dropzone_edit, function(e){ // モーダルウインドウのドロップゾーン
     dragoverCopy(e);
-  })
+  });
 
 // ドロップした画像を$upload_filesに代入する。
   function dropGetFile(e){
@@ -114,33 +115,31 @@ $(document).on('turbolinks:load', function(){
 
     adjust_file_field();
     display_image(drop_file[0]);
-  }
+  };
   $(dropzone).on("drop", function(e){  // 上段のドロップゾーンに入れたファイルをupload_filsに格納する。
     dropGetFile(e);
-    display_new_upload_zone();
-
     e.preventDefault();
-  })
+    console.log(upload_files);
+  });
   $(dropzone_next).on("drop", function(e){  // 下段のドロップゾーンに入れたファイルをupload_filsに格納する。
-    dropGetFile(e)
+    dropGetFile(e);
     e.preventDefault();
-  })
+  });
   // モーダルウインドウのドロップゾーン
   $(document).on("drop", dropzone_edit, function(e){  // モーダルウインドウのドロップゾーンに入れたファイルをedit_filsに格納する。
     e = e.originalEvent;
     var drop_file = e.dataTransfer.files;
     edit_file.length = 0;
     edit_file.push(drop_file);
-
     display_image_edit_display(drop_file[0]);  // モーダルウインドウ内に画像が表示される。
-
     e.preventDefault();
-  })
+  });
 
   // ファイルから選択したファイルを画像で表示
-  $(document).on('change','.file-send-btn',function(e){  // ファイル選択で選択したファイルをupload_filesに格納する。
+  $('#file-send-btn').on('change',function(e){  // ファイル選択で選択したファイルをupload_filesに格納する。
     var input_file = e.target.files;
-    $('#product-sell-btn').prop('disabled', false);
+    console.log(document);
+    // $('#product-sell-btn').prop('disabled', false);
 
     if(input_file.length != 0){
       upload_files.push(input_file);  // upload_filesに選択ファイルを格納する。
@@ -149,6 +148,19 @@ $(document).on('turbolinks:load', function(){
       display_dropZone(); // 上段のドロップゾーンが埋まれば、次のドロップゾーンを表示。
     }
   });
+
+  $('#file-send-btn--next').on('change',function(e){  // ファイル選択で選択したファイルをupload_filesに格納する。
+    var input_file = e.target.files;
+    // $('#product-sell-btn').prop('disabled', false);
+
+    if(input_file.length != 0){
+      upload_files.push(input_file);  // upload_filesに選択ファイルを格納する。
+      display_image(input_file[0]); // ドロップゾーンに選択ファイルを表示する。
+      adjust_file_field(); // ドロップゾーンのサイズ調整。
+      display_dropZone(); // 上段のドロップゾーンが埋まれば、次のドロップゾーンを表示。
+    }
+  });
+
 // 選択した画像の削除
     $(document).on('click', ".image-remove-btn",function(e){
       var user_select_delete_image = $(this).parent().parent().parent(); // 削除したい画像の要素を取得
@@ -217,7 +229,7 @@ $(document).on('turbolinks:load', function(){
                       `
     $(edit_btn_parent).append(modalwindow_html); //モーダルウインドウを表示する。
     $("#overlay").fadeIn();
-  }
+  };
 // モーダルウインドウ内のメイン画像を表示
   function display_image_edit(display_file,edit_btn_parent){
     var  reader = new FileReader();
@@ -361,6 +373,7 @@ $(document).on('click', "#image-comformation-btn",function(e){
       $(".select-wrap-delivery_method p:last").remove();
       $(".select-wrap-delivery_prefecture p:last").remove();
       $(".sell-price_form p:last").remove();
+      console.log(items);
     
       if(typeof items != 'undefined'){
         if (items.name == ""){
