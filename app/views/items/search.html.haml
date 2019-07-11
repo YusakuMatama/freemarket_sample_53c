@@ -7,9 +7,9 @@
       
     .search-result
       %h2.search-result__head
-        の検索結果
+        #{params[:keyword]} の検索結果
       .search-result__number
-        件表示
+        1-132件表示
       .search-result__items
         - @items.each do |item|
           = link_to root_path do

@@ -18,7 +18,6 @@ class UsersController < ApplicationController
     @profile = user.profile
   end
   
-  
   def update
     user = User.find(current_user)
     @profile = user.profile

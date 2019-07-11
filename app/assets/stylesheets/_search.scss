@@ -54,6 +54,8 @@
           height: 3em;
           line-height: 1.5;
           text-align: left;
+          // word-break: break-all;
+          text-overflow: ellipsis;
         }
       }
     }
