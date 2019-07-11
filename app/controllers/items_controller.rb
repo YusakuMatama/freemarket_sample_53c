@@ -25,6 +25,20 @@ class ItemsController < ApplicationController
 
   end
 
+  def create
+    items_params
+    @items = Item.new(@params_items)
+   
+    if @items.save(context: :sell_step)
+      @items_status = OrderStatus.create(status: 1, item_id: Item.all.last().id)
+    else
+      render :sell
+      respond_to do |format|
+        format.json
+      end
+    end
+  end
+
   def edit
     @items.build_brand
     @items.build_category
@@ -50,20 +64,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def create
-    items_params
-    @items = Item.new(@params_items)
-   
-    if @items.save(context: :sell_step)
-      @items_status = OrderStatus.create(status: 1, item_id: Item.all.last().id)
-    else
-      @items = Item.new(@params_items)
-      render :sell
-      respond_to do |format|
-        format.json
-      end
-    end
-  end
   
   def destroy
     @item = Item.find(params[:id])
