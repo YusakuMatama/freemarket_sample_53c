@@ -45,11 +45,12 @@
           height: 42px;
           padding: 8px 12px;
           overflow: hidden;
-          position: relative;
           font-weight: 400;
           height: 3em;
           line-height: 1.5;
           text-align: left;
+          text-overflow: ellipsis;
+          word-break: break-word;
         }
       }
     }
