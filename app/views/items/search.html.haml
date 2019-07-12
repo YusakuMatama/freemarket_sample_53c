@@ -15,24 +15,42 @@
           .search-sidebar__box__form-group
             .search-sidebar__box__form-group__label 
               キーワードを追加する
-            = f.text_field :name_cont, placeholder: '例)値下げ', class: 'search-text-field'
-            -# = f.submit '検索'
+            .search-sidebar__box__form-group__search-text
+              = f.text_field :name_cont, placeholder: '例)値下げ', class: 'search-text-field'
+              
           .search-sidebar__box__form-group
             .search-sidebar__box__form-group__label 
               カテゴリーを選択する
-            = f.collection_select :category_id_eq, @categories, :id, :name, include_blank: 'すべて', class: 'search_select'
-            -# = f.collection_select :category_id_eq, @categories, :id, :name, {class: 'search_select'}
+            .search-sidebar__box__form-group__search-select
+              = f.collection_select :category_id_eq, @categories, :id, :name, include_blank: 'すべて'
+              -# = f.collection_select :category_id_eq, @categories, :id, :name, {class: 'search_select'}
 
           .search-sidebar__box__form-group
             .search-sidebar__box__form-group__label 
               ブランド名から探す
-          = f.collection_select :brand_id_eq, @brands, :id, :name, include_blank: '指定なし', class: 'search-text-field'
-          = f.submit '検索'
+            .search-sidebar__box__form-group__search-select
+              = f.collection_select :brand_id_eq, @brands, :id, :name, include_blank: '指定なし'
+              -# = f.submit '検索'
           
           .search-sidebar__box__form-group
             .search-sidebar__box__form-group__label 
               価格
-          -# = f.collection_select :item_id_eq, @keyword, :price, include_blank: '指定なし', class: 'search-text-field'
+            -# = f.collection_select :item_id_eq, @keyword, :price, include_blank: '指定なし', class: 'search-text-field'
+            .search-sidebar__box__form-group__search-price
+              .search-sidebar__box__form-group__search-price__price
+                = f.text_field :price_gteq, placeholder: '¥ Min'
+              -# .search-sidebar__box__form-group__search-price__mark ~
+              .search-sidebar__box__form-group__search-price__price
+                = f.text_field :price_lteq, placeholder: '¥ Max'
+
+          .search-sidebar__box__form-group
+            .search-sidebar__box__form-group__label 
+              商品の状態
+            .search-sidebar__box__form-group__checkboxes
+              .search-sidebar__box__form-group__checkbox
+                = f.collection_check_boxes :condition, @goods, :id, :condition
+
+            = f.submit '検索'
 
     .search-result
       %h2.search-result__head
