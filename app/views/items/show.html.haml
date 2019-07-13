@@ -103,7 +103,7 @@
         - unless @item.sales_condition
           - if user_signed_in?
             .buy-button
-              = link_to new_item_path do
+              = link_to confirm_item_path(@item) do
                 購入画面に進む
           - else
             .buy-button
