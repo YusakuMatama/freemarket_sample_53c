@@ -1,6 +1,6 @@
 %ul.brand-menu
   - Brand.all.each do |brand|
     %li
-      = link_to brand.name, '#'
+      = link_to brand.name, brand_item_path(brand.id)
   %li
     = link_to 'ブランド一覧', '#'

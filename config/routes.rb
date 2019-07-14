@@ -28,6 +28,12 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    member do
+      get 'category'
+    end
+    member do
+      get 'brand'
+    end
     resources :comments, only: [:create]
   end
   resources :tops, only: [:index, :new, :edit]
