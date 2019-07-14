@@ -45,7 +45,7 @@
                     %i.fas.fa-chevron-down
             .form-area.form-area_bottom
               %label ブランド
-              %span.required-tag 任意
+              %span.required-tag--brand 任意
               %div
                 .select-wrap-brand
                   = f.fields_for :brand do |fin|
@@ -70,12 +70,12 @@
                 .select-wrap-delivery_cost
                   = f.select :delivery_cost, Item.delivery_costs, prompt: "------", class: "select-place"
                   %i.fas.fa-chevron-down
-            .form-area.form-area_bottom
+            .form-area.form-area_bottom#delivery_method_wrap
               %label 配送の方法
               %span.required-tag 必須
-              %div
+              %div#select-place
                 .select-wrap-delivery_method
-                  = f.select :delivery_method, Item.delivery_methods, prompt: "------", class: "select-place"
+                  = f.select :delivery_method, Item.delivery_methods, prompt: "------", class: "select-place", id: "select-place"
                   %i.fas.fa-chevron-down
             .form-area.form-area_bottom
               %label 発送元の地域
