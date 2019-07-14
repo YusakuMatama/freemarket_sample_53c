@@ -32,5 +32,6 @@ Rails.application.routes.draw do
   end
   resources :tops, only: [:index, :new, :edit]
   resources :users, only: [:index, :update]
+  resources :categories, only: [:show]
 
 end
