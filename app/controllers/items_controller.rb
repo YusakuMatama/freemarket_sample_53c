@@ -81,15 +81,15 @@ class ItemsController < ApplicationController
   end
 
   def selling
-    @sellingitems = Item.where(sales_condition:0,user_id: current_user.id)
+    @sellingitems = Item.where(sales_condition:0,user_id: current_user.id).order("id DESC")
   end
 
   def trading
-    @tradingitems = Item.where(sales_condition:1,user_id: current_user.id)
+    @tradingitems = Item.where(sales_condition:1,user_id: current_user.id).order("id DESC")
   end
 
   def sold
-    @solditems = Item.where(sales_condition:1,user_id: current_user.id)
+    @solditems = Item.where(sales_condition:1,user_id: current_user.id).order("id DESC")
   end
 
   def purchase
