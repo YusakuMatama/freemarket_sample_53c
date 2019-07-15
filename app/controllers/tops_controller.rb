@@ -1,7 +1,7 @@
 class TopsController < ApplicationController
 
   def index
-    @ladysitems = Item.all.eager_load(:category).where(categories:{grandparent_id: 1}).order("items.id DESC").limit(4).includes(:item_images)
+    @ladysitems = Item.all.eager_load(category: :order_status).where(categories:{grandparent_id: 1},order_statuses:{stasus: 1}).order("items.id DESC").limit(4).includes(:item_images)
     @mensitems = Item.all.eager_load(:category).where(categories:{grandparent_id: 2}).order("items.id DESC").limit(4).includes(:item_images)
     @babykidsitems = Item.all.eager_load(:category).where(categories:{grandparent_id: 3}).order("items.id DESC").limit(4).includes(:item_images)
     @cosmeitems = Item.all.eager_load(:category).where(categories:{grandparent_id: 7}).order("items.id DESC").limit(4).includes(:item_images)
