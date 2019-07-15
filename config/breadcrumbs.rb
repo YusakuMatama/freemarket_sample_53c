@@ -43,7 +43,17 @@ crumb :category_index do
 end
 
 crumb :category do |category|
-  link category.name, root_path
+  category_me = category.find(params[:id])
+  category_parent = category.find_by(id: category_me.parent_id)
+  category_grandparent = category.find_by(id: category_parent&.parent_id)
+
+  unless (category_grandparent.blank?)
+    link category_grandparent.name, category_path(category_parent&.parent_id)
+  end
+  unless (category_parent.blank?)
+    link category_parent.name, category_path(category_me.parent_id)
+  end
+  link category_me.name, root_path
   parent :category_index
 end
 
