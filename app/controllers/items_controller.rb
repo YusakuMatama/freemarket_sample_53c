@@ -122,14 +122,6 @@ class ItemsController < ApplicationController
     @items = Item.where('name LIKE(?) OR detail LIKE(?)', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
   end
 
-  def category
-    @category = Category.find(params[:id])
-  end
-
-  def brand
-    @brand = Brand.find(params[:id])
-  end
-
   private
   def category_brand_params
     @params_categories = params.require(:item).require(:category_attributes).permit(:id)
