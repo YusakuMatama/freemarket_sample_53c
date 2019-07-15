@@ -144,8 +144,6 @@ $(document).on('turbolinks:load', function(){
         }
         $(dropzone).on("drop", function(e){  // 上段のドロップゾーンに入れたファイルをupload_filsに格納する。
           dropGetFile(e);
-          display_new_upload_zone();
-
           e.preventDefault();
         })
         $(dropzone_next).on("drop", function(e){  // 下段のドロップゾーンに入れたファイルをupload_filsに格納する。
