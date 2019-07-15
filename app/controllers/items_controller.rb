@@ -48,7 +48,6 @@ class ItemsController < ApplicationController
     gon.category = Category.all
     gon.category_user_select = Item.find(params[:id])
     gon.category_user_select_category = Item.find(params[:id]).category
-    @item.item_images.delete(@item.item_images.last)
     gon.items_images = @item.item_images
   end
 

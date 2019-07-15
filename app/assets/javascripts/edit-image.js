@@ -22,6 +22,10 @@ $(document).on('turbolinks:load', function(){
         for (i = 0; i < product_image_data.length; i++){//upload_files内のデータを取り出し、それぞれにキーを分配する。
           product_image_val[i] = product_image_data[i]["value"]
         };
+        gon.items_images = gon.items_images.filter(function(value){// 子カテゴリーの配列を作成
+          if (value.id != null)
+          return true;
+        });
 
         for (i = 0; i < gon.items_images.length; i++){//upload_files内のデータを取り出し、それぞれにキーを分配する。
           upload_files[i] = gon.items_images[i]
