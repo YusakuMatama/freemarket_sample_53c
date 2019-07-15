@@ -7,29 +7,35 @@
       購入内容の確認
   .buy-item-container
     .item-photo
-      = image_tag("m89940654731_1.jpg", class:"item-photo") 
+      = image_tag(@item.item_images.first.image.url, class:"item-photo") 
     .item-name
-      VIS LEE コラボホワイトデニム M
+      = @item.name
   .buy-item-price-container
     .buy-item-price
-      ¥6,200
+      #{number_to_currency(@item.price, :unit => "¥ ", :precision => 0)}
     .buy-item-tax
-      送料込み
+      = @item.delivery_cost
   .pay-price-container
     .pay-price-title
       支払い金額
     .pay-price
-      ¥ 6,200
-  = form_tag(action: :purchase, method: :post) do
+      #{number_to_currency(@item.price, :unit => "¥ ", :precision => 0)}
+  = form_tag(action: :purchase, controller: :items, url: complete_item_path(@item), method: :post) do
     %script.payjp-button{"data-key": ENV['PAYJP_TEST_PUBLIC_KEY'], src: "https://checkout.pay.jp", type: "text/javascript", "data-text": "購入する"}
   .shipping-address-container
     .shipping-address-head
       配送先
     .shipping-address
-      〒111-1111
-      神奈川県横浜市中央区1-1-1
+      = @item.user.address.zip
+      = @item.user.address.prefectures
+      = @item.user.address.city
+      = @item.user.address.block
+      = @item.user.address.building
+
     .shipping-name
-      山田 花子
+      = @item.user.address.last_name
+      = @item.user.address.first_name
+      
     .change-button
       .p 変更する >
   .method-of-payment-container

@@ -5,9 +5,6 @@ class ItemsController < ApplicationController
   def index
   end
 
-  def new
-  end
-
   def show
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
@@ -22,6 +19,20 @@ class ItemsController < ApplicationController
     @categories = Category.where(parent_id: 0)
     gon.category = Category.all
 
+  end
+
+  def create
+    items_params
+    @items = Item.new(@params_items)
+   
+    if @items.save(context: :sell_step)
+      @items_status = OrderStatus.create(status: 1, item_id: Item.all.last().id)
+    else
+      render :sell
+      respond_to do |format|
+        format.json
+      end
+    end
   end
 
   def edit
@@ -43,27 +54,12 @@ class ItemsController < ApplicationController
       @items_status = OrderStatus.create(status: 1, item_id: Item.all.last().id)
     else
       @items = Item.new(@params_items)
-      render :sell
       respond_to do |format|
         format.json
       end
     end
   end
 
-  def create
-    items_params
-    @items = Item.new(@params_items)
-   
-    if @items.save(context: :sell_step)
-      @items_status = OrderStatus.create(status: 1, item_id: Item.all.last().id)
-    else
-      @items = Item.new(@params_items)
-      render :sell
-      respond_to do |format|
-        format.json
-      end
-    end
-  end
   
   def destroy
     @item = Item.find(params[:id])
@@ -84,25 +80,33 @@ class ItemsController < ApplicationController
   end
 
   def purchase
-    
-    @item = Item.find(params[:item_id])
+    @item = Item.find(params[:id])
     
     Payjp.api_key = ENV['PAYJP_TEST_SECRET_KEY']
     begin
-      Payjp::Charge.create(currency: 'jpy', amount: 100, card: params['payjp-token'])
+      Payjp::Charge.create(currency: 'jpy', amount: @item.price, card: params['payjp-token'])
     rescue
-      redirect_to items_path
+      redirect_to confirm_item_path(@item)
     end
     
     @item.update(buyer_id: current_user.id, selled_at: "#{DateTime.now}", )
 
-    @status = OrderStatus.find(params[:item_id])
+    @status = OrderStatus.find(params[:id])
     
     @status.update(status: 3)
-    redirect_to '/items/complete' #このパスは仮置き
+    redirect_to complete_item_path(@item)
+  end
+
+  def confirm
+    @item = Item.find(params[:id])
   end
 
   def complete
+    @item = Item.find(params[:id])
+  end
+
+  def search
+    @items = Item.where('name LIKE(?) OR detail LIKE(?)', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
   end
 
   private
