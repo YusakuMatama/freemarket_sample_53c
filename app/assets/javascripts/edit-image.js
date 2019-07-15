@@ -469,7 +469,8 @@ $(document).on('turbolinks:load', function(){
                 $('html,body').animate({scrollTop: 0},'fast');
               }
               else{
-                window.location.href = '/';
+                var show_url = window.location.protocol + '//' + window.location.host + '/items/' + gon.category_user_select.id;    
+                window.location.href = show_url;
               }
             }
           })

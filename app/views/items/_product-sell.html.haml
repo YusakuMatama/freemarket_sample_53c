@@ -138,5 +138,5 @@
           - else
             %div
             = f.submit "変更する", class: "btn-sell btn-red", id: "product-sell-btn"
-            = link_to "キャンセル", "/mypage", class: "btn-sell btn-gray"
+            = link_to "キャンセル", item_path(@items.id), class: "btn-sell btn-gray"
             
