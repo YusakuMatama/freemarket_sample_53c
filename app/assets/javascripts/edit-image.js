@@ -28,7 +28,6 @@ $(document).on('turbolinks:load', function(){
           display_preview(gon.items_images[i].image.url, gon.items_images[i].image);
           adjust_file_field();
           display_dropZone();
-          console.log(gon.items_images)
         };
 
       // 次のドロップゾーンの表示
