@@ -5,15 +5,12 @@ $(document).on('turbolinks:load', function(e){
     if(typeof gon.category_user_select != 'undefined') {
     var edit_url = window.location.protocol + '//' + window.location.host + '/items/' + gon.category_user_select.id + '/edit';    
     if (current_url == edit_url){
-
         var parent_name = gon.category.find(item => item.id === gon.category_user_select_category.parent_id)
         var grandparent_name = gon.category.find(item => item.id === gon.category_user_select_category.grandparent_id)
         $('#item_category_attributes_id').val(grandparent_name.id);
 
-        child_category = gon.category.filter(function(value){// 子カテゴリーの配列を作成
-          if (parent_name.parent_id == value.parent_id)
-          return true;
-        });
+        child_category = gon.category_user_select_child_category
+        
         var html = `<select name="item[category_attributes][id]" id="item_category_attributes_child_id">                 `
         $(".select-wrap-category").append(html);
 
@@ -31,10 +28,7 @@ $(document).on('turbolinks:load', function(e){
         }
         $('#item_category_attributes_child_id').val(parent_name.id);
 
-        grandchild_category = gon.category.filter(function(value){
-          if (gon.category_user_select_category.parent_id == value.parent_id)
-          return true;
-        });
+        grandchild_category = gon.category_user_select_grandchild_category
 
         var html = `<select name="item[category_attributes][id]" id="item_category_attributes_grandchild_id"> 
                     <i class="fas fa-chevron-down"></i>    
