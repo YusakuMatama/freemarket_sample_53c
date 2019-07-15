@@ -54,7 +54,6 @@ $(document).on('turbolinks:load', function(e){
           select.appendChild(option);
         };
         $('#item_category_attributes_grandchild_id').val(gon.category_user_select_category.id);
-      // });
       }
     }
   }

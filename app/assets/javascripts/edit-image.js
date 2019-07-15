@@ -330,12 +330,12 @@ $(document).on('turbolinks:load', function(){
           }
         });
         // モーダルウインドウのキャンセルを押した時の処理
-        $(document).on('click', "#image-cancel-btn",function(e){
+        $(".main-contents__conteiner #preview").on('click', "#image-cancel-btn",function(e){
           $('#overlay').fadeOut();
           $('#overlay').remove();
         });
         // モーダルウインドウの完了を押した時の処理
-        $(document).on('click', "#image-comformation-btn",function(e){
+        $(".main-contents__conteiner #preview").on('click', "#image-comformation-btn",function(e){
           $('#overlay').fadeOut();
           $('#overlay').remove();
 

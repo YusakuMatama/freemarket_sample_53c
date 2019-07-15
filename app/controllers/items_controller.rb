@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit]
+  before_action :set_item, only: [:show, :edit, :destroy, :update]
   before_action :set_category_and_brand_info, only: [:sell, :edit, :update, :create]
 
   def index
@@ -14,10 +14,10 @@ class ItemsController < ApplicationController
   end
 
   def sell
-    @items = Item.new
-    @items.build_brand
-    @items.build_category
-    @items.item_images.build
+    @item = Item.new
+    @item.build_brand
+    @item.build_category
+    @item.item_images.build
 
     @categories = Category.where(parent_id: 0)
     gon.category = Category.all
@@ -27,9 +27,9 @@ class ItemsController < ApplicationController
   def create
     category_brand_params
     items_params
-    @items = Item.new(@params_items)
+    @item = Item.new(@params_items)
    
-    if @items.save
+    if @item.save
       @items_status = OrderStatus.create(status: 1, item_id: Item.all.last().id)
     else
       render :sell
@@ -40,17 +40,16 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @items = Item.find(params[:id])
-    @items.build_brand
-    @items.build_category
-    @items.item_images.build
+    @item.build_brand
+    @item.build_category
+    @item.item_images.build
 
     @categories = Category.where(parent_id: 0)
     gon.category = Category.all
     gon.category_user_select = Item.find(params[:id])
     gon.category_user_select_category = Item.find(params[:id]).category
-    @items.item_images.delete(@items.item_images.last)
-    gon.items_images = @items.item_images
+    @item.item_images.delete(@item.item_images.last)
+    gon.items_images = @item.item_images
   end
 
   def update
@@ -59,9 +58,7 @@ class ItemsController < ApplicationController
     edit_items_params
     edit_images_params
 
-    @items = Item.find(params[:id])
-    if @items.update(@edit_params_items)
-
+    if @item.update(@edit_params_items)
       @delete_item_image_data.each do |delete_image|
         ItemImage.find(delete_image.to_i).destroy
       end
@@ -78,7 +75,6 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
     @item.destroy
     redirect_to controller: :tops, action: :index
   end

@@ -25,7 +25,6 @@ $(document).on('turbolinks:load', function(){
   }
 
   $(".price_input").on("keyup", function(){
-    console.log(1);
     $(".right-price").empty();
     $(".right-price-maney").empty();
     var input = $(".price_input").val();
