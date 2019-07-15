@@ -42,14 +42,14 @@
               .item-wrap__category
                 カテゴリー
               .item-wrap__detail
-                = link_to "/" do
+                = link_to category_path(@item.category.grandparent_id) do
                   .item-wrap__detail__name
                     = @item.category.grandparent.name
-                = link_to "/" do
+                = link_to category_path(@item.category.parent_id) do
                   .item-wrap__detail__name
                     %i.fas.fa-angle-right
                     = @item.category.parent.name
-                = link_to "/" do
+                = link_to category_path(@item.category.id) do
                   .item-wrap__detail__name
                     %i.fas.fa-angle-right
                     = @item.category.name
