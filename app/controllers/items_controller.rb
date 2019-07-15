@@ -45,9 +45,14 @@ class ItemsController < ApplicationController
     @item.item_images.build
 
     @categories = Category.where(parent_id: 0)
+
     gon.category = Category.all
     gon.category_user_select = Item.find(params[:id])
     gon.category_user_select_category = Item.find(params[:id]).category
+
+    category_user_select_parent_category = Category.find_by(id: gon.category_user_select_category.parent_id)
+    gon.category_user_select_child_category = Category.where(parent_id: category_user_select_parent_category.parent_id)
+    gon.category_user_select_grandchild_category = Category.where(parent_id: gon.category_user_select_category.parent_id)
     gon.items_images = @item.item_images
   end
 
