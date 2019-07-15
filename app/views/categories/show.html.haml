@@ -1,4 +1,7 @@
 = render "layouts/header"
+%nav.bread-crumb
+  - breadcrumb :category, @category_bread
+  = breadcrumbs separator: " &rsaquo; "
 .category
   .category__container
     %h1 #{@category.name}の商品一覧
