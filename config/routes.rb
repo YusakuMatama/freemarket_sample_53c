@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     end
     member do
       get 'brand'
+    end
     collection do
       get 'selling'
     end
