@@ -11,9 +11,9 @@ class Category < ApplicationRecord
     if self.parent_id != 0 && self.grandparent_id != 0
       @items = Item.where(category_id: self.id).order("items.id DESC").includes(:item_images)
     elsif self.parent_id == 0 && self.grandparent_id == 0
-      @items = Item.all.eager_load(:category).where(categories:{grandparent_id: self.id}).order("items.id DESC").includes(:item_images)
+      @items = Item.eager_load(:category).where(categories:{grandparent_id: self.id}).order("items.id DESC").includes(:item_images)
     else
-      @items = Item.all.eager_load(:category).where(categories:{parent_id: self.id}).order("items.id DESC").includes(:item_images)
+      @items = Item.eager_load(:category).where(categories:{parent_id: self.id}).order("items.id DESC").includes(:item_images)
     end
   end
 end
