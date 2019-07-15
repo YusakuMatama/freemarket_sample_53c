@@ -28,6 +28,11 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    member do
+      get 'category'
+    end
+    member do
+      get 'brand'
     collection do
       get 'selling'
     end

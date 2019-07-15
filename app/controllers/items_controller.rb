@@ -97,7 +97,7 @@ class ItemsController < ApplicationController
       redirect_to confirm_item_path(@item)
     end
     
-    @item.update(buyer_id: current_user.id, selled_at: "#{DateTime.now}", )
+    @item.update(sales_condition: 1, buyer_id: current_user.id, selled_at: "#{DateTime.now}", )
 
     @status = OrderStatus.find(params[:id])
     
@@ -115,6 +115,14 @@ class ItemsController < ApplicationController
 
   def search
     @items = Item.where('name LIKE(?) OR detail LIKE(?)', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+  end
+
+  def category
+    @category = Category.find(params[:id])
+  end
+
+  def brand
+    @brand = Brand.find(params[:id])
   end
 
   private

@@ -32,3 +32,28 @@ crumb :cardcreate do
   parent :card
 end
 
+crumb :keyword do
+  link "#{params[:keyword]}"
+  parent :root
+end
+
+crumb :category_index do
+  link "カテゴリー一覧", root_path
+  parent :root
+end
+
+crumb :category do |category|
+  link category.name, root_path
+  parent :category_index
+end
+
+crumb :brand_index do 
+  link "ブランド一覧", root_path
+  parent :root
+end
+
+crumb :brand do |brand|
+  link brand.name, root_path
+  parent :brand_index
+end
+

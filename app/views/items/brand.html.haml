@@ -2,13 +2,13 @@
   %header.header
     = render "layouts/header"
   %nav.bread-crumb
-    - breadcrumb :keyword
+    - breadcrumb :brand, @brand
     = breadcrumbs separator: " &rsaquo; "
   %main.search-container
     .search-sidebar
     .search-result
       %h2.search-result__head
-        #{params[:keyword]} の検索結果
+        の検索結果
       .search-result__number
         1~132件表示
       .search-result__items
