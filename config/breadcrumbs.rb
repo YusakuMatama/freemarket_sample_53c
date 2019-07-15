@@ -13,7 +13,7 @@ crumb :profile do
 end
 
 crumb :logout do
-  link "ログアウト", new_top_path
+  link "ログアウト", tops_path
   parent :mypage
 end
 

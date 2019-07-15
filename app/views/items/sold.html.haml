@@ -1,0 +1,55 @@
+.container
+  = render "layouts/header"
+  %nav.bread-crumb
+    - breadcrumb :mypage
+    = breadcrumbs separator: " &rsaquo; "
+
+  .main-background
+    .left-content
+      = render "modules/mypage-side-navi"
+      .right-identity-information__sold
+        %section.right-continer__sold
+          %section.purchase-items__sold
+            %h2.purchase-items__sold__head
+              出品した商品
+            %ul.purchase-items__sold__tabs
+              %li.purchase-items__sold__tabs__text1
+                =link_to '出品中', selling_items_path
+              %li.purchase-items__sold__tabs__text2
+                =link_to '取引中', trading_items_path
+              %li.purchase-items__sold__tabs__text3
+                =link_to '売却済', sold_items_path
+            .my-sold__main__container
+              .my-sold-list
+                - if @solditems.present?
+                  - @solditems.each do |item|
+                    .my-sold-list__wrap
+                      =link_to "/items/#{item.id}" do
+                        .my-sold-list__wrap__image
+                          =image_tag(item.item_images.first.image.url, class: 'picture')
+                        .my-sold-list__wrap__detail
+                          .my-sold-list__wrap__detail__name
+                            =item.name
+                            .my-sold-list__wrap__detail__icon
+                              .my-sold-list__wrap__detail__icon__1
+                                .my-sold-list__wrap__detail__icon__1__heart
+                                  %i.far.fa-heart
+                                .my-sold-list__wrap__detail__icon__1__heart__display
+                                  3
+                              .my-sold-list__wrap__detail__icon__2
+                                .my-sold-list__wrap__detail__icon__2__comment
+                                  %i.far.fa-comment-alt
+                                .my-sold-list__wrap__detail__icon__2__comment__display
+                                  1
+                        .my-sold-list__wrap__arrow
+                          %i.fa.fa-chevron-right
+                -else
+                  .purchase-items__sold__container
+                    %ul.purchase-items__sold__container__list
+                    %li.purchase-items__sold__container__list__text
+                      取引済の商品がありません
+
+  .footer
+    = render "layouts/aside"
+    = render "layouts/footer"
+    = render "layouts/sell-button"

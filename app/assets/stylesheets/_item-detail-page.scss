@@ -473,6 +473,29 @@
   }
 }
 
+.item-category__image__status-stop{
+  z-index: 1;
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 0px;
+  border-style: solid;
+  border-width: 130px 130px 0 0;
+  border-color: gray transparent;
+
+  .status-stop-text-top{
+    color: #fff;
+    transform: rotate(-45deg);
+    width:130px;
+    position: absolute;
+    top:-90px;
+    left: -10px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    font-size: 18px;
+  }
+}
+
 .item-tag-sold-out-top-page {
   z-index: 1;
   position: absolute;

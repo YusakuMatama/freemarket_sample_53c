@@ -12,7 +12,11 @@
               .owl-stage-outer
                 = image_tag image.image.url, width: "300", height: "300"
                 - unless @item.sales_condition
-                  .item-category__image__none-sold
+                  - if @item.order_status.status == 1
+                    .item-category__image__none-sold                
+                  - else
+                    .item-category__image__status-stop
+                      .status-stop-text-top 出品停止中            
                 - else
                   .item-category__image__sold-out-top
                     .sold-out-text-top SOLD
@@ -42,14 +46,14 @@
               .item-wrap__category
                 カテゴリー
               .item-wrap__detail
-                = link_to "/" do
+                = link_to category_path(@item.category.grandparent_id) do
                   .item-wrap__detail__name
                     = @item.category.grandparent.name
-                = link_to "/" do
+                = link_to category_path(@item.category.parent_id) do
                   .item-wrap__detail__name
                     %i.fas.fa-angle-right
                     = @item.category.parent.name
-                = link_to "/" do
+                = link_to category_path(@item.category.id) do
                   .item-wrap__detail__name
                     %i.fas.fa-angle-right
                     = @item.category.name
@@ -103,7 +107,7 @@
         - unless @item.sales_condition
           - if user_signed_in?
             .buy-button
-              = link_to new_item_path do
+              = link_to confirm_item_path(@item) do
                 購入画面に進む
           - else
             .buy-button
@@ -140,10 +144,10 @@
           = link_to "商品の編集", edit_item_path(@item), class: "parent-own-item-container__edit"
           .parent-own-item-container__or
             or
-          - unless @item.sales_condition == 0
-            = link_to "出品を停止する", "#", class: "parent-own-item-container__close"
+          - if @item.order_status.status == 1
+            = link_to "出品を停止する", item_order_status_path(@item),method: :put, class: "parent-own-item-container__close"
           - else
-            = link_to "出品を再開する", "#", class: "parent-own-item-container__open"
+            = link_to "出品を再開する", item_order_status_path(@item),method: :put, class: "parent-own-item-container__stop"
         = link_to "商品を削除する", "/items/#{@item.id}", method: :delete, class: "parent-own-item-container__delete-btn"
 
     .item-detail-message

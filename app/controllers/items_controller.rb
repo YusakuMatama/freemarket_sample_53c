@@ -5,9 +5,6 @@ class ItemsController < ApplicationController
   def index
   end
 
-  def new
-  end
-
   def show
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
@@ -70,26 +67,42 @@ class ItemsController < ApplicationController
     redirect_to controller: :tops, action: :index
   end
 
+  def selling
+    @sellingitems = Item.where(sales_condition:[0]).limit(4)
+  end
+
+  def trading
+    @tradingitems = Item.where(sales_condition:1).limit(4)
+  end
+
+  def sold
+    @solditems = Item.where(sales_condition:1).limit(4)
+  end
+
   def purchase
-    
-    @item = Item.find(params[:item_id])
+    @item = Item.find(params[:id])
     
     Payjp.api_key = ENV['PAYJP_TEST_SECRET_KEY']
     begin
-      Payjp::Charge.create(currency: 'jpy', amount: 100, card: params['payjp-token'])
+      Payjp::Charge.create(currency: 'jpy', amount: @item.price, card: params['payjp-token'])
     rescue
-      redirect_to items_path
+      redirect_to confirm_item_path(@item)
     end
     
     @item.update(sales_condition: 1, buyer_id: current_user.id, selled_at: "#{DateTime.now}", )
 
-    @status = OrderStatus.find(params[:item_id])
+    @status = OrderStatus.find(params[:id])
     
     @status.update(status: 3)
-    redirect_to '/items/complete' #このパスは仮置き
+    redirect_to complete_item_path(@item)
+  end
+
+  def confirm
+    @item = Item.find(params[:id])
   end
 
   def complete
+    @item = Item.find(params[:id])
   end
 
   def search

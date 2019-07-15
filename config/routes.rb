@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'mypage/profile' => 'users#profile'
   get 'mypage/identification' => 'users#identification'
   get 'mypage/card' => 'users#card'
+
   get 'signup' => 'users#signup'
   get 'logout' => 'users#logout'
   get 'sell' => 'items#sell'
@@ -19,10 +20,9 @@ Rails.application.routes.draw do
   get 'tops/edit' => 'tops#edit'
   
   resources :items do
-    collection do
+    member do
       post 'purchase'
-    end
-    collection do
+      get 'confirm'
       get 'complete'
     end
     collection do
@@ -33,10 +33,20 @@ Rails.application.routes.draw do
     end
     member do
       get 'brand'
+    collection do
+      get 'selling'
+    end
+    collection do
+      get 'trading'
+    end
+    collection do
+      get 'sold'
     end
     resources :comments, only: [:create]
+    resources :order_statuses, only: [:update]
   end
-  resources :tops, only: [:index, :new, :edit]
+  resources :tops, only: [:index, :edit]
   resources :users, only: [:index, :update]
+  resources :categories, only: [:show]
 
 end
