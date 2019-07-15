@@ -25,6 +25,15 @@ Rails.application.routes.draw do
     collection do
       get 'complete'
     end
+    collection do
+      get 'selling'
+    end
+    collection do
+      get 'trading'
+    end
+    collection do
+      get 'sold'
+    end
     resources :comments, only: [:create]
   end
   resources :tops, only: [:index, :new, :edit]

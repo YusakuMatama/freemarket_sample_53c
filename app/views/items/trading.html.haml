@@ -1,0 +1,55 @@
+.container
+  = render "layouts/header"
+  %nav.bread-crumb
+    - breadcrumb :mypage
+    = breadcrumbs separator: " &rsaquo; "
+
+  .main-background
+    .left-content
+      = render "modules/mypage-side-navi"
+      .right-identity-information__trading
+        %section.right-continer__trading
+          %section.purchase-items__trading
+            %h2.purchase-items__trading__head
+              出品した商品
+            %ul.purchase-items__trading__tabs
+              %li.purchase-items__trading__tabs__text1
+                =link_to '出品中', selling_items_path
+              %li.purchase-items__trading__tabs__text2
+                =link_to '取引中', trading_items_path
+              %li.purchase-items__trading__tabs__text3
+                =link_to '売却済', sold_items_path
+            .my-trading__main__container
+              .my-trading-list
+                - if @tradingitems.present?
+                  - @tradingitems.each do |item|
+                    .my-trading-list__wrap
+                      =link_to "/items/#{item.id}" do
+                        .my-trading-list__wrap__image
+                          =image_tag(item.item_images.first.image.url, class: 'picture')
+                        .my-trading-list__wrap__detail
+                          .my-trading-list__wrap__detail__name
+                            =item.name
+                            .my-trading-list__wrap__detail__icon
+                              .my-trading-list__wrap__detail__icon__1
+                                .my-trading-list__wrap__detail__icon__1__heart
+                                  %i.far.fa-heart
+                                .my-trading-list__wrap__detail__icon__1__heart__display
+                                  3
+                              .my-trading-list__wrap__detail__icon__2
+                                .my-trading-list__wrap__detail__icon__2__comment
+                                  %i.far.fa-comment-alt
+                                .my-trading-list__wrap__detail__icon__2__comment__display
+                                  1
+                        .my-trading-list__wrap__arrow
+                          %i.fa.fa-chevron-right
+                -else
+                  .purchase-items__trading__container
+                    %ul.purchase-items__trading__container__list
+                    %li.purchase-items__trading__container__list__text
+                      取引中の商品がありません
+
+  .footer
+    = render "layouts/aside"
+    = render "layouts/footer"
+    = render "layouts/sell-button"

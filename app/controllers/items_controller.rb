@@ -71,6 +71,18 @@ class ItemsController < ApplicationController
     redirect_to controller: :tops, action: :index
   end
 
+  def selling
+    @sellingitems = Item.where(sales_condition:[0]).limit(4)
+  end
+
+  def trading
+    @tradingitems = Item.where(sales_condition:1).limit(4)
+  end
+
+  def sold
+    @solditems = Item.where(sales_condition:1).limit(4)
+  end
+
   def purchase
     
     @item = Item.find(params[:item_id])
