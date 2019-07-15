@@ -167,6 +167,10 @@
              margin-top: 30px; 
            }
             .form-area {
+              .required-tag--brand{
+                background: gray;
+                color: $white;
+              }              
               label {
                 font-size: 14px;
                 font-weight: 900;
@@ -497,13 +501,13 @@ textarea:focus{
         .image-remove-btn{
           width: 56px;
           height: 48px;       
-          font-size: 12px;
+          font-size: 14px;
           cursor: pointer;
         }
         .image-edit-btn{
           width: 56px;
           height: 48px;
-          font-size: 12px;
+          font-size: 14px;
           cursor: pointer;
         }
       }
@@ -644,4 +648,11 @@ textarea:focus{
       }
     }
   }
+}
+
+#delivery_method_wrap{
+  display: none;
+}
+#select-place{
+  display: none;
 }
