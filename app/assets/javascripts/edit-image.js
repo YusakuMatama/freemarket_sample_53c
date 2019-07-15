@@ -19,7 +19,6 @@ $(document).on('turbolinks:load', function(){
         $("#file-drop-zone").nextAll().remove();
         $("#file-drop-zone--next").nextAll().remove();
         $('#file-send-btn--next').attr('name', "item[item_images_attributes][0][image][]");
-        gon.items_images.pop()
         for (i = 0; i < product_image_data.length; i++){//upload_files内のデータを取り出し、それぞれにキーを分配する。
           product_image_val[i] = product_image_data[i]["value"]
         };
@@ -29,6 +28,7 @@ $(document).on('turbolinks:load', function(){
           display_preview(gon.items_images[i].image.url, gon.items_images[i].image);
           adjust_file_field();
           display_dropZone();
+          console.log(gon.items_images)
         };
 
       // 次のドロップゾーンの表示
