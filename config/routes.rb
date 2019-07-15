@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       get 'search'
     end
     resources :comments, only: [:create]
+    resources :order_statuses, only: [:update]
   end
   resources :tops, only: [:index, :new, :edit]
   resources :users, only: [:index, :update]
