@@ -437,6 +437,20 @@
       margin-top: 15px;
       position: relative;
     }
+    &__stop {
+      width: 100%;
+      background-color: #aaa;
+      border: 1px solid #aaa;
+      color: white;
+      line-height: 48px;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+      margin-top: 15px;
+      position: relative;
+    }
   }
 
   .coment-form-container{
