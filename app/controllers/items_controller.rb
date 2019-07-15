@@ -25,6 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    category_brand_params
     items_params
     @items = Item.new(@params_items)
    
@@ -53,6 +54,7 @@ class ItemsController < ApplicationController
 
   def update
     @current_item_images = Item.find(params[:id]).item_images
+    category_brand_params
     edit_items_params
     edit_images_params
 
@@ -107,7 +109,7 @@ class ItemsController < ApplicationController
   end
 
   private
-  def items_params
+  def category_brand_params
     @params_categories = params.require(:item).require(:category_attributes).permit(:id)
 
     @params_brands = params.require(:item).require(:brand_attributes).permit(:name)
@@ -115,20 +117,14 @@ class ItemsController < ApplicationController
     if @params_brands.present?
       @params_brands = @params_brands[:id]
     end
+  end
 
+  def items_params
     @params_items = params.require(:item).permit(:name, :detail, :condition, :delivery_cost, :delivery_prefecture, :days_to_ship, :delivery_method, :price, item_images_attributes: [:image] ).merge(user_id: current_user.id, sales_condition: 0, category_id: @params_categories[:id], brand_id: @params_brands)
     params_int(@params_items)
   end
 
   def edit_items_params
-    @params_categories = params.require(:item).require(:category_attributes).permit(:id)
-
-    @params_brands = params.require(:item).require(:brand_attributes).permit(:name)
-    @params_brands = @brands.find_by(name: @params_brands[:name])
-    if @params_brands.present?
-      @params_brands = @params_brands[:id]
-    end
-
     @edit_params_items = params.require(:item).permit(:name, :detail, :condition, :delivery_cost, :delivery_prefecture, :days_to_ship, :delivery_method, :price).merge(user_id: current_user.id, sales_condition: 0, category_id: @params_categories[:id], brand_id: @params_brands)
     params_int(@edit_params_items)
   end
@@ -142,7 +138,6 @@ class ItemsController < ApplicationController
     @current_item_images.each do |current_image|
       @current_item_images_all_data << current_image.id.to_s
     end
-
     edit_images_params.each_value {|value|
       @edit_all_image << value[:image]
     }
@@ -153,12 +148,10 @@ class ItemsController < ApplicationController
     @add_item_image_hash = {}
     @add_item_image_data = []
 
-
     @add_item_image.each do |image|
       @add_item_image_hash = {image: image, item_id: params[:id]}
       @add_item_image_data << @add_item_image_hash
     end
-
   end
 
   def params_int(model_params)

@@ -5,7 +5,6 @@ $(document).on('turbolinks:load', function(e){
     if(typeof gon.category_user_select != 'undefined') {
     var edit_url = window.location.protocol + '//' + window.location.host + '/items/' + gon.category_user_select.id + '/edit';    
     if (current_url == edit_url){
-      // $(window).one("load", function(){
 
         var parent_name = gon.category.find(item => item.id === gon.category_user_select_category.parent_id)
         var grandparent_name = gon.category.find(item => item.id === gon.category_user_select_category.grandparent_id)
@@ -117,13 +116,11 @@ $(document).on('turbolinks:load', function(e){
     $("#item_category_attributes_grandchild_id").remove();
     var grandchild_category = [];
     var user_select_category = $("#item_category_attributes_child_id option:selected").val();
-    console.log(user_select_category);
 
     grandchild_category = gon.category.filter(function(value){
       if (user_select_category == value.parent_id)
       return true;
     });
-    console.log(grandchild_category);
     category_grandchild_box(grandchild_category);
   });
 });
