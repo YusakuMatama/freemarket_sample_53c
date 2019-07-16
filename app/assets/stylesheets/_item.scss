@@ -119,26 +119,32 @@
 
             &__high{
               margin: 8px 0 0 0;
+              display: flex;
 
               .fa-grin{
                 color: #ef5185;
                 font-size: 16px;
+                margin-right: 3px;
               }        
             }
             &__normal{
               margin: 8px 0 0 16px;
+              display: flex;
 
               .fa-meh{
                 color: #fba933;
                 font-size: 16px;
+                margin-right: 3px;
               }
             }
             &__low{
               margin: 8px 0 0 16px;
+              display: flex;
 
               .fa-frown-open{
                 color: #6ab5d8;
                 font-size: 16px;
+                margin-right: 3px;
               }
             }
           }
@@ -560,12 +566,13 @@
   }
 }
 
-.other-product-container{
-  width: 700px;
-  margin: 0 auto 72px;
+// .other-product-container{
+//   height: 1000px;
 
   .product-container{
-    margin-bottom: 24px;
+    width: 700px;
+    margin: 0 auto 96px;
+      margin-bottom: 24px;
 
     &__title{
       height: 30px;
@@ -589,19 +596,23 @@
     }
 
     &__contents{
-      height: 330px;
+      // height: 330px;
+      width: 700px;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
 
       &__child{
-        margin-right: 20px;
+        height: 330px;
         width: 213px;
+        margin: 10px 0 20px 0;
         background: $white;
         position: relative;
 
         &__image-size{
           width: 213px;
           height: 213px;
+          object-fit: contain;
         }
 
         &__image-block-size{
@@ -612,6 +623,7 @@
           height:100%; 
           width: 100%; 
           z-index: 1;
+          object-fit: contain;
         }
 
         &__body{
@@ -634,20 +646,29 @@
 
           &__info{
             height: 17px;
+            width: 213px;
             display: flex;
             justify-content: space-between;
             margin-top: 8px; 
+            position: relative;
             
             &__price{
               font-size: 16px;
               font-weight: bold;
             }
-
             &__iine{
+              position: absolute;
+              top: 0;
+              right: 30px;
+              .fa-heart{
+                color: $light_gray;
+              }
             }
-            .fa-heart{
-              color: $light_gray;
-            }
+            &__iine-display{
+              position: absolute;
+              top: 0;
+              right: 17px;
+            } 
           }
           &__tax{
             font-size: 10px;
@@ -655,8 +676,7 @@
         }
       }
     }
-
-  }
+  
 }
 
 .item-box {
