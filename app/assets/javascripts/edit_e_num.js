@@ -3,7 +3,7 @@ $(document).on('turbolinks:load', function(e){
   var item_delivery_cost_options = $("#item_delivery_cost").children();
   var item_delivery_prefecture_options = $("#item_delivery_prefecture").children();
   var item_days_to_ship_options = $("#item_days_to_ship").children();
-
+// 商品編集画面の初期表示
   if(typeof gon != 'undefined') {
     if(typeof gon.category_user_select != 'undefined') {
       if (location.href == window.location.protocol + '//' + window.location.host + '/items/' + gon.category_user_select.id + '/edit'){

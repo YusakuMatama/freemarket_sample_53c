@@ -1,6 +1,8 @@
 .all-container
   = render "layouts/header"
-  
+  %nav.bread-crumb
+    - breadcrumb :item_detail, @item
+    = breadcrumbs separator: " &rsaquo; "  
   .main-container
     .item-container
       .item-name

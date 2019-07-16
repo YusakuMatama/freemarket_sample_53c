@@ -2,6 +2,7 @@ $(document).on('turbolinks:load', function(e){
   var current_options = $("#item_delivery_method").children();
   var select = document.getElementById('item_delivery_method');
 
+//ユーザーが着払い選択時に表示する。
   function CashOnDelivery(){
     $("#item_delivery_method").children().remove();
     var option1 = document.createElement('option');
@@ -32,6 +33,7 @@ $(document).on('turbolinks:load', function(e){
       "display" : "block"
     });        
   }
+// ユーザーが送料込み選択時に表示する。
   function PostAgeIncluded(){
     $("#item_delivery_method").children().remove();
 
@@ -45,6 +47,7 @@ $(document).on('turbolinks:load', function(e){
       "display" : "block"
     });   
   }
+// 商品編集画面の初期表示
   if(typeof gon != 'undefined') {
     if(typeof gon.category_user_select != 'undefined') {
       if (location.href == window.location.protocol + '//' + window.location.host + '/items/' + gon.category_user_select.id + '/edit'){
@@ -72,14 +75,17 @@ $(document).on('turbolinks:load', function(e){
       }  
     }
   }
+// ユーザーが配達方法選択時にイベント発火
   $("#item_delivery_cost").on("change", function(){
     $("#delivery_method_wrap").css({
       "display" : "block"
     });
+// もしユーザーが着払いを選んだら
     var user_select_category = $("#item_delivery_cost option:selected").val(); 
     if (user_select_category == 1){
       CashOnDelivery();
     }
+// もしユーザーが送料込みを選んだら
     if (user_select_category == 2){
       PostAgeIncluded();     
     }

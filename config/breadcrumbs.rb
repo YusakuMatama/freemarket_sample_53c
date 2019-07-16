@@ -57,6 +57,11 @@ crumb :category do |category|
   parent :category_index
 end
 
+crumb :item_detail do |item|
+  link item.name, item_path(params[:id])
+  parent :root
+end
+
 crumb :brand_index do 
   link "ブランド一覧", root_path
   parent :root
@@ -66,4 +71,6 @@ crumb :brand do |brand|
   link brand.name, root_path
   parent :brand_index
 end
+
+
 

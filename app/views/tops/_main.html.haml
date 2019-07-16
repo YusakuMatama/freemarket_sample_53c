@@ -5,7 +5,7 @@
     ピックアップカテゴリー
   .product-container-ladys
     %h3.product-container-ladys__title
-      = link_to 'レディース 新着アイテム', root_path, class: 'product-container-ladys__title__link-btn'
+      = link_to 'レディース 新着アイテム', category_path(1), class: 'product-container-ladys__title__link-btn'
     .product-container-ladys__contents
       .product-container-ladys__contents__child__body
         - @ladysitems.each do |item|
@@ -23,11 +23,11 @@
                 .product-container-ladys__contents__child__body__info__2__iine-display
                   1
     .product-container__all
-      = link_to 'すべての商品を見る', root_path, class: 'items-box__container__all__button'
+      = link_to 'すべての商品を見る', category_path(1), class: 'items-box__container__all__button'
 
   .product-container-mens
     %h3.product-container-mens__title
-      = link_to 'メンズ 新着アイテム', root_path, class: 'product-container-mens__title__link-btn'
+      = link_to 'メンズ 新着アイテム', category_path(2), class: 'product-container-mens__title__link-btn'
     .product-container-mens__contents
       .product-container-mens__contents__child__body
         - @mensitems.each do |item|
@@ -46,11 +46,11 @@
                   1
                     
     .product-container__all
-      = link_to 'すべての商品を見る', root_path, class: 'items-box__container__all__button'
+      = link_to 'すべての商品を見る', category_path(2), class: 'items-box__container__all__button'
 
   .product-container-babykids
     %h3.product-container-babykids__title
-      = link_to 'ベビー・キッズ 新着アイテム', root_path, class: 'product-container-babykids__title__link-btn'
+      = link_to 'ベビー・キッズ 新着アイテム', category_path(3), class: 'product-container-babykids__title__link-btn'
     .product-container-babykids__contents
       .product-container-babykids__contents__child__body
         - @babykidsitems.each do |item|
@@ -69,11 +69,11 @@
                   1
                     
     .product-container__all
-      = link_to 'すべての商品を見る', root_path, class: 'items-box__container__all__button'
+      = link_to 'すべての商品を見る', category_path(3), class: 'items-box__container__all__button'
     
   .product-container-cosme
     %h3.product-container-cosme__title
-      = link_to 'コスメ・香水・美容 新着アイテム', root_path, class: 'product-container-cosme__title__link-btn'
+      = link_to 'コスメ・香水・美容 新着アイテム', category_path(7), class: 'product-container-cosme__title__link-btn'
     .product-container-cosme__contents
       .product-container-cosme__contents__child__body
         - @cosmeitems.each do |item|
@@ -91,7 +91,7 @@
                 .product-container-ladys__contents__child__body__info__2__iine-display
                   1
     .product-container__all
-      = link_to 'すべての商品を見る', root_path, class: 'items-box__container__all__button'
+      = link_to 'すべての商品を見る', category_path(7), class: 'items-box__container__all__button'
 
 %section.brand-items-box
   %h2.product-name
