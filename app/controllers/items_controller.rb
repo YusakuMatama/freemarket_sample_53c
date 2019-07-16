@@ -8,6 +8,8 @@ class ItemsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
+
+    @items = Item.where(user_id: current_user.id).where.not(id: params[:id])
   end
 
   def sell
