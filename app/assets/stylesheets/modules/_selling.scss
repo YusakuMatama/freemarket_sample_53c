@@ -114,15 +114,18 @@
     }
     &__detail{
       width: 300px;
-      // margin: 0 40px 0 23px;
       display: block;
       text-align: left;
 
       &__name{
         font-size: 14px;
         font-weight: 50;
-        float: left;
+        // float: left;
         padding-left: 10px;
+        margin-left: 40px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       &__icon{
         display: flex;
@@ -198,8 +201,10 @@
       .fa-chevron-right{
         width: 8.59px;
         height: 14px;
-        float: right;
         padding-top: 20px;
+        position: absolute;
+        right: 10px;
+        top: 0;
       }
     }
   }

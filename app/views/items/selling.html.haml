@@ -42,14 +42,14 @@
                                   %i.far.fa-comment-alt
                                 .my-selling-list__wrap__detail__icon__2__comment__display
                                   1
+                              .my-selling-list__wrap__arrow
+                                %i.fa.fa-chevron-right
                               - if item.order_status.status==1
                                 .selling__bar
                                   出品中
                               - else
                                 .stoppublishing__bar
                                   公開停止中
-                        .my-selling-list__wrap__arrow
-                          %i.fa.fa-chevron-right
                   
                 -else
                   .purchase-items__selling__container
