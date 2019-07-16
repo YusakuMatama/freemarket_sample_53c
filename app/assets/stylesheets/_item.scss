@@ -598,11 +598,9 @@
     }
 
     &__contents{
-      // height: 330px;
       width: 700px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
 
       &__child{
         height: 330px;
@@ -610,6 +608,7 @@
         margin: 10px 0 20px 0;
         background: $white;
         position: relative;
+        margin-left: 15px;
 
         &__image-size{
           width: 213px;
