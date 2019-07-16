@@ -10,7 +10,6 @@ class ItemsController < ApplicationController
     @comments = @item.comments.includes(:user)
 
     @items = Item.where(user_id: @item.user.id).where.not(id: params[:id])
-    
   end
 
   def sell
