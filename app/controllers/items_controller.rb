@@ -104,7 +104,7 @@ class ItemsController < ApplicationController
       redirect_to confirm_item_path(@item)
     end
     
-    @item.update(sales_condition: 1, buyer_id: current_user.id, selled_at: "#{DateTime.now}", )
+    @item.update(sales_condition: 1, buyer_id: current_user.id, selled_at: "#{DateTime.now}")
 
     @status = OrderStatus.find(params[:id])
     
