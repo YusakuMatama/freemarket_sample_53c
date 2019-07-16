@@ -31,51 +31,7 @@
               = render "layouts/todo-list"
           .navigation__right__mypage
             = image_tag image_path("member_photo_noimage_thumb.png")
-            = link_to "マイページ", tops_edit_path, class: "navigation__right__mypage__link"
+            = link_to "マイページ", mypage_path, class: "navigation__right__mypage__link"
         - else
           = link_to "新規会員登録", '/signup', class: "btn btn-nav btn-login btn-red"
           = link_to "ログイン", '/users/sign_in', class: "btn btn-nav btn-reg"
--# 一応使う可能性あるため、一旦残す。()
--# .header  
--#   .header-inner
--#     %h1.top-contents
--#       = link_to image_tag('mercari-logo.jpg', class: 'top-contents__home-btn-size'), root_path, class: 'top-contents__home-btn-block-size'
--#       = form_for(@top, html: {class: "top-contents__form"}) do |f|            
--#         = f.text_area :content, placeholder:"何かお探しですか？", class: "top-contents__form__input"
--#         %label.top-contents__form__icon
--#           %i.fas.fa-search
--#           = f.submit "send", class: "top-contents__form__icon__search"
-
--#     .lower-contents
--#       .left-category
--#         %ul.left-category__list
--#           %li.left-category__list__cate
--#             %i.fas.fa-list-ul
--#             = link_to 'カテゴリーから探す', root_path, class: 'left-category__list__cate__link-btn'
--#             .navigation__left__category__menu
--#               = render "items/category-menu"
--#           %li.left-category__list__brand
--#             %i.fas.fa-tag
--#             = link_to 'ブランドから探す', root_path, class: 'left-category__list__brand__link-btn'
--#             .navigation__left__brand__menu
--#               = render "items/brand-menu"
-            
--#       -# .right-category あとで使用する可能性があるため、残す。
--#       -#   %ul.right-category__list
--#       -#     %li.right-category__list__sign-up
--#       -#       = link_to '新規会員登録', root_path, class: 'right-category__list__sign-up__link-btn'
--#       -#     %li.right-category__list__login
--#       -#       = link_to 'ログイン', root_path, class: 'right-category__list__login__link-btn'
-
--#       .navigation__right
--#         .navigation__right__note
--#           = link_to "お知らせ", "#"
--#           .navigation__right__note__list
--#             = render "layouts/note-list"
--#         .navigation__right__todo
--#           = link_to "やることリスト", "#"
--#           .navigation__right__todo__list
--#             = render "layouts/todo-list"
--#         .navigation__right__mypage
--#           = image_tag image_path("user.png")
--#           = link_to "マイページ", '#', class: "navigation__right__mypage__link"

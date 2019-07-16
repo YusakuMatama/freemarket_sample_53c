@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   def signup
   end
 
+  def index
+    @user = User.find(current_user)
+  end
+
   def identification
     @user = User.find(current_user)
   end
@@ -24,7 +28,7 @@ class UsersController < ApplicationController
     @profile = user.profile
     
     @profile.update(profile_params)
-    redirect_to tops_edit_path
+    redirect_to mypage_path
   end
   
   private 

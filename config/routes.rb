@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  root "tops#index"
+  root "items#index"
+
+  get 'mypage' => 'users#index'
   get 'mypage/profile' => 'users#profile'
   get 'mypage/identification' => 'users#identification'
   get 'mypage/card' => 'users#card'
@@ -14,10 +16,6 @@ Rails.application.routes.draw do
   get 'signup' => 'users#signup'
   get 'logout' => 'users#logout'
   get 'sell' => 'items#sell'
-
-  get 'mypage' => 'users#show'
-
-  get 'tops/edit' => 'tops#edit'
   
   resources :items do
     member do
@@ -40,7 +38,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
     resources :order_statuses, only: [:update]
   end
-  resources :tops, only: [:index, :edit]
+
   resources :users, only: [:index, :update]
   resources :categories, only: [:show]
 

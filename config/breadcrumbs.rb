@@ -3,7 +3,7 @@ crumb :root do
 end
 
 crumb :mypage do
-  link "マイページ", edit_top_path(current_user)
+  link "マイページ", mypage_path(current_user)
   parent :root
 end
 
@@ -13,7 +13,7 @@ crumb :profile do
 end
 
 crumb :logout do
-  link "ログアウト", tops_path
+  link "ログアウト", logout_path
   parent :mypage
 end
 
