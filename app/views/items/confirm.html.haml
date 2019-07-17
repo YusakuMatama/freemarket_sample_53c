@@ -16,25 +16,26 @@
     .buy-item-tax
       = @item.delivery_cost
   .pay-price-container
-    .pay-price-title
-      支払い金額
-    .pay-price
-      #{number_to_currency(@item.price, :unit => "¥ ", :precision => 0)}
-  = form_tag(action: :purchase, controller: :items, url: complete_item_path(@item), method: :post) do
-    %script.payjp-button{"data-key": ENV['PAYJP_TEST_PUBLIC_KEY'], src: "https://checkout.pay.jp", type: "text/javascript", "data-text": "購入する"}
+    .pay-price-inner
+      .pay-price-title
+        支払い金額
+      .pay-price
+        #{number_to_currency(@item.price, :unit => "¥ ", :precision => 0)}
+    .pay-jp-btn
+      = link_to "購入する", purchase_item_path(@item), method: :post, class: "payjp_btn"
   .shipping-address-container
     .shipping-address-head
       配送先
     .shipping-address
-      = @item.user.address.zip
-      = @item.user.address.prefectures
-      = @item.user.address.city
-      = @item.user.address.block
-      = @item.user.address.building
+      = current_user.address.zip
+      = current_user.address.prefectures
+      = current_user.address.city
+      = current_user.address.block
+      = current_user.address.building
 
     .shipping-name
-      = @item.user.address.last_name
-      = @item.user.address.first_name
+      = current_user.address.last_name
+      = current_user.address.first_name
       
     .change-button
       .p 変更する >
@@ -42,6 +43,14 @@
     .method-of-payment-head
       支払い方法
     .method-of-payment
+      = '************' + current_user.profile.card_id.slice(12,4)
+      %br/
+      - if current_user.profile.card_mm.length == 1
+        = '0' + current_user.profile.card_mm
+      - else
+        = current_user.profile.card_mm
+      = '/'
+      = current_user.profile.card_yy.slice(2,2)
     .change-button
       .p 変更する >
   

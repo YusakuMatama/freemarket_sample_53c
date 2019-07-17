@@ -26,18 +26,26 @@
     .shipping-address-head
       配送先
     .shipping-address
-      = @item.user.address.zip
-      = @item.user.address.prefectures
-      = @item.user.address.city
-      = @item.user.address.block
-      = @item.user.address.building
+      = current_user.address.zip
+      = current_user.address.prefectures
+      = current_user.address.city
+      = current_user.address.block
+      = current_user.address.building
     .shipping-name
-      = @item.user.address.last_name
-      = @item.user.address.first_name
+      = current_user.address.last_name
+      = current_user.address.first_name
   .method-of-payment-container
     .method-of-payment-head
       支払い方法
     .method-of-payment
+      = '************' + current_user.profile.card_id.slice(12,4)
+      %br/
+      - if current_user.profile.card_mm.length == 1
+        = '0' + current_user.profile.card_mm
+      - else
+        = current_user.profile.card_mm
+      = '/'
+      = current_user.profile.card_yy.slice(2,2)
   .after-shipping
   .footer-container
 
