@@ -78,24 +78,51 @@
     }
   }
   .pay-price-container{
-    display: flex;
+    // display: flex;
     background-color: #fff;
     color: rgb(51, 51, 51);
-    height: 50px;
+    // height: 50px;
     width: 600px;
     margin: 0 auto;
     line-height: 0;
-    .pay-price-title{
-      font-size: 2ex;
-      margin-left:160px;
-      font-weight: 900;
-      padding-right: 100px; 
-      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    padding-bottom: 30px;
+    .pay-price-inner{
+      display: inline-block;
+      width: 100%;
+      .pay-price-title{
+        float: left;
+        width: 50%;
+        height: 30px;
+        font-size: 2ex;
+        text-align: center;
+        // margin-left:160px;
+        font-weight: 900;
+        // padding-right: 100px;
+        font-family: ‘Source Sans Pro’, Helvetica , Arial, ‘游ゴシック体’, ‘YuGothic’, ‘メイリオ’, ‘Meiryo’, sans-serif;
+      }
+      .pay-price{
+        width: 50%;
+        float: right;
+        height: 30px;
+        text-align: center;
+        font-size: 25px;
+        font-weight: 900;
+        font-family: ‘Source Sans Pro’, Helvetica , Arial, ‘游ゴシック体’, ‘YuGothic’, ‘メイリオ’, ‘Meiryo’, sans-serif;
+      } 
     }
-    .pay-price{
-      font-size: 25px;
-      font-weight: 900;
-      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+    .pay-jp-btn {
+      width: 50%;
+      margin: 0 auto;
+      background-color: #ea352d;
+      border: 1px solid #ea352d;
+      color: white;
+      line-height: 48px;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+      position: relative;
     }
   }
   form {
@@ -176,13 +203,13 @@
       font-size: 15px;
       padding-top: 10px;
       padding-left: 150px;
-      padding-bottom: 50px;
+      // padding-bottom: 50px;
       font-weight: 500;
       font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
     }
     .method-of-payment{
       font-size: 15px;
-      padding-top: 20px;
+      // padding-top: 20px;
       padding-left: 150px;
       font-weight: 500;
       font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;

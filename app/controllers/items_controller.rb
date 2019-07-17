@@ -103,13 +103,14 @@ class ItemsController < ApplicationController
   end
 
   def purchase
+    @profile = Profile.where(user_id: current_user.id)
     @item = Item.find(params[:id])
     
     Payjp.api_key = ENV['PAYJP_TEST_SECRET_KEY']
     begin
-      Payjp::Charge.create(currency: 'jpy', amount: @item.price, card: params['payjp-token'])
+      Payjp::Charge.create(currency: 'jpy', amount: @item.price, customer: @profile[0][:card_token])
     rescue
-      redirect_to confirm_item_path(@item)
+      render :confirm
     end
     
     @item.update(sales_condition: 1, buyer_id: current_user.id, selled_at: "#{DateTime.now}")
