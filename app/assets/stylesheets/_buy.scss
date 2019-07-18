@@ -39,18 +39,19 @@
     margin-left: auto;
     margin-right: auto;
     padding-top: 10px;
+    display: flex;
+    
   }
     .item-photo{
-      height: 80px;
-      padding-left: 130px;
+      width: 64px;
+      margin-left: 75px;
+      object-fit: contain;
     }
     .item-name{
       height:20px;
       width:190px;
-      font-weight: 900;
-      font-size: 1.7ex;
-      margin: 0 auto;
-      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+      font-size: 16px;
+      margin-left: 90px;
       padding-top: 10px;
     }
   
@@ -69,45 +70,37 @@
       padding-right: 15px;
       font-weight: 600;
       margin-left: 225px;
-      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
     }
     .buy-item-tax{
       padding-top:23px;
       font-size: 13px;
-      font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
     }
   }
   .pay-price-container{
-    // display: flex;
     background-color: #fff;
     color: rgb(51, 51, 51);
-    // height: 50px;
     width: 600px;
     margin: 0 auto;
     line-height: 0;
     padding-bottom: 30px;
     .pay-price-inner{
-      display: inline-block;
+      display: flex;
       width: 100%;
       .pay-price-title{
-        float: left;
         width: 50%;
         height: 30px;
         font-size: 2ex;
         text-align: center;
-        // margin-left:160px;
+        margin-left:80px;
         font-weight: 900;
-        // padding-right: 100px;
-        font-family: ‘Source Sans Pro’, Helvetica , Arial, ‘游ゴシック体’, ‘YuGothic’, ‘メイリオ’, ‘Meiryo’, sans-serif;
       }
       .pay-price{
         width: 50%;
-        float: right;
         height: 30px;
         text-align: center;
+        margin-right:80px;
         font-size: 25px;
         font-weight: 900;
-        font-family: ‘Source Sans Pro’, Helvetica , Arial, ‘游ゴシック体’, ‘YuGothic’, ‘メイリオ’, ‘Meiryo’, sans-serif;
       } 
     }
     .pay-jp-btn {
@@ -123,6 +116,13 @@
       display: block;
       text-decoration: none;
       position: relative;
+
+      .payjp_btn{
+        font-size: 14px;
+        display: block;
+        width: 100%;
+        color: white;
+      }
     }
   }
   form {
@@ -232,3 +232,4 @@
     height: 150px;
   }
 }
+
