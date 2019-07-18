@@ -14,7 +14,9 @@ pages.eq(0).fadeIn();
     var first_name = $('#first_name').val();
     var last_name_kana = $('#last_name_kana').val();
     var first_name_kana = $('#first_name_kana').val();
-    var birthday = $('#birthday').val();
+    var birthday_year = $('#user_profile_attributes_birthday_1i').val();
+    var birthday_month = $('#user_profile_attributes_birthday_2i').val();
+    var birthday_day = $('#user_profile_attributes_birthday_3i').val();
     if(nickname == "")
     {
       $('#error-nicnname').text("ニックネーム を入力してください");
@@ -70,7 +72,7 @@ pages.eq(0).fadeIn();
     {
       $('#error-first_name_kana1').text("名カナ はカナ文字を入力してください");
     };
-    if(birthday == "")
+    if(birthday_year == "" || birthday_month == "" || birthday_day == "")
     {
       $('#error-birth_date').text("生年月日を入力してください");
     };
