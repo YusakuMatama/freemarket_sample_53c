@@ -120,7 +120,7 @@ class ItemsController < ApplicationController
 
   def search
     @items = Item.where('name LIKE(?) OR detail LIKE(?)', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
-    
+
     if params[:q].present?
       # 検索フォームからアクセスした時の処理
       @search = Item.ransack(search_params)
