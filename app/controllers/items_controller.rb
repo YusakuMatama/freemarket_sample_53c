@@ -115,7 +115,7 @@ class ItemsController < ApplicationController
     
     @item.update(sales_condition: 1, buyer_id: current_user.id, selled_at: "#{DateTime.now}")
 
-    @status = OrderStatus.find(params[:id])
+    @status = OrderStatus.find_by(item_id: params[:id])
     
     @status.update(status: 3)
     redirect_to complete_item_path(@item)
