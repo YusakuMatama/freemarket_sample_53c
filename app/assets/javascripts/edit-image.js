@@ -293,14 +293,14 @@ $(document).on('turbolinks:load', function(){
           reader.readAsDataURL(display_file);
         };
         // モーダルウインドウで画像を選択。
-        $(document).on('change','.file-send-btn--edit',function(e){
+        $(".main-contents__conteiner #preview, .main-contents__conteiner #preview--next").on('change','.file-send-btn--edit',function(e){
           edit_file.length = 0;
           var input_edit_file = document.getElementById('edit_image').files;
           edit_file.push(input_edit_file);
           display_image_edit_display(input_edit_file[0]);         
         });
         // モーダルウインドウを表示。
-        $(document).on('click', ".image-edit-btn",function(e){
+        $(".main-contents__conteiner #preview, .main-contents__conteiner #preview--next").on('click', ".image-edit-btn",function(e){
           var user_select_edit_image_select = $(this).parent().parent().parent(); 
           user_select_edit_image_select_last = user_select_edit_image_select.parent().attr("id")//編集選択した画像の親要素のidを取得。
           user_select_edit_image = $(this).parent().parent();
@@ -321,7 +321,7 @@ $(document).on('turbolinks:load', function(){
           if (user_select_edit_image_select_last == "preview--next"){// 編集選択した要素が上段か下段のどちらのドロップゾーンか確認
             for (i = 0; i < upload_files.length; i++){
               if (i == user_select_edit_image_result + 5){
-                if (typeof upload_files[i].image.url != "undefined"){
+                if (typeof upload_files[i].image != "undefined"){
                   display_preview_edit(upload_files[i].image.url, upload_files[i].image, $(this).parent());// モーダルウインドウに編集選択した画像を表示
                   }
                 else{
@@ -332,12 +332,12 @@ $(document).on('turbolinks:load', function(){
           }
         });
         // モーダルウインドウのキャンセルを押した時の処理
-        $(".main-contents__conteiner #preview").on('click', "#image-cancel-btn",function(e){
+        $(".main-contents__conteiner #preview, .main-contents__conteiner #preview--next").on('click', "#image-cancel-btn",function(e){
           $('#overlay').fadeOut();
           $('#overlay').remove();
         });
         // モーダルウインドウの完了を押した時の処理
-        $(".main-contents__conteiner #preview").on('click', "#image-comformation-btn",function(e){
+        $(".main-contents__conteiner #preview, .main-contents__conteiner #preview--next").on('click', "#image-comformation-btn",function(e){
           $('#overlay').fadeOut();
           $('#overlay').remove();
 

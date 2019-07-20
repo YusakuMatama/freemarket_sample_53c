@@ -123,7 +123,6 @@ $(document).on('turbolinks:load', function(){
       $(dropzone).on("drop", function(e){  // 上段のドロップゾーンに入れたファイルをupload_filsに格納する。
         dropGetFile(e);
         e.preventDefault();
-        // console.log(upload_files);
       });
       $(dropzone_next).on("drop", function(e){  // 下段のドロップゾーンに入れたファイルをupload_filsに格納する。
         dropGetFile(e);
@@ -142,8 +141,6 @@ $(document).on('turbolinks:load', function(){
       // ファイルから選択したファイルを画像で表示
       $('#file-send-btn').on('change',function(e){  // ファイル選択で選択したファイルをupload_filesに格納する。
         var input_file = e.target.files;
-        // console.log(upload_files);
-        // $('#product-sell-btn').prop('disabled', false);
 
         if(input_file.length != 0){
           upload_files.push(input_file);  // upload_filesに選択ファイルを格納する。
@@ -155,8 +152,6 @@ $(document).on('turbolinks:load', function(){
 
       $('#file-send-btn--next').on('change',function(e){  // ファイル選択で選択したファイルをupload_filesに格納する。
         var input_file = e.target.files;
-        // $('#product-sell-btn').prop('disabled', false);
-        // console.log(upload_files)
 
         if(input_file.length != 0){
           upload_files.push(input_file);  // upload_filesに選択ファイルを格納する。
@@ -275,14 +270,14 @@ $(document).on('turbolinks:load', function(){
         reader.readAsDataURL(display_file);
       };
     // モーダルウインドウで画像を選択。
-      $(document).on('change','.file-send-btn--edit',function(e){
+      $(".main-contents__conteiner #preview, .main-contents__conteiner #preview--next").on('change','.file-send-btn--edit',function(e){
         edit_file.length = 0;
         var input_edit_file = document.getElementById('edit_image').files;
         edit_file.push(input_edit_file);
         display_image_edit_display(input_edit_file[0]);         
       });
     // モーダルウインドウを表示。
-      $(document).on('click', ".image-edit-btn",function(e){
+      $(".main-contents__conteiner #preview, .main-contents__conteiner #preview--next").on('click', ".image-edit-btn",function(e){
         var user_select_edit_image_select = $(this).parent().parent().parent(); 
         user_select_edit_image_select_last = user_select_edit_image_select.parent().attr("id")//編集選択した画像の親要素のidを取得。
         user_select_edit_image = $(this).parent().parent();
@@ -304,12 +299,12 @@ $(document).on('turbolinks:load', function(){
         }
       });
     // モーダルウインドウのキャンセルを押した時の処理
-      $(".main-contents__conteiner #preview").on('click', "#image-cancel-btn",function(e){
+      $(".main-contents__conteiner #preview, .main-contents__conteiner #preview--next").on('click', "#image-cancel-btn",function(e){
         $('#overlay').fadeOut();
         $('#overlay').remove();
       });
     // モーダルウインドウの完了を押した時の処理
-    $(".main-contents__conteiner #preview").on('click', "#image-comformation-btn",function(e){
+    $(".main-contents__conteiner #preview, .main-contents__conteiner #preview--next").on('click', "#image-comformation-btn",function(e){
         $('#overlay').fadeOut();
         $('#overlay').remove();
 
